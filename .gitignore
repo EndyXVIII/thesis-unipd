@@ -224,3 +224,4 @@ build/
 
 # produced pdf
 *thesis.pdf
+.DS_Store
