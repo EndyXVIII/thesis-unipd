@@ -5,9 +5,15 @@
 \newacronym[description={\glslink{awsg}{Amazon Web Services}}]
     {aws}{AWS}{Amazon Web Services}
 
+\newacronym[description={\glslink{apig}{Application Program Interface}}]
+    {api}{API}{Application Program Interface}
+
 \newacronym{ceog}{CEO}{Chief Executive Officer}
 
 \newacronym{hrg}{HR}{Human Resources}
+
+\newacronym[description={\glslink{ci-cdg}{Continuous Integration \& Continuous Delivery}}]
+    {ci-cd}{CI/CD}{Continuous Integration \& Continuous Delivery}
 
 % Glossary entries
 
@@ -32,9 +38,23 @@
     description={Le \emph{User stories} rappresentano una pratica \textit{Agile}, utilizzata per definire le esigenze degli utenti in modo semplice e conciso. Sono brevi descrizioni di una funzionalità, scritte dal punto di vista dell'utente, che aiutano a comprendere cosa l'utente vuole ottenere dal sistema}
 }
 
-\newglossaryentry{slackg} {
-    name=Slack,
-    text=Slack,
-    sort=slack,
-    description={\emph{Slack} è una piattaforma di messaggistica istantanea e collaborazione di gruppo, utilizzata per la comunicazione interna tra i membri del team. Offre funzionalità di chat, condivisione di file e integrazioni con altri servizi}
+\newglossaryentry{serverlessg}{
+    name=Serverless,
+    text=Serverless,
+    sort=serverless,
+    description={\emph{Serverless} è un modello di sviluppo di applicazioni \textit{cloud} in cui il fornitore del servizio (AWS nel contesto aziendale), gestisce automaticamente l'allocazione delle risorse di calcolo richieste dall'applicazione. L'utente pagherà soltanto per il tempo in cui il codice è in esecuzione (\textit{pay as you go}), senza dover preoccuparsi di gestire l'infrastruttura sottostante}
+}
+
+\newglossaryentry{apig} {
+    name=\glslink{api}{API},
+    text=Application Program Interface,
+    sort=api,
+    description={In informatica, con il termine \emph{API, Application Program Interface} si intende un insieme di protocolli che permette la comunicazione tra diverse applicazioni software. Funge da contratto di come una componente software deve interagire con un'altra, attraverso richieste e risposte}
+}
+
+\newglossaryentry{ci-cdg}{
+    name=\glslink{ci-cd}{CI/CD},
+    text=Continuous Integration \& Continuous Delivery,
+    sort=ci-cd,
+    description={In informatica, con il termine \emph{CI/CD, Continuous Integration \& Continuous Delivery} ci si riferisce ad una pratica di sviluppo che tutte le modifiche apportate al \textit{software} durante lo sviluppo, vengono integrate e testate automaticamente, in modo da garantire che il codice sia sempre funzionante e pronto per il rilascio in produzione}
 }
