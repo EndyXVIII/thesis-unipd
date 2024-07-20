@@ -66,7 +66,7 @@ Nella figura \ref{fig:scrum} viene mostrato il flusso di lavoro di un progetto c
 \begin{itemize}
     \item \textit{\gls{User-stories}}: all'inizio viene effettuata una prima sessione di \textit{user stories mapping} che va a definire quello che sarà presente nel \textit{product backlog}. Questa sessione viene svolta insieme al cliente, in modo da avere una chiara visione delle aspettative del cliente, definendo cosi anche le \textit{feature} più importanti da sviluppare.
     \item \textbf{\textit{Sprint planning}}: all'inizio di ogni \textit{sprint} vengono selezionate le \textit{task} da svolgere, in base alla priorità, dal \textit{product backlog} e vengono assegnate ai membri del \textit{team} di lavoro.
-    \item \textbf{\textit{Sprint review}}: alla fine di ogni \textit{sprint} viene effettuata una revisione del lavoro svolto, andando a controllare che le \textit{task} assegnate siano state completate e che il lavoro svolto sia stato svolto in modo conforme alle aspettative del cliente.
+    \item \textbf{\textit{Sprint review}}: alla fine di ogni \textit{sprint} viene effettuata una revisione del lavoro svolto, andando a controllare che le \textit{task} assegnate siano completate e che il lavoro assegnato, sia stato svolto in modo conforme alle aspettative del cliente.
     \item \textbf{\textit{Sprint retrospective}}: alla fine di ogni \textit{sprint} viene effettuato un controllo interno del lavoro svolto durante lo \textit{sprint}, andando ad evidenziare eventuali problematiche sorte e andando a definire eventuali miglioramenti da apportare al processo di lavoro.
 \end{itemize}
 \subsection{Strumenti di supporto ai processi}
@@ -81,13 +81,18 @@ I membri del \textit{team} di lavoro posso spostare i \textit{ticket} da una col
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Jira.png}
+    \includegraphics[width=0.65\textwidth]{Jira.png}
     \caption{\textit{Board} del quinto \textit{sprint} del progetto di \textit{stage}}
     \label{fig:Jira}
 \end{figure}
 \subsubsection{Visual Studio Code}
 Visual Studio Code è un \textit{editor} di codice sorgente sviluppato da Microsoft che permette la scrittura di codice in diversi linguaggi di programmazione.
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{VsCode.png}
+    \caption{Schermata dell'\textit{editor} Visual Studio Code con codice Typescript}
+    \label{fig:VsCode}
+\end{figure}
 \subsubsection{Github}
 Github è una piattaforma \textit{web} che permette il versionamento del codice sorgente tramite il sistema di controllo di versione Git. 
 Grazie a questo strumento, è possibile creare \textit{repositories} in cui salvare il codice sorgente del progetto. 
@@ -95,7 +100,7 @@ Grazie a questo strumento, è possibile creare \textit{repositories} in cui salv
 Tramite questa pratica è possibile revisionare il codice sorgente prodotto e garantire che il codice prodotto sia conforme alla qualità richiesta.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{github.png}
+    \includegraphics[width=0.65\textwidth]{github.png}
     \caption{Schermata del \textit{repository} Github del progetto di \textit{stage}}
     \label{fig:Github}
 \end{figure}
@@ -105,7 +110,7 @@ Si possono creare canali di comunicazione dedicati a specifici argomenti. In amb
 Nel caso del mio progetto di \textit{stage} è stato creato un canale dedicato al progetto assieme al mio \textit{tutor} aziendale ed un altra figura per aiutarmi in caso di problematiche.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{slack.png}
+    \includegraphics[width=0.65\textwidth]{slack.png}
     \caption{Schermata del canale dedicato al progetto di \textit{stage}}
     \label{fig:Slack}
 \end{figure}
@@ -124,7 +129,7 @@ Node.js è un ambiente \textit{runtime} di Javascript che consente di eseguire c
 MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non vengono strutturati in tabelle con uno schema preciso, ma vengono raggruppati in documenti dove la struttura dei dati può variare da documento a documento.  
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{sqlvsnosql.png}
+    \includegraphics[width=0.65\textwidth]{sqlvsnosql.png}
     \caption{Differenza tra la struttura di un \textit{database} relazionale e un \textit{database} non relazionale}
     \small \textbf{Fonte:} \href{https://naveen-metta.medium.com/decoding-the-database-dilemma-sql-vs-nosql-in-system-design-876e21f4a58c}{medium.com}
     \label{fig:sql-vs-nosql}
@@ -135,7 +140,7 @@ Il Serverless \textit{framework} è un \textit{framework} che permette la creazi
 Permette inoltre il \textit{deploy} nel \textit{cloud} attraverso un semplice comando che carica il codice sorgente e configura l'architettura in modo automatico. Supporta diversi \textit{plugin} che permettono l'utilizzo di altri servizi offerti da \gls{awsg}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{serverless.png}
+    \includegraphics[width=0.65\textwidth]{serverless.png}
     \caption{Confronto tra un'architettura tradizionale e una architettura \textit{\gls{serverlessg}}}
     \small \textbf{Fonte:} \href{https://medium.com/canonichq/server-v-s-serverless-architecture-bf3cdab28174}{medium.com}
     \label{fig:Serverless}
@@ -147,7 +152,7 @@ Streamlit è un \textit{framework open-source} che permette la creazione di appl
 Con l'utilizzo del seguente \textit{framework} si possono trasformare \textit{script} Python in applicazioni \textit{web} interattive.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.72\textwidth]{streamlit.png}
+    \includegraphics[width=0.65\textwidth]{streamlit.png}
     \caption{Esempio di applicazione \textit{web} creata con il \textit{framework} Streamlit}
     \small \textbf{Fonte:} \href{https://streamlit.io}{streamlit.io}
     \label{fig:Streamlit}
@@ -167,17 +172,17 @@ ESLint è un \textit{plugin} installato su Visual Studio Code che permette il co
 È possibile impostare una configurazione personalizzata (come l'indentazione del codice, la lunghezza delle righe, ecc.), permettendo così di scrivere codice uniforme agli \textit{standard} aziendali.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{eslint.png}
+    \includegraphics[width=0.65\textwidth]{eslint.png}
     \caption{Esempio di configurazione di ESLint}
     \label{fig:ESlint}
 \end{figure} 
-
+\pagebreak
 \subsection{Tecnologie di supporto}
 \subsubsection{Postman}
 Postman è un \textit{software} che permette il salvataggio e il testing di \gls{api} in modo semplice. Offre un'interfaccia intuitiva che permette di organizzare le richieste e generare documentazione delle \gls{api} salvate.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{postman.png}
+    \includegraphics[width=0.65\textwidth]{postman.png}
     \caption{Esempio di API di tipo \textit{POST} su Postman con relativo \textit{body}}
     \label{fig:Postman}
 \end{figure} 
@@ -186,7 +191,7 @@ Postman è un \textit{software} che permette il salvataggio e il testing di \gls
 MongoDB Compass è un \textit{software} che permette la visualizzazione dei documenti salvati nel \textit{database} MongoDB tramite un'interfaccia grafica.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{mongodb.png}
+    \includegraphics[width=0.65\textwidth]{mongodb.png}
     \caption{Esempio di visualizzazione di documenti su MongoDB Compass}
     \label{fig:MongoDB}
 \end{figure} 
