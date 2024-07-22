@@ -160,7 +160,8 @@ Nella realizzazione del progetto di \textit{stage} sono stati utilizzati diversi
 \begin{itemize}
     \item \textbf{AWS Lambda}: servizio che permette l'esecuzione di codice senza la necessità di dover gestire \textit{server} sottostanti. Sono autoscalabili in base al carico di lavoro. Generalmente sono funzioni che seguono il \textit{Simple Responsability Principle}.
     \item \textbf{AWS Bedrock}: servizio che permette l'utilizzo di vari modelli di \textit{machine learning} messi a disposizione, utilizzabili tramite chiamata \gls{api}.
-    \item \textbf{AWS API Gateway}: servizio che permette la creazione, la pubblicazione, la manutenzione, il monitoraggio e la protezione di \gls{api} su larga scala.
+    \item \textbf{AWS API Gateway}: servizio che permette la creazione, la pubblicazione, la manutenzione, il monitoraggio e la protezione di \gls{api} su larga scala. Si integra nell'ecosistema \gls{aws} offrendo \textit{trigger} di eventi per l'esecuzioni di funzioni \textit{lambda}.
+    \item \textbf{AWS Cognito}: servizio che fornisce un sistema di autenticazione e autorizzazione per gli applicativi \textit{web} e \textit{mobile}. Gestisce automaticamente la registrazione di nuovi utenti, il \textit{login}, il recupero della \textit{password} e la gestione delle sessioni.
 \end{itemize}
 Alcuni servizi vengono utilizzati per attuare il processo di \gls{ci-cd}, una pratica di sviluppo in cui tutte le modifiche apportate al \textit{software} durante lo sviluppo, vengono integrate e testate automaticamente, garantendo che il codice sia sempre funzionante e pronto per il rilascio.
 \subsection{Tecnologie per la validazione del codice}
