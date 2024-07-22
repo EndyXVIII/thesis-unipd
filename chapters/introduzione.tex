@@ -14,7 +14,7 @@ L'azienda è parte di Var Group s.p.a, un' azienda italiana che fornisce ai prop
 \section{Organizzazione aziendale}
 Durante il mio periodo di \textit{stage} ho avuto modo osservare in prima persona l'organizzazione in \textit{team} di lavoro che l'azienda adotta.
 I ruoli che ho potuto osservare sono rappresentati di seguito nella tabella \ref{tab:ruoli}.
-\begin{longtable}{|>{\RaggedRight\arraybackslash}p{3.5cm}|>{\RaggedRight\arraybackslash}p{8.5cm}|}
+\begin{longtable}{|p{3.5cm}|p{8cm}|}
     \hline
     \rowcolor{tableheader}\textbf{Ruolo} & \textbf{Descrizione} \\
     \hline
@@ -52,7 +52,7 @@ Ad ogni nuovo progetto viene assegnato un \textit{team} di lavoro composto da un
 \section{Processi aziendali}
 \subsection{Metodologia di sviluppo}
 Durante il mio periodo di \textit{stage} ho avuto modo di sperimentare in prima persona i processi istanziati dall'azienda per la realizzazione di un progetto.
-La metodologia adottata dall'azienda è quella \textit{Agile} ada in particolare al \textit{framework Scrum}.\\ 
+La metodologia adottata dall'azienda è quella \textit{Agile} adattandosi in particolare, al \textit{framework Scrum}.\\ 
 Ogni progetto viene suddiviso in \textit{sprint} di durata fissa (durante il mio periodo di \textit{stage} la durata era di una settimana) e viene assegnato un \textit{team} di lavoro (il \textit{team} di lavoro era composto dal mio \textit{tutor} aziendale come \textit{project manager} e da me come \textit{software developer}).
 \begin{figure}[H]
     \centering
@@ -62,17 +62,17 @@ Ogni progetto viene suddiviso in \textit{sprint} di durata fissa (durante il mio
     \label{fig:scrum}
 \end{figure}
 \noindent
-Nella figura \ref{fig:scrum} viene mostrato il flusso di lavoro di un progetto con metodologia \textit{Scrum}. All'interno dell'azienda, il flusso di lavoro segue il seguente schema:
+Nella figura \ref{fig:scrum} viene mostrato il flusso di lavoro di un progetto con metodologia \textit{Scrum}. Nel contesto aziendale, il flusso di lavoro segue il seguente schema:
 \begin{itemize}
-    \item \textit{\gls{User-stories}}: all'inizio viene effettuata una prima sessione di \textit{user stories mapping} che va a definire quello che sarà presente nel \textit{product backlog}. Questa sessione viene svolta insieme al cliente, in modo da avere una chiara visione delle aspettative del cliente, definendo cosi anche le \textit{feature} più importanti da sviluppare.
+    \item \textit{\gls{User-stories}}: all'inizio viene effettuata una prima sessione di \textit{user stories mapping} che va a definire quello che sarà presente nel \textit{product backlog}. Questa sessione viene svolta insieme al cliente, in modo da avere una chiara visione delle aspettative del cliente, definendo cosi, anche, le \textit{feature} più importanti da sviluppare.
     \item \textbf{\textit{Sprint planning}}: all'inizio di ogni \textit{sprint} vengono selezionate le \textit{task} da svolgere, in base alla priorità, dal \textit{product backlog} e vengono assegnate ai membri del \textit{team} di lavoro.
-    \item \textbf{\textit{Sprint review}}: alla fine di ogni \textit{sprint} viene effettuata una revisione del lavoro svolto, andando a controllare che le \textit{task} assegnate siano completate e che il lavoro assegnato, sia stato svolto in modo conforme alle aspettative del cliente.
+    \item \textbf{\textit{Sprint review}}: alla fine di ogni \textit{sprint} viene effettuata una revisione del lavoro svolto, andando a controllare che le \textit{task} assegnate siano completate e che il lavoro assegnato sia stato svolto in modo conforme alle aspettative del cliente.
     \item \textbf{\textit{Sprint retrospective}}: alla fine di ogni \textit{sprint} viene effettuato un controllo interno del lavoro svolto durante lo \textit{sprint}, andando ad evidenziare eventuali problematiche sorte e andando a definire eventuali miglioramenti da apportare al processo di lavoro.
 \end{itemize}
 \subsection{Strumenti di supporto ai processi}
 \subsubsection{Jira}
-\textit{Jira} è un \gls{itsg} che permette la gestione delle \textit{task} dei progetti in modo \textit{Agile}. All'inizio di ogni \textit{sprint}, lo \textit{scrum master} crea una nuova \textit{board} relativa allo \textit{sprint} in corso e assegna le \textit{task} da svolgere ai membri del \textit{team} di lavoro.
-I membri del \textit{team} di lavoro possono notificare lo stato di avanzamento delle \textit{task}, spostandole tra le varie colonne quali: 
+\textit{Jira} è un \gls{itsg} che permette la gestione delle \textit{task} dei progetti in modo \textit{Agile}. All'inizio di ogni \textit{sprint}, lo \textit{scrum master} crea una nuova \textit{board} relativa allo \textit{sprint} in corso e assegna le \textit{task} (crea i \textit{ticket}) da svolgere ai membri del \textit{team} di lavoro.
+I membri del \textit{team} di lavoro possono notificare lo stato del \textit{ticket}, spostandolo tra le varie colonne quali: 
 \begin{itemize}
     \item \textbf{Da completare}: \textit{ticket} assegnati ma che devono essere ancora completati.
     \item \textbf{In corso}: \textit{ticket} assegnati ad una o più risorse del \textit{team} di lavoro e che sono in sviluppo.
@@ -93,9 +93,9 @@ Visual Studio Code è un \textit{editor} di codice sorgente che permette la scri
     \label{fig:VsCode}
 \end{figure}
 \subsubsection{Github}
-Github è una piattaforma \textit{web} che permette di usufruire del sistema di versionamento Git del codice sorgente da interfaccia \textit{web}.
+Github è una piattaforma \textit{web} che permette di usufruire del sistema di versionamento Git del codice sorgente, da interfaccia \textit{web}.
 Grazie a questa piattaforma , è possibile creare \textit{repositories} in cui salvare il codice sorgente del progetto. 
-È possibile suddividere il progetto in \textit{branch} assegnati a specifiche \textit{feature} da sviluppare, permettendo cosi di lavorare in modo parallelo.
+È possibile suddividere il progetto in \textit{branch}, assegnati a specifiche \textit{feature} da sviluppare, permettendo cosi di lavorare in modo parallelo.
 Terminata la codifica di una \textit{feature}, tramite una \textit{pull request}, si unisce il codice sviluppato nel \textit{branch} al codice sorgente presente nel \textit{branch} principale. Tramite \textit{pull request} il codice viene revisionato per garantire la sua qualità e la corretta integrazione con il codice sorgente principale.
 \begin{figure}[H]
     \centering
@@ -105,8 +105,8 @@ Terminata la codifica di una \textit{feature}, tramite una \textit{pull request}
 \end{figure}
 \subsubsection{Slack}
 Slack è un'applicazione di messaggistica utilizzata in ambito aziendale.
-Permette la creazione di canali di comunicazione dedicati a specifici argomenti. In ambito aziendale, viene creato un canale dedicato ad ogni progetto in modo da poter permettere una comunicazione più efficace tra i membri del \textit{team} di lavoro.
-Nel caso del mio progetto di \textit{stage} è stato creato un canale dedicato al progetto assieme al mio \textit{tutor} aziendale ed un altra figura per aiutarmi in caso di problematiche durante la configurazione di servizi o durante lo sviluppo.
+Permette la creazione di canali di comunicazione dedicati a specifici argomenti. Nel contesto aziendale, viene creato un canale dedicato ad ogni progetto in modo da poter permettere una comunicazione più efficace tra i membri del \textit{team} di lavoro.
+Nel caso del mio progetto di \textit{stage} è stato creato un canale dedicato al progetto assieme al mio \textit{tutor} aziendale ed un altra figura all'interno dell'azienda, con lo scopo aiutarmi in caso di problematiche durante la configurazione di alcuni servizi o durante lo sviluppo.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{slack.png}
@@ -134,7 +134,7 @@ MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non
 \end{figure} 
 
 \subsubsection{Serverless framework}
-Il Serverless \textit{framework} è un \textit{framework} che permette la creazione di \gls{api}, un \textit{software} che definisce come due parti (applicazione \textit{client} e \textit{server}) comunicano tra loro usando richieste e risposte, su infrastuttura \gls{aws}. Permette la definizione di funzioni \textit{lambda} con i relativi \textit{trigger} di invocazione e il \textit{deploy} nel \textit{cloud}, attraverso un semplice comando che carica il codice sorgente e configura l'architettura in modo automatico. Supporta diversi \textit{plugin} che permettono l'utilizzo di altri servizi offerti da \gls{aws}.
+Il Serverless \textit{framework} è un \textit{framework} che permette la creazione di \gls{api}, un' interfaccia che definisce come due parti (applicazione \textit{client} e \textit{server}) comunicano tra loro usando richieste e risposte, su infrastuttura \gls{aws}. Permette la definizione di funzioni \textit{lambda} con i relativi \textit{trigger} di invocazione e il \textit{deploy} nel \textit{cloud}, attraverso un semplice comando che carica il codice sorgente e configura l'architettura in modo automatico. Supporta diversi \textit{plugin} che permettono l'utilizzo di altri servizi offerti da \gls{aws}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{serverless.png}
@@ -146,7 +146,7 @@ Il Serverless \textit{framework} è un \textit{framework} che permette la creazi
 Come mostrato nella figura \ref{fig:Serverless}, l'architettura \textit{\gls{serverlessg}} permette all'utente di non doversi preoccupare della gestione dell'infrastruttura sottostante, in quanto viene gestita automaticamente dal fornitore del servizio. Nella controparte dell'architettura tradizionale, l'utente deve gestire l'infrastruttura sottostante.
 \subsubsection{Streamlit}
 Streamlit è un \textit{framework open-source} che permette la creazione di applicazioni \textit{web} per la visualizzazione di dati in modo rapido e semplice.
-Con l'utilizzo del seguente \textit{framework} si possono trasformare \textit{script} Python in applicazioni \textit{web} interattive.
+Con il suo utilizzo, si possono trasformare \textit{script} Python in applicazioni \textit{web} interattive.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{streamlit.png}
@@ -162,7 +162,7 @@ Nella realizzazione del progetto di \textit{stage} sono stati utilizzati diversi
     \item \textbf{AWS Bedrock}: servizio che permette l'utilizzo di vari modelli di \textit{machine learning} messi a disposizione, utilizzabili tramite chiamata \gls{api}.
     \item \textbf{AWS API Gateway}: servizio che permette la creazione, la pubblicazione, la manutenzione, il monitoraggio e la protezione di \gls{api} su larga scala.
 \end{itemize}
-Alcuni servizi vengono utilizzati per attuare il processo di \gls{ci-cd}, una pratica di sviluppo in cui tutte le modifiche apportate al \textit{software} durante lo sviluppo, vengono integrate e testate automaticamente, in modo da garantire che il codice sia sempre funzionante e pronto per il rilascio.
+Alcuni servizi vengono utilizzati per attuare il processo di \gls{ci-cd}, una pratica di sviluppo in cui tutte le modifiche apportate al \textit{software} durante lo sviluppo, vengono integrate e testate automaticamente, garantendo che il codice sia sempre funzionante e pronto per il rilascio.
 \subsection{Tecnologie per la validazione del codice}
 \subsubsection{ESLint}
 ESLint è un \textit{plugin} installato su Visual Studio Code che permette il controllo del codice in fase di scrittura, segnando eventuali errori di sintassi o di stile.
@@ -206,9 +206,9 @@ Durante il mio periodo di \textit{stage} , ho avuto modo di osservare la diversi
 L'azienda collabora anche con clienti provenienti da settori diversi, come ad esempio il settore della moda, con \textit{brand} di lusso che richiedono lo sviluppo di applicazioni \textit{web} o \textit{mobile} per la gestione dei propri prodotti o servizi.
 
 \section{Propensione all'innovazione}
-L'azienda è fortemente orientata all'innovazione e alla sperimentazione di nuove tecnologie, sin dalla sua fondazione.
-L'azienda si propone ai suoi nuovi clienti come \textit{Innovation advisor} e grazie a delle sessioni con il cliente, riesce a sviluppare soluzioni innovative in linea con le esigenze del cliente. Essendo \textit{parter} \gls{aws}, l'azienda è particolarmente incentrata nella ricerca di innovazione in ambito \textit{cloud}.
-In aggiunta, i dipedenti stessi organizzano eventi interni in cui vengono discusse nuove tecnologie o assitono alla presentazione di nuove tecnologie, portando cosi nuove idee anche non inerenti all'ambito \textit{cloud}, segno di una forte curiosità e propensione all'innovazione.
+L'azienda è sempre stata fortemente orientata all'innovazione e alla sperimentazione di nuove tecnologie.
+L'azienda si propone ai suoi nuovi clienti come \textit{Innovation advisor} riuscendo a sviluppare soluzioni innovative in linea con le esigenze del cliente. Essendo \textit{parter} \gls{aws}, l'azienda è particolarmente incentrata nella ricerca di innovazione in ambito \textit{cloud}.\\
+In aggiunta, l'azienda organizza eventi interni in cui vengono discusse nuove tecnologie o assitono assieme alla presentazione di nuove tecnologie, portando cosi nuove idee anche non inerenti all'ambito \textit{cloud}, segno di una forte curiosità e propensione all'innovazione.
 
 %\section{Organizzazione del testo}
 
