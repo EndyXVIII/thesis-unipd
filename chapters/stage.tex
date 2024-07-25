@@ -1,3 +1,4 @@
+
 \chapter{Lo \textit{stage}}
 \label{cap:lo-stage}
 
@@ -30,14 +31,86 @@ Ed è qui che da Zero12 nasce l'idea di creare un sistema di proposte di risoluz
 Durante lo sviluppo del progetto descritto nel paragrafo precedente, è nata l'idea di creare un ulteriore strumento che permetta di svolgere la stessa funzionalità del sistema di proposte di risoluzioni, ma in modo differente. Lo strumento aggiuntivo è un \textit{chatbot} che permette di generare proposte di risoluzione, in base al testo di un \textit{ticket} inserito all'interno della chat. 
 Sempre grazie alla IA Generativa, il \textit{chatbot} genera proposte di risoluzione in base al contesto dei \textit{ticket} precedentemente inseriti. A differenza del sistema Jira, il \textit{chatbot} propone le risoluzioni in modo più descrittivo e dettagliato, e permette di interagire con l'assistente virtuale, per ottenere informazioni più dettagliate.
 \section{Importanza del progetto}
-Descrizione di come il progetto proposto dall'azienda sia importante per l'azienda stessa
+Come descritto nel paragrafo precedente, il progetto ideato da Zero12 di generare proposte di risoluzioni automatiche per i nuovi \textit{ticket} inseriti all'interno di un \gls{itsg} rappresenterebbe un grande vantaggio per l'azienda. Innanzitutto, 
+grazie allo sviluppo di questo progetto, l'azienda ha dei dati sufficienti per poter implementare un sistema di proposte di risoluzioni automatiche, utilizzando i servizi di cui l'azienda è \textit{partner}. In secondo luogo, permette di avere un'idea nel 
+caso un cliente, voglia implementare un sistema simile a quello sviluppato. Questo permetterebbe di avere già un prototipo funzionante, che mostra tutte le potenzialità del sistema, e che può essere facilmente adattato al contesto aziendale del cliente.
+Questo perchè l'utilizzo di IA Generativa sta diventando sempre più utilizzato in ambito aziendale, data la sua capacità di generare risposte in base al contesto in cui viene inserita.
 
+\section{Obiettivi dello \textit{stage}}
+Durante i primi giorni di \textit{stage} ho definito assieme al mio \textit{tutor} aziendale gli obiettivi del progetto.
+Di seguito nella tabella elenco gli obiettivi da raggiungere:
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|p{10cm}|p{2cm}|}
+    \hline
+    \rowcolor{tableheader}\textbf{Obiettivo} & \textbf{Importanza} \\
+    \hline
+    \endfirsthead
+
+    \rowcolor{tableheader}\textbf{Obiettivo} & \textbf{Importanza} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+    \rowcolor{tableoddrow} Studio delle tecnologie e studio di fattibilità & Obbligatorio \\
+    \hline
+    \rowcolor{tableevenrow} Creazione dati di \textit{mock} da inserire nell' \gls{its} Jira & Obbligatorio \\
+    \hline
+    \rowcolor{tableoddrow} Reperimento dei ticket su Jira e salvataggio su \textit{database} mongoDB & Obbligatorio \\
+    \hline
+    \rowcolor{tableoddrow} Aggiornamento costante del \textit{database} a nuovi \textit{ticket} chiusi su Jira & Obbligatorio \\
+    \hline
+    \rowcolor{tableoddrow} Esecuzione di \gls{rag}, una tecnica avanzata di elaborazione di linguaggio naturale, sui \textit{ticket} salvati & Obbligatorio \\
+    \hline
+    \rowcolor{tableoddrow} Creazione del sistema di proposte di risoluzione su Jira & Obbligatorio \\
+    \hline
+    \rowcolor{tableoddrow} \textit{Benchmark} su vari modelli per la generazione della risposta & Desiderabile \\
+    \hline
+    \caption{Obiettivi da raggiungere per il sistema di proposte di risoluzione su Jira}
+    \label{tab:obiettiviJira}
+\end{longtable}
+\noindent
+Durante lo sviluppo del progetto, visto il buon andamento che ho avuto, insieme al mio \textit{tutor} aziendale è nata l'idea di sviluppare un progetto aggiuntivo, ovvero il \textit{chatbot} per le proposte di risoluzione.
+Di seguito nella tabella elenco gli obiettivi \textit{extra} da raggiungere:
+\begin{longtable}{|p{10cm}|p{2cm}|}
+    \hline
+    \rowcolor{tableheader}\textbf{Obiettivo} & \textbf{Importanza} \\
+    \hline
+    \endfirsthead
+
+    \rowcolor{tableheader}\textbf{Obiettivo} & \textbf{Importanza} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+    \rowcolor{tableoddrow} Studio delle tecnologie e studio di fattibilità & Desiderabile \\
+    \hline
+    \rowcolor{tableevenrow} Implementazione interfaccia \textit{web} per l'interrogazione del \textit{chatbot} & Desiderabile \\
+    \hline
+    \rowcolor{tableevenrow} Impostazione di un formato di domanda dell'utente da seguire & Desiderabile \\
+    \hline
+    \caption{Obiettivi da raggiungere del progetto \textit{chatbot}}
+    \label{tab:obiettiviChatbot}
+\end{longtable}
 \section{Vincoli dello \textit{stage}}
+\subsection{Vincoli tecnologici}
+I vincoli tecnologici imposti dall'azienda consistevano nell'utilizzo delle tecnologie utilizzata nello \textit{stack} aziendale, come sono riportate nella sezione \ref{sec:tecnologie}. In aggiunta a queste, 
+mi è stato chiesto di usufruire delle \gls{api} che fornisce Jira, per il caricamento dei \textit{ticket} di \textit{mock} all'interno di un progetto Jira, e per il recupero dei \textit{ticket} completati da inserire all'interno del \textit{database}
+Mi è stato inoltre chiesto di utilizzare i \textit{webhook} di Jira, per poter impostare un \textit{trigger} che possa inviare eventi al sistema che ho sviluppato, in cui, in caso di chiusura di un \textit{ticket} su Jira, il sistema aggiorna automaticamente il \textit{database}.
 \subsection{Vincoli di rendicontazione}
-Descrizione dei documenti scritti e della presentazione effettuate
+Durante il mio periodo di \textit{stage}, l'azienda mi ha richiesto la stesura di una tabella, risultato del \textit{benchmark} dei vari modelli testati. Questa tabella doveva contenere i risultati ottenuti dai vari modelli, secondo le metriche di valutazione da me impostate e motivate.
+La stesura di un documento in cui spiego le scelte adottate durante lo sviluppo del progetto, indicando le componenti sviluppate, le librerie utilizzate e le motivazioni dietro le scelte fatte.
+La stesura di un manuale utente, in cui spiego come impostare correttamente il sistema su Jira, e come utilizzarlo. Quest'ultimo documento comprende anche il corretto utilizzo del \textit{chatbot}, indicando il suo corretto utilizzo.
+Durante l'ultima settimana infine, mi è stato richiesto di preparare una presentazione dei progetti sviluppati, che avrei dovuto esporre a tutti i membri presenti dell'azienda. Questa presentazione doveva contenere l'idea del progetto, la sua importanza, i risultati ottenuti e le possibile evoluzioni future.
 \subsection{Vincoli temporali}
-Analisi delle tempistiche e delle scadenze da rispettare durante lo stage.
-
+Il progetto di \textit{stage} è stato ideato per essere sviluppato in otto settimane, limite massimo di tempo per lo svolgimento del tirocinio curricolare. Nello specifico, è stato programmato in giornate lavorative da 8 ore ciascuna, per un totale di non più di 320 ore, per un totale di 40 ore settimanali.
 
 \section{Scelta dello \textit{stage}}
 Spiegazione delle ragioni per cui ho scelto questo stage tra le varie offerte.
