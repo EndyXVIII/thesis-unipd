@@ -9,32 +9,43 @@ Zero12 crede fortemente nella collaborazione tramite \textit{stage} con gli stud
 Gli stage per l'azienda, rappresentano una doppia opportunità. Da una parte, hanno modo di inserire nuove figure professionali nel proprio organico, dall’altra gli studenti hanno la possibilità di inserirsi nel mondo del lavoro e poter applicare le proprie conoscenze acquisite durante il percorso di studi.
 Durante le otto settimane di \textit{stage} ho avuto l’occasione di conoscere quasi tutti i membri dell’azienda, comprendere il loro metodo di lavoro e mettere in pratica le mie conoscenze. Il mio percorso è stato guidato dal \textit{tutor} aziendale, che mi è stato assegnato, coordinando le varie attività da svolgere e fornendo supporto in caso di dubbi o problemi. 
 L'accoglienza e l'ambiente di lavoro sono molto positivi, dimostrando una grande attenzione nei confronti degli stagisti. 
-Questa attenzione nei confronti degli stagist, è testimoniata anche dalla presenza di molti dipendenti che attualmente lavorano in azienda dopo aver svolto uno \textit{stage} in Zero12.
+Questa attenzione, è testimoniata anche dalla presenza di molti dipendenti che attualmente lavorano in azienda dopo aver svolto uno \textit{stage} in Zero12.
 I progetti assegnati durante gli \textit{stage} vengono concepiti in base a delle reali esigenze interne all’azienda. Essi sono mirati a migliorare la comunicazione tra i collaboratori, automatizzare delle attività manuali e a migliorare la qualità del lavoro svolto.
 
 \section{Introduzione al progetto}
-Durante il mio \textit{stage} ho avuto modo di lavorare non solo al progetto inizialmente proposto inzialmente, ma anche allo sviluppo di progetto aggiuntivo, strettamene correlato al primo.
+Durante il mio \textit{stage} ho avuto modo di lavorare non solo al progetto inizialmente proposto, ma anche allo sviluppo di progetto aggiuntivo, strettamene correlato al primo.
 Di seguito descrivo il progetto inizialmente proposto dall'azienda all'evento \gls{stageItg} e il progetto aggiuntivo concepito e sviluppato durante lo \textit{stage}.
 \subsection{Sistema di proposte di risoluzioni a \textit{ticket} Jira} \label{sec:spiegazioneJira}
-L'idea del mio progetto nasce come strumento che l'azienda può utilizzare per velocizzare alcuni processi, che però può essere estesa ai clienti dell'azienda stessa. Nel contesto del progetto, viene immaginata un'azienda che vende componenti \textit{hardware}. 
-Nel caso di problematiche con la componente comprata, il cliente chiama il servizio clienti dell'azienda, e l'operatore inserisce un \textit{ticket} all'interno dell'\gls{itsg} aziendale. Immaginando questa iterazione tra cliente e addetto al servizio clienti, i \textit{ticket} inseriti all'interno del sistema saranno numerosi e molto simili tra loro. 
+L'idea del progetto nasce come strumento che l'azienda può utilizzare per velocizzare il supporto tecnico, che però può essere estesa ai clienti dell'azienda stessa. Nel contesto del progetto, viene immaginata un'azienda che vende componenti \textit{hardware}. 
+Nel caso di problematiche con la componente comprata, il cliente chiama il servizio clienti dell'azienda, e l'operatore inserisce un \textit{ticket} all'interno dell'\gls{its} aziendale, Jira nel contesto del progetto. Immaginando questa iterazione tra cliente e addetto al servizio clienti per molte volte nel corso degli anni, i \textit{ticket} inseriti all'interno del sistema saranno numerosi e molto simili tra loro. 
 Questo proietta al fatto che a nuovi \textit{ticket} inseriti, molto probabilmente ci saranno dei \textit{ticket} simili già risolti in passato. 
-Ed è qui che da Zero12 nasce l'idea di creare un sistema di proposte di risoluzioni automatiche di \textit{ticket} inseriti all'interno di un \gls{itsg}, che permetta di velocizzare il processo di risoluzione del problema. Le proposte di risoluzione vengono generate grazie all'utilizzo della IA Generativa, in base al contesto dei \textit{ticket} precedentemi inseriti.
+Ed è qui che da Zero12 nasce l'idea di creare un sistema di proposte di risoluzioni automatiche di \textit{ticket} inseriti all'interno di un \gls{its}, che permetta di velocizzare il processo di risoluzione del problema. Le proposte di risoluzione vengono generate grazie all'utilizzo della IA Generativa, in base al contesto dei \textit{ticket} completati in precedenza.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{ideaJira.png}
-    \caption{Schema che rappresenta l'idea del progetto}
+    \includegraphics[width=0.85\textwidth]{ideaJira.png}
+    \caption{Schema che rappresenta l'idea del progetto principale}
+    \small \textbf{Fonte:} \href{https://www.flaticon.com/free-icon/company_4812244}{Icona azienda: https://www.flaticon.com} \href{https://www.flaticon.com/free-icon/box_4601560}{Icona prodotto: https://www.flaticon.com} \href{https://www.flaticon.com/free-icon/assistant_1442194}{Icona assistente: https://www.flaticon.com} \href{https://www.creativefabrica.com/it/product/ai-brain-outline-icon/} {Icona IA Generativa: https://www.creativefabrica.com}
+
     \label{fig:ideaJira}
 \end{figure}
 \subsection{\textit{Chatbot} per proposte di risoluzioni}
 Durante lo sviluppo del progetto descritto nel paragrafo precedente, è nata l'idea di creare un ulteriore strumento che permetta di svolgere la stessa funzionalità del sistema di proposte di risoluzioni, ma in modo differente. Lo strumento aggiuntivo è un \textit{chatbot} che permette di generare proposte di risoluzione, in base al testo di un \textit{ticket} inserito all'interno della chat. 
-Sempre grazie alla IA Generativa, il \textit{chatbot} genera proposte di risoluzione in base al contesto dei \textit{ticket} precedentemente inseriti. A differenza del sistema Jira, il \textit{chatbot} propone le risoluzioni in modo più descrittivo e dettagliato, e permette di interagire con l'assistente virtuale, per ottenere informazioni più dettagliate.
+Sempre grazie all'utilizzo della IA Generativa, il \textit{chatbot} genera proposte di risoluzione in base al contesto dei \textit{ticket} completati in precedenza. A differenza del sistema Jira, il \textit{chatbot} propone le risoluzioni in modo più descrittivo e dettagliato, e permette di interagire con l'assistente virtuale, per ottenere informazioni più dettagliate sulle proposte di risoluzione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{ideaChatbot.png}
+    \caption{Schema che rappresenta l'idea del progetto aggiuntivo}
+    \label{fig:ideaChatbot}
+    \small \textbf{Fonte:} \href{https://uxwing.com/chatbot-icon/}{Icona chatbot: https://uxwing.com} \href{https://www.iconfinder.com/icons/351012/field_input_search_icon}{Icona \textit{input} : https://www.iconfinder.com} \href{https://www.flaticon.com/free-icon/text-file_5116156} {Icona testo: https://www.flaticon.com}
+
+\end{figure}
 \section{Importanza del progetto}
-Come descritto nel paragrafo precedente, il progetto ideato da Zero12 di generare proposte di risoluzioni automatiche per i nuovi \textit{ticket} inseriti all'interno di un \gls{itsg} rappresenterebbe un grande vantaggio per l'azienda. Innanzitutto, 
+Come descritto nel paragrafo precedente, il progetto ideato da Zero12 di generare proposte di risoluzioni automatiche per i nuovi \textit{ticket} inseriti all'interno di un \gls{its} rappresenterebbe un grande vantaggio per l'azienda. Innanzitutto, 
 grazie allo sviluppo di questo progetto, l'azienda ha dei dati sufficienti per poter implementare un sistema di proposte di risoluzioni automatiche, utilizzando i servizi di cui l'azienda è \textit{partner}. In secondo luogo, permette di avere un'idea nel 
 caso un cliente, voglia implementare un sistema simile a quello sviluppato. Questo permetterebbe di avere già un prototipo funzionante, che mostra tutte le potenzialità del sistema, e che può essere facilmente adattato al contesto aziendale del cliente.
 Questo perchè l'utilizzo di IA Generativa sta diventando sempre più utilizzato in ambito aziendale, data la sua capacità di generare risposte in base al contesto in cui viene inserita.
+Riguardo al progetto aggiuntivo, la creazione di un \textit{chatbot} per le proposte di risoluzione ha la stessa importanza del progetto principale. 
 
 \section{Obiettivi dello \textit{stage}}
 Durante i primi giorni di \textit{stage} ho definito assieme al mio \textit{tutor} aziendale gli obiettivi del progetto.
@@ -125,5 +136,5 @@ La scelta del progetto di Zero12 è stata basata su una serie di fattori che des
 Prima dell'inizio dello \textit{stage}, mi sono prefissato degli obiettivi che volevo raggiungere grazie a questa esperienza, qui di seguito elencati:
 \begin{itemize}
     \item \textbf{Approfondimento e apprendimento di nuove tecnologie}: Come ho accennato nel paragrafo \ref{sec:sceltaStage}, ero già familiare con alcune tecnologie o servizi \textit{cloud} richiesti per lo sviluppo del progetto. Tuttavia, non ho mai avuto modo di poter approfondire queste tecnologie, e di poterle utilizzare al loro massimo potenziale. Questo è stato possibile grazie ai membri dell'azienda, con la quale ho avuto modo di confrontarmi.
-    \item \textbf{Introduzione al mondo del lavoro}: Questa è stata la mia prima esperienza lavorativa in un'azienda in ambito del mio percorso di studi. Ho avuto modo di conoscere alcune realtà aziendali, ma reputo l'esperienza in Zero12 quella la vera "prima" esperienza lavorativa. Volevo sfruttare questa occasione per comprendere come si lavori in questo tipo di aziende, le loro metodologie e la loro organizzazione interna. 
+    \item \textbf{Introduzione al mondo del lavoro}: Questa è stata la mia prima esperienza lavorativa in un'azienda collegata al mio percorso di studi. Ho avuto modo di conoscere alcune realtà aziendali, ma l'esperienza in Zero12 è stata la prima ad offrirmi un'opportunità lavorativa in questo specifico settore. Ho voluto cogliere questa occasione per comprendere come si lavori in questo tipo di aziende, le loro metodologie e la loro organizzazione interna. 
 \end{itemize}
