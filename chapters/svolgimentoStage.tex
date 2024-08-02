@@ -1,10 +1,76 @@
-\chapter{Svolgimento dello \textit{stage}}
+\chapter{Svolgimento dello \textit{stage}} 
 \label{cap:descrizione-stage}
 
 \section{Flusso di lavoro}
-Descrizione del flusso di lavoro adottato, organizzato in sprint su Jira, con relativa dashboard dei \textit{ticket} da completare
-\section{Allineamento metodologico e tecnologico}
-Descrizione del primo periodo di studio sulle metodologie aziendale e sulle tecnologie utilizzate
+\subsection{Pianificazione delle attività}
+In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
+Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attività.
+
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|p{3cm}|p{9cm}|} 
+    \hline
+    \rowcolor{tableheader}\textbf{Periodo} & \textbf{Descrizione attività} \\
+    \hline
+    \endfirsthead
+
+    \rowcolor{tableheader}\textbf{Periodo} & \textbf{Descrizione attività} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+    \rowcolor{tableevenrow} Prima settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Studio ed apprendimento delle tecnologie di sviluppo \\
+        - Definizione delle \textit{user stories} \\
+    \end{tabular} \\
+    \hline
+    \hline
+    \rowcolor{tableoddrow} Seconda settimana &  \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Creazione \textit{ticket} di \textit{mock} \\
+        - Caricamento dei \textit{ticket} all'interno dell'\gls{its} Jira
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableevenrow} Terza settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Reperire i ticket completati da Jira\\
+        - Salvataggio \textit{ticket} su \textit{database} MongoDB \\
+        - Aggiornamento costante del \textit{database}\\
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableoddrow} Quarta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Studio \textit{embeddings} per \gls{rag-g}\\
+        - Tokenizzazione dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
+        - Connessione tra AWS Bedrock e MongoDB per \gls{rag-g}\\
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableevenrow} Quinta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Creazione di domande di \textit{benchmark}\\
+        - Confronto tra i diversi LLM\\
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableoddrow} Sesta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Aggiornamento del \textit{ticket} Jira con la proposta di risoluzione, generata tramite il sistema di IA Generativa\\
+        - Sviluppo di un \textit{chatbot} per l'interrogazione sui \textit{ticket} Jira\\
+    \end{tabular} \\ 
+    \hline
+    \rowcolor{tableevenrow} Settima settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Migliorie al sistema di proposte di risoluzione Jira\\
+        - Migliorie al \textit{chatbot}, dando all'utente la possibilità di utilizzare LLM diversi \\
+        - Implementare un sistema di autenticazione nel \textit{chatbot} \\
+    \end{tabular} \\ 
+    \hline
+    \rowcolor{tableoddrow} Ottava settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+        - Realizzazione di una presentazione sui progetti sviluppati\\
+        - Redazione documento manuale utente \\
+        - Redazione documento sull'architettura e sulle scelte progettuali adottate \\
+        - Miglioria al \textit{chatbot} per proposte di risoluzione più descrittive \\
+    \end{tabular} \\ 
+    \hline
+    \caption{Pianificazione preventiva da piano di lavoro}
+    \label{tab:prevAttività}
+\end{longtable}
 \section{Analisi preventiva dei rischi}
 Descrizione dell'analisi dei rischi che potevano sorgere durante il percorso di tirocinio
 \section{Creazione delle \textit{user stories}}
