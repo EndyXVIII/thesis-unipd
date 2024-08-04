@@ -2,9 +2,6 @@
 \label{cap:descrizione-stage}
 
 \section{Flusso di lavoro}
-
-In accordo con il \textit{tutor} aziendale, ho individuato i seguenti rischi:
-
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
 Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attività.
@@ -50,7 +47,7 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \hline
     \rowcolor{tableevenrow} Quinta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
         - Creazione di domande di \textit{benchmark}\\
-        - Confronto tra i diversi LLM\\
+        - Confronto tra i diversi \gls{llm}, modelli progettati per generare testo umano\\
     \end{tabular} \\
     \hline
     \rowcolor{tableoddrow} Sesta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
@@ -60,7 +57,7 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \hline
     \rowcolor{tableevenrow} Settima settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
         - Migliorie al sistema di proposte di risoluzione Jira\\
-        - Migliorie al \textit{chatbot}, dando all'utente la possibilità di utilizzare LLM diversi \\
+        - Migliorie al \textit{chatbot}, dando all'utente la possibilità di utilizzare \gls{llm} diversi \\
         - Implementare un sistema di autenticazione nel \textit{chatbot} \\
     \end{tabular} \\ 
     \hline
@@ -142,7 +139,7 @@ dove:
         - Supporto da parte del \textit{tutor} aziendale
     \end{tabular} \\
     \hline
-    \rowcolor{tableevenrow} R-P-3C-1 & Assenze per motivi di salute o personali & 
+    \rowcolor{tableoddrow} R-P-3C-1 & Assenze per motivi di salute o personali & 
     Avvisare per tempo il \textit{tutor} aziendale in caso di ritardi in modo da aggiornare la pianificazione delle attività \\
     \hline
     \rowcolor{tableevenrow} R-O-2A-1 & Lo sviluppo del progetto potrebbe non essere portato a termine nel periodo pianificato a causa di ritardi & 
@@ -158,7 +155,15 @@ dove:
 
 
 \section{Creazione delle \textit{user stories}}
-Descrizione dell'attività di creazione delle user stories, svolta settimanalmente con il tutor aziendale
+\subsection{Aspettative del committente}
+In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, mi è stato richiesto di sviluppare, a seguito di uno studio di fattibilità, un sistema integrato su Jira che alla creazione di un nuovo \textit{ticket}, venisse generata una proposta di risoluzione in base ai \textit{ticket} completati in passato e salvati in un \textit{database} MongoDB.
+Inoltre, mi è stato richiesto di sviluppare un \textit{chatbot} che permettesse all'utente di interrogare l'assistente virtuale sui \textit{ticket} Jira e di ricevere proposte di risoluzione.
+\subsection{\textit{User stories}}
+Le \gls{User-stories} sono state redatte assieme al \textit{tutor} aziendale e sono state inserite all'interno del \textit{product backlog} per la pianificazione delle attività.
+Come prima cosa sono state definite le \textit{Epic} del progetto, ovvero l'obiettivo da raggiungere, che rappresenta la funzionalità o un insieme di funzionalità che si desidera realizzare.
+Essendo una pratica \textit{Agile}, durante lo \textit{stage} sono state aggiunte \textit{Epic} con le relative \textit{User stories} riguardanti le funzionalità del \textit{chatbot}.
+Qui di seguito presento le \textit{Epic} e le \textit{user stories} associate:
+
 \section{Progettazione}
 \subsection{Architettura del sistema \textit{Jira}}
 Descrizione dell'architettura ad eventi progettata per il sistema Jira
