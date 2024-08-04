@@ -2,6 +2,9 @@
 \label{cap:descrizione-stage}
 
 \section{Flusso di lavoro}
+
+In accordo con il \textit{tutor} aziendale, ho individuato i seguenti rischi:
+
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
 Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attività.
@@ -68,11 +71,92 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
         - Miglioria al \textit{chatbot} per proposte di risoluzione più descrittive \\
     \end{tabular} \\ 
     \hline
-    \caption{Pianificazione preventiva da piano di lavoro}
+    \caption{Pianificazione del progetto di \textit{stage}}
     \label{tab:prevAttività}
 \end{longtable}
+
+\subsection{Revisioni di progetto} \label{sec:revisioni}
+L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e più utile ai fini formativi dello \textit{stage}.
+Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto avevo svolto durante la settimana e pianificare le attività per la settimana successiva.
+L'occorrenza del \textit{daily} è stata purtroppo però limitata a causa di numerosi impegni che il \textit{tutor} aziendale aveva durante la giornata. Sono stati comunque utili, soprattutto all'inizio dello \textit{stage}, per chiarire dubbi su come procedere con le attività e per ricevere feedback immediato su quanto svolto.
+Lo \textit{sprint review} invece è stato quello presente con regolarità assoluta, che mi ha permesso di ricevere un feedback più dettagliato su quanto avevo svolto durante la settimana, che mi hanno permesso di correggere eventuali errori e di migliorare la qualità del lavoro svolto.
+
+\subsection{Interazioni con il tutor aziendale}
+Come descritto nella sezione \ref{sec:revisioni}, le interazioni con il \textit{tutor} aziendale sono state numerose e di fondamentale importanza per il corretto svolgimento delle attività.
+Nelle giornate in cui non era possibile riferirmi direttamente al \textit{tutor} aziendale, mi sono rivolto ad una figura di supporto, che in caso di assenza o indisponibilità del \textit{tutor} aziendale, era predista all'aiuto degli stagisti in caso di problematiche.
 \section{Analisi preventiva dei rischi}
-Descrizione dell'analisi dei rischi che potevano sorgere durante il percorso di tirocinio
+I primi giorni di stage sono stati dedicati all'individuazione dei potenziali rischi che avrei potuto incontrare durante lo svolgimento dello \textit{stage}.
+Si farà riferimento ai rischi individuati (R) seguendo la seguente notazione: 
+\begin{center}
+    \emph{R-[Tipologia]-[Probabilità][Impatto]-[Indice]}
+\end{center}
+dove:
+\begin{itemize}
+    \item \textbf{Tipologia}: \\ Natura del rischio: \begin{itemize}
+        \item \textbf{T}: Tecnologico
+        \item \textbf{O}: Organizzativo
+        \item \textbf{P}: Personale
+    \end{itemize}
+    \item \textbf{Probabilità}: \\ Numero intero positivo che indica la probabilità di occorrenza del rischio: \begin{itemize}
+        \item \textbf{1}: Alta
+        \item \textbf{2}: Media
+        \item \textbf{3}: Bassa
+    \end{itemize}
+    \item \textbf{Impatto}: \\ Valore alfabetico che indica la probabilità di occorrenza del rischio: \begin{itemize}
+        \item \textbf{A}: Alto
+        \item \textbf{B}: Medio
+        \item \textbf{C}: Basso
+    \end{itemize}
+    \item \textbf{Indice}: Numero intero positivo incrementale che determina univocamente il rischio relativamente ad una specifica tipologia
+\end{itemize}
+
+\begin{longtable}{|p{3cm}|p{4.7cm}|p{4.5cm}|} 
+    \hline
+    \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Mitigazione} \\
+    \hline
+    \endfirsthead
+
+    \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Mitigazione} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    \rowcolor{tableevenrow} R-T-1A-1 & Complessità del contesto di uso di servizi di IA Generativa & 
+    Chiedere supporto al \textit{tutor} aziendale sul corretto utilizzo dei servizi di IA Generativa che verranno utilizzati \\
+    \hline
+    \rowcolor{tableoddrow} R-T-2B-2 & Complessità del contesto di sviluppo e attività di integrazione con la \textit{suite} Atlassian & 
+    \begin{tabular}[t]{@{}p{4.5cm}@{}}
+        - Riferimento a documentazione più dettagliata \\
+        - Supporto da parte del \textit{tutor} aziendale \\
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableevenrow} R-T-1A-3 & Ridotta conoscenza dei servizi cloud \gls{aws} & 
+    \begin{tabular}[t]{@{}p{4.5cm}@{}}
+        - Studio approfondito dei servizi \gls{aws} \\
+        - Documentazione dettagliata dei servizi \gls{aws} \\
+        - Supporto da parte del \textit{tutor} aziendale
+    \end{tabular} \\
+    \hline
+    \rowcolor{tableevenrow} R-P-3C-1 & Assenze per motivi di salute o personali & 
+    Avvisare per tempo il \textit{tutor} aziendale in caso di ritardi in modo da aggiornare la pianificazione delle attività \\
+    \hline
+    \rowcolor{tableevenrow} R-O-2A-1 & Lo sviluppo del progetto potrebbe non essere portato a termine nel periodo pianificato a causa di ritardi & 
+    Avvisare per tempo il \textit{tutor} aziendale in modo da pianificare le attività per recuperare i giorni di assenza \\
+    \hline
+
+    \caption{Analisi dei rischi}
+    \label{tab:rischi}
+\end{longtable}
+
+
+
+
+
 \section{Creazione delle \textit{user stories}}
 Descrizione dell'attività di creazione delle user stories, svolta settimanalmente con il tutor aziendale
 \section{Progettazione}
