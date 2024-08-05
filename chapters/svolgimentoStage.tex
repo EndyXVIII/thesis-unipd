@@ -154,15 +154,52 @@ dove:
 
 
 
-\section{Creazione delle \textit{user stories}}
+\section{Analisi dei requisiti}
 \subsection{Aspettative del committente}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, mi è stato richiesto di sviluppare, a seguito di uno studio di fattibilità, un sistema integrato su Jira che alla creazione di un nuovo \textit{ticket}, venisse generata una proposta di risoluzione in base ai \textit{ticket} completati in passato e salvati in un \textit{database} MongoDB.
 Inoltre, mi è stato richiesto di sviluppare un \textit{chatbot} che permettesse all'utente di interrogare l'assistente virtuale sui \textit{ticket} Jira e di ricevere proposte di risoluzione.
-\subsection{\textit{User stories}}
-Le \gls{User-stories} sono state redatte assieme al \textit{tutor} aziendale e sono state inserite all'interno del \textit{product backlog} per la pianificazione delle attività.
-Come prima cosa sono state definite le \textit{Epic} del progetto, ovvero l'obiettivo da raggiungere, che rappresenta la funzionalità o un insieme di funzionalità che si desidera realizzare.
-Essendo una pratica \textit{Agile}, durante lo \textit{stage} sono state aggiunte \textit{Epic} con le relative \textit{User stories} riguardanti le funzionalità del \textit{chatbot}.
-Qui di seguito presento le \textit{Epic} e le \textit{user stories} associate:
+\subsection{Attori}
+Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso.
+Gli attori che ho individuato sono: l'utente amministratore che interagisce con il sistema di proposte di risoluzione Jira che è addetto alla creazione di nuovi \textit{ticket} e l'\gls{llm} che genera le proposte di risoluzione.
+Per quanto riguarda il \textit{chatbot}, gli attori individuati sono l'utente e l'assistente virtuale che ritorna all'utente le proposte di risoluzione.
+\subsection{Casi d'uso}
+I diagrammi dei casi d'uso permettono di descrivere le interazione tra gli attori e il sistema.  
+La convezione che ho utilizzato per la stesura dei casi d'uso è stata la seguente:
+\begin{center}
+    \emph{UC[Numero]}: nome del caso d'uso
+\end{center}
+a cui ho associato una descrizione con eventuale scenario alternativo, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
+Per riassumere i casi d'uso, sono presenti dei diagrammi UML per una rappresentazione grafica degli scenari.
+Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso principali e non banali del progetto.
+\subsubsection{Sistema di proposte di risoluzione Jira}
+\subsubsection{UC0: Autenticazione nel \textit{workspace} Jira - forse da togliere} 
+\textbf{Attori principali}: Utente non autenticato \\
+\textbf{Precondizioni}: L'utente vuole accedere al \textit{workspace} Jira \\
+\textbf{Descrizione}: All'accesso al \textit{workspace} Jira, viene aperta una schermata di \textit{login} per l'autenticazione dell'utente \\
+\textbf{Postcondizioni}: L'utente è autenticato nel \textit{workspace} Jira \\
+\subsubsection{UC1: Creazione di un nuovo ticket}
+\textbf{Attori principali}: Utente amministratore \\
+\textbf{Precondizioni}: L'utente amministratore è autenticato nel \textit{workspace} Jira\\
+\textbf{Descrizione}: L'utente amministratore crea un nuovo \textit{ticket} all'interno del progetto Jira \\
+
+\subsubsection{UC2: Creazione proposta di risoluzione}
+\textbf{Attori principali}: \gls{llm}, \textit{Database} MongoDB \\
+\textbf{Precondizioni}: L'utente amministratore ha creato un nuovo \textit{ticket} \\
+\textbf{Descrizione}: Viene generato l'\textit{embedding} del ticket, il \textit{database} restituisce i \textit{ticket} più simili e l'\gls{llm} genera una proposta di risoluzione in base ai \textit{ticket} più simili ritornati \\
+\textbf{Postcondizioni}: Viene generata una proposta di risoluzione all'interno di un campo dedicato, per il \textit{ticket} appena creato \\
+
+\subsubsection{UC3: Chiusura di un \textit{ticket}}
+\textbf{Attori principali}: Utente amministratore, MongoDB \\
+\textbf{Precondizioni}: Il \textit{ticket} è stato completato \\
+\textbf{Descrizione}: L'utente amministratore chiude il \textit{ticket} mettondolo in \textit{Done}\\ 
+\textbf{Postcondizioni}: Il \textit{ticket} è stato chiuso \\
+
+\subsubsection{UC4: Salvataggio \textit{ticket} su \textit{database} MongoDB}
+\textbf{Attori principali}: \textit{Database} MongoDB, \gls{llm} \\
+\textbf{Precondizioni}: Il \textit{ticket} è stato compleato e in stato \textit{Done} \\
+\textbf{Descrizione}: Il \textit{ticket} viene salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
+\textbf{Postcondizioni}: Il \textit{ticket} è stato salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
+
 
 \section{Progettazione}
 \subsection{Architettura del sistema \textit{Jira}}
