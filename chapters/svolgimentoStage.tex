@@ -40,7 +40,7 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \end{tabular} \\
     \hline
     \rowcolor{tableoddrow} Quarta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
-        - Studio \textit{embeddings} per \gls{rag-g}\\
+        - Studio \gls{embedding-g} per \gls{rag-g}\\
         - Tokenizzazione dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
         - Connessione tra AWS Bedrock e MongoDB per \gls{rag-g}\\
     \end{tabular} \\
@@ -85,7 +85,7 @@ Nelle giornate in cui non era possibile riferirmi direttamente al \textit{tutor}
 I primi giorni di stage sono stati dedicati all'individuazione dei potenziali rischi che avrei potuto incontrare durante lo svolgimento dello \textit{stage}.
 Si farà riferimento ai rischi individuati (R) seguendo la seguente notazione: 
 \begin{center}
-    \emph{R-[Tipologia]-[Probabilità][Impatto]-[Indice]}
+    \textbf{R-[Tipologia]-[Probabilità][Impatto]-[Indice]}
 \end{center}
 dove:
 \begin{itemize}
@@ -107,7 +107,8 @@ dove:
     \item \textbf{Indice}: Numero intero positivo incrementale che determina univocamente il rischio relativamente ad una specifica tipologia
 \end{itemize}
 
-\begin{longtable}{|p{3cm}|p{4.7cm}|p{4.5cm}|} 
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|p{3cm}|p{4.3cm}|p{4.5cm}|} 
     \hline
     \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Mitigazione} \\
     \hline
@@ -127,13 +128,13 @@ dove:
     Chiedere supporto al \textit{tutor} aziendale sul corretto utilizzo dei servizi di IA Generativa che verranno utilizzati \\
     \hline
     \rowcolor{tableoddrow} R-T-2B-2 & Complessità del contesto di sviluppo e attività di integrazione con la \textit{suite} Atlassian & 
-    \begin{tabular}[t]{@{}p{4.5cm}@{}}
+    \begin{tabular}[t]{@{}p{4.3cm}@{}}
         - Riferimento a documentazione più dettagliata \\
         - Supporto da parte del \textit{tutor} aziendale \\
     \end{tabular} \\
     \hline
     \rowcolor{tableevenrow} R-T-1A-3 & Ridotta conoscenza dei servizi cloud \gls{aws} & 
-    \begin{tabular}[t]{@{}p{4.5cm}@{}}
+    \begin{tabular}[t]{@{}p{4.3cm}@{}}
         - Studio approfondito dei servizi \gls{aws} \\
         - Documentazione dettagliata dei servizi \gls{aws} \\
         - Supporto da parte del \textit{tutor} aziendale
@@ -161,46 +162,130 @@ Inoltre, mi è stato richiesto di sviluppare un \textit{chatbot} che permettesse
 \subsection{Attori}
 Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso.
 Gli attori che ho individuato sono: l'utente amministratore che interagisce con il sistema di proposte di risoluzione Jira che è addetto alla creazione di nuovi \textit{ticket} e l'\gls{llm} che genera le proposte di risoluzione.
-Per quanto riguarda il \textit{chatbot}, gli attori individuati sono l'utente e l'assistente virtuale che ritorna all'utente le proposte di risoluzione.
+Per quanto riguarda il \textit{chatbot}, gli attori sono i medesimi.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{actors.png}
+    \caption{Attori dei casi d'uso}
+    \label{fig:attori}
+\end{figure}
 \subsection{Casi d'uso}
 I diagrammi dei casi d'uso permettono di descrivere le interazione tra gli attori e il sistema.  
 La convezione che ho utilizzato per la stesura dei casi d'uso è stata la seguente:
 \begin{center}
-    \emph{UC[Numero]}: nome del caso d'uso
+    \textbf{{UC[Numero]}: nome del caso d'uso}
 \end{center}
-a cui ho associato una descrizione con eventuale scenario alternativo, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
+a cui ho associato una descrizione, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
 Per riassumere i casi d'uso, sono presenti dei diagrammi UML per una rappresentazione grafica degli scenari.
 Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso principali e non banali del progetto.
 \subsubsection{Sistema di proposte di risoluzione Jira}
-\subsubsection{UC0: Autenticazione nel \textit{workspace} Jira - forse da togliere} 
-\textbf{Attori principali}: Utente non autenticato \\
+\subsubsection{UC0: Autenticazione nel \textit{workspace} Jira} 
+\textbf{Attori principali}: Utente generico \\
 \textbf{Precondizioni}: L'utente vuole accedere al \textit{workspace} Jira \\
 \textbf{Descrizione}: All'accesso al \textit{workspace} Jira, viene aperta una schermata di \textit{login} per l'autenticazione dell'utente \\
 \textbf{Postcondizioni}: L'utente è autenticato nel \textit{workspace} Jira \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.63\textwidth]{uc0.png}
+    \caption{Diagramma del caso d'uso UC0}
+    \label{fig:UC0}
+\end{figure}
 \subsubsection{UC1: Creazione di un nuovo ticket}
 \textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: L'utente amministratore è autenticato nel \textit{workspace} Jira\\
 \textbf{Descrizione}: L'utente amministratore crea un nuovo \textit{ticket} all'interno del progetto Jira \\
-
-\subsubsection{UC2: Creazione proposta di risoluzione}
-\textbf{Attori principali}: \gls{llm}, \textit{Database} MongoDB \\
+\textbf{Postcondizioni}: Il \textit{ticket} è stato creato \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.63\textwidth]{uc1.png}
+    \caption{Diagramma del caso d'uso UC0}
+    \label{fig:UC1}
+\end{figure}
+\subsubsection{UC2: Richiesta proposta di risoluzione}
+\textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: L'utente amministratore ha creato un nuovo \textit{ticket} \\
-\textbf{Descrizione}: Viene generato l'\textit{embedding} del ticket, il \textit{database} restituisce i \textit{ticket} più simili e l'\gls{llm} genera una proposta di risoluzione in base ai \textit{ticket} più simili ritornati \\
-\textbf{Postcondizioni}: Viene generata una proposta di risoluzione all'interno di un campo dedicato, per il \textit{ticket} appena creato \\
+\textbf{Descrizione}: Viene richiesto al sistema di generare una proposta di risoluzione per il \textit{ticket} appena creato \\
+\textbf{Postcondizioni}: Il sistema inizia il processo di generazione della proposta di risoluzione \\
+
+\subsubsection{UC2.1: Generazione \gls{embedding-g} del ticket}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: Il \textit{ticket} è stato creato ed è stata richiesta una proposta di risoluzione \\
+\textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} per effettuare la ricerca dei \textit{ticket} completati più simili \\
+\textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
+
+\subsubsection{UC2.2: Ricerca \textit{ticket} più simili}
+\textbf{Attori principali}: Sistema \\ 
+\textbf{Precondizioni}: È stato generato l'\gls{embedding-g} del \textit{ticket} creato\\
+\textbf{Descrizione}: Il sistema effettua una ricerca vettoriale all'interno del \textit{database} con l'utilizzo dell'\gls{embedding-g}, per trovare i \textit{ticket} completati più simili al \textit{ticket} creato \\
+\textbf{Postcondizioni}: I \textit{ticket} completati più simili vengono restuiti dal sistema \\
+
+\subsubsection{UC2.3: Generazione proposta di risoluzione}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: Sono stati restituiti i \textit{ticket} completati più simili al \textit{ticket} creato \\
+\textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare una proposta di risoluzione per il \textit{ticket} creato usando come contesto i \textit{ticket} completati più simili \\
+\textbf{Postcondizioni}: La proposta di risoluzione è stata generata ed inserita all'interno del campo adibito, del \textit{ticket} creato \\
+
+\subsubsection{UC2.4: Mancanza di informazioni sufficienti}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: Non sono stati trovati \textit{ticket} completati simili al \textit{ticket} creato \\
+\textbf{Descrizione}: Viene generata una risposta standard per informare l'utente amministratore che non sono stati trovati \textit{ticket} completati simili \\
+\textbf{Postcondizioni}: Viene inserito un messaggio standard all'interno del campo adibito, del \textit{ticket} creato \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{uc2.png}
+    \caption{Diagramma del caso d'uso UC2 e dei relativi sottocasi}
+    \label{fig:UC2}
+\end{figure}
 
 \subsubsection{UC3: Chiusura di un \textit{ticket}}
-\textbf{Attori principali}: Utente amministratore, MongoDB \\
+\textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato completato \\
 \textbf{Descrizione}: L'utente amministratore chiude il \textit{ticket} mettondolo in \textit{Done}\\ 
 \textbf{Postcondizioni}: Il \textit{ticket} è stato chiuso \\
 
-\subsubsection{UC4: Salvataggio \textit{ticket} su \textit{database} MongoDB}
-\textbf{Attori principali}: \textit{Database} MongoDB, \gls{llm} \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{uc3.png}
+    \caption{Diagramma del caso d'uso UC3}
+    \label{fig:UC3}
+\end{figure}
+
+
+\subsubsection{UC4: Generazione \gls{embedding-g} del \textit{ticket} completato}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: Il \textit{ticket} è stato chiuso \\
+\textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} completato per poterlo poi salvare nel \textit{database} MongoDB \\
+\textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
+
+\subsubsection{UC5: Salvataggio \textit{ticket} su \textit{database} MongoDB}
+\textbf{Attori principali}: Sistema \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato compleato e in stato \textit{Done} \\
 \textbf{Descrizione}: Il \textit{ticket} viene salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
 \textbf{Postcondizioni}: Il \textit{ticket} è stato salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{uc5.png}
+    \caption{Diagramma del caso d'uso UC5}
+    \label{fig:UC5}
+\end{figure}
+
+\subsubsection{\textit{Chatbot}}
+\subsubsection{UC0: Autenticazione nel \textit{chatbot}}
 
 
+\textbf{Attori principali}: Utente generico \\
+\textbf{Precondizioni}: L'utente vuole accedere al \textit{chatbot} \\
+\textbf{Descrizione}: All'accesso al \textit{chatbot}, viene aperta una schermata di \textit{login} per l'autenticazione dell'utente \\
+\textbf{Postcondizioni}: L'utente è autenticato nel \textit{chatbot} \\
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{uc0Chatbot.png}
+    \caption{Diagramma del caso d'uso UC0 - \textit{Chatbot}}
+    \label{fig:UC1Chatbot}
+\end{figure}
 \section{Progettazione}
 \subsection{Architettura del sistema \textit{Jira}}
 Descrizione dell'architettura ad eventi progettata per il sistema Jira
