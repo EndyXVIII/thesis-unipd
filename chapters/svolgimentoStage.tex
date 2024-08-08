@@ -252,40 +252,95 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \end{figure}
 
 
-\subsubsection{UC4: Generazione \gls{embedding-g} del \textit{ticket} completato}
+\subsubsection{UC3.1: Generazione \gls{embedding-g} del \textit{ticket} completato}
 \textbf{Attori principali}: \gls{llm} \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato chiuso \\
 \textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} completato per poterlo poi salvare nel \textit{database} MongoDB \\
 \textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
 
-\subsubsection{UC5: Salvataggio \textit{ticket} su \textit{database} MongoDB}
+\subsubsection{UC4: Salvataggio \textit{ticket} su \textit{database} MongoDB}
 \textbf{Attori principali}: Sistema \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato compleato e in stato \textit{Done} \\
 \textbf{Descrizione}: Il \textit{ticket} viene salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
 \textbf{Postcondizioni}: Il \textit{ticket} è stato salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{uc5.png}
+    \includegraphics[width=0.75\textwidth]{uc4.png}
     \caption{Diagramma del caso d'uso UC5}
     \label{fig:UC5}
 \end{figure}
 
 \subsubsection{\textit{Chatbot}}
+
 \subsubsection{UC0: Autenticazione nel \textit{chatbot}}
-
-
 \textbf{Attori principali}: Utente generico \\
 \textbf{Precondizioni}: L'utente vuole accedere al \textit{chatbot} \\
 \textbf{Descrizione}: All'accesso al \textit{chatbot}, viene aperta una schermata di \textit{login} per l'autenticazione dell'utente \\
 \textbf{Postcondizioni}: L'utente è autenticato nel \textit{chatbot} \\
-
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.45\textwidth]{uc0Chatbot.png}
     \caption{Diagramma del caso d'uso UC0 - \textit{Chatbot}}
+    \label{fig:UC0Chatbot}
+\end{figure}
+
+\subsubsection{UC1: Autenticazione per il \textit{database} MongoDB}
+\textbf{Attori principali}: Utente amministratore \\
+\textbf{Precondizioni}: L'utente amministratore è autenticato nel \textit{chatbot} \\
+\textbf{Descrizione}: L'utente amministratore si autentica per poter accedere al \textit{database} MongoDB e poter ricercare i \textit{ticket} più simili \\
+\textbf{Postcondizioni}: L'utente amministratore è autenticato per il \textit{database} MongoDB \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{uc1Chatbot.png}
+    \caption{Diagramma del caso d'uso UC1 - \textit{Chatbot}}
     \label{fig:UC1Chatbot}
 \end{figure}
+
+
+\subsubsection{UC2: Scelta del modello \gls{llm}}
+\textbf{Attori principali}: Utente amministratore \\
+\textbf{Precondizioni}: L'utente amministratore è autenticato nel \textit{chatbot} \\
+\textbf{Descrizione}: L'utente amministratore sceglie il modello \gls{llm} con cui interrogare il \textit{chatbot} \\
+\textbf{Postcondizioni}: Il modello \gls{llm} è stato scelto \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{uc2Chatbot.png}
+    \caption{Diagramma del caso d'uso UC2 - \textit{Chatbot}}
+    \label{fig:UC2Chatbot}
+\end{figure}
+
+
+\subsubsection{UC3: Inserimento del testo di un \textit{ticket} all'interno della \textit{chat} del \textit{chatbot}}
+\textbf{Attori principali}: Utente amministratore \\
+\textbf{Precondizioni}: L'utente amministratore ha scelto il modello \gls{llm} con cui interrogare il \textit{chatbot} \\
+\textbf{Descrizione}: L'utente amministratore interroga il \textit{chatbot} sui \textit{ticket} Jira \\
+\textbf{Postcondizioni}: Il \textit{chatbot} richiede la richiesta di proposta di risoluzione al sistema \\
+
+\subsubsection{UC3.1: Generazione \gls{embedding-g} del testo inserito dall'utente}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: L'utente amministratore ha inserito il testo del \textit{ticket} per interrogare il \textit{chatbot} \\
+\textbf{Descrizione}: Viene generato l'\gls{embedding-g} del testo inserito dall'utente per effettuare la ricerca dei \textit{ticket} completati più simili \\
+
+\subsubsection{U3.2: Ricerca \textit{ticket} più simili all'interno del \textit{database} MongoDB}
+\textbf{Attori principali}: Sistema \\
+\textbf{Precondizioni}: È stato generato l'\gls{embedding-g} del testo inserito dall'utente \\
+\textbf{Descrizione}: Il sistema effettua una ricerca vettoriale all'interno del \textit{database} con l'utilizzo dell'\gls{embedding-g}, per trovare i \textit{ticket} completati più simili al testo inserito dall'utente \\
+\textbf{Postcondizioni}: I \textit{ticket} completati più simili vengono restuiti dal sistema \\
+
+\subsubsection{UC3.3: Generazione proposta di risoluzione}
+\textbf{Attori principali}: \gls{llm} \\
+\textbf{Precondizioni}: Sono stati restituiti i \textit{ticket} completati più simili al testo inserito dall'utente \\
+\textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare una proposta di risoluzione per il testo inserito dall'utente usando come contesto i \textit{ticket} completati più simili \\
+\textbf{Postcondizioni}: La proposta di risoluzione è stata generata e restituita all'utente, nell'interfaccia del \textit{chatbot} \\
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{uc3Chatbot.png}
+    \caption{Diagramma del caso d'uso UC3 e dei relativi sottocasi}
+    \label{fig:UC3Chatbot}
+\end{figure}
+
 \section{Progettazione}
 \subsection{Architettura del sistema \textit{Jira}}
 Descrizione dell'architettura ad eventi progettata per il sistema Jira
