@@ -6,7 +6,7 @@
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
 Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attività.
 
-\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{3cm}|p{9cm}|} 
     \hline
     \rowcolor{tableheader}\textbf{Periodo} & \textbf{Descrizione attività} \\
@@ -22,13 +22,13 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
 
     \hline
     \endlastfoot
-    \rowcolor{tableevenrow} Prima settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
+    \rowcolor{tableevenrow} Prima settimana  & \begin{tabular}[t]{@{}p{9cm}@{}}
         - Studio ed apprendimento delle tecnologie di sviluppo \\
         - Definizione delle \textit{user stories} \\
     \end{tabular} \\
     \hline
     \hline
-    \rowcolor{tableoddrow} Seconda settimana &  \begin{tabular}[t]{@{}p{9cm}@{}}
+    \rowcolor{tableoddrow} Seconda settimana  &  \begin{tabular}[t]{@{}p{9cm}@{}}
         - Creazione \textit{ticket} di \textit{mock} \\
         - Caricamento dei \textit{ticket} all'interno dell'\gls{its} Jira
     \end{tabular} \\
@@ -71,7 +71,14 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \caption{Pianificazione del progetto di \textit{stage}}
     \label{tab:prevAttività}
 \end{longtable}
-
+\noindent
+Qui di seguito presento nell'immagine \ref{fig:gantt} che rappresenta la pianificazione delle attività svolte durante il periodo di \textit{stage} tramite un diagramma di Gantt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{diagrammaGantt.png}
+    \caption{Diagramma di Gantt delle attività svolte durante lo \textit{stage}}
+    \label{fig:gantt}
+\end{figure}
 \subsection{Revisioni di progetto} \label{sec:revisioni}
 L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e più utile ai fini formativi dello \textit{stage}.
 Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto avevo svolto durante la settimana e pianificare le attività per la settimana successiva.
@@ -107,7 +114,7 @@ dove:
     \item \textbf{Indice}: Numero intero positivo incrementale che determina univocamente il rischio relativamente ad una specifica tipologia
 \end{itemize}
 
-\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{3cm}|p{4.3cm}|p{4.5cm}|} 
     \hline
     \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Mitigazione} \\
@@ -159,25 +166,35 @@ dove:
 \subsection{Aspettative del committente}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, mi è stato richiesto di sviluppare, a seguito di uno studio di fattibilità, un sistema integrato su Jira che alla creazione di un nuovo \textit{ticket}, venisse generata una proposta di risoluzione in base ai \textit{ticket} completati in passato e salvati in un \textit{database} MongoDB.
 Inoltre, mi è stato richiesto di sviluppare un \textit{chatbot} che permettesse all'utente di interrogare l'assistente virtuale sui \textit{ticket} Jira e di ricevere proposte di risoluzione.
-\subsection{Attori}
-Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso.
-Gli attori che ho individuato sono: l'utente amministratore che interagisce con il sistema di proposte di risoluzione Jira che è addetto alla creazione di nuovi \textit{ticket} e l'\gls{llm} che genera le proposte di risoluzione.
-Per quanto riguarda il \textit{chatbot}, gli attori sono i medesimi.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{actors.png}
-    \caption{Attori dei casi d'uso}
-    \label{fig:attori}
-\end{figure}
+
 \subsection{Casi d'uso}
 I diagrammi dei casi d'uso permettono di descrivere le interazione tra gli attori e il sistema.  
 La convezione che ho utilizzato per la stesura dei casi d'uso è stata la seguente:
 \begin{center}
     \textbf{{UC[Numero]}: nome del caso d'uso}
 \end{center}
+\begin{itemize}
+    \item \textbf{UC}: acronimo di \textit{Use Case};
+    \item \textbf{Numero}: numero progressivo del caso d'uso. I sottocasi vengono rappresentati nella forma [Numero].[SottoNumero];
+\end{itemize}
 a cui ho associato una descrizione, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
-Per riassumere i casi d'uso, sono presenti dei diagrammi UML per una rappresentazione grafica degli scenari.
-Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso principali e non banali del progetto.
+Per riassumere i casi d'uso, sono presenti dei diagrammi UML per una rappresentazione grafica degli scenari. Verrano presentati i diagrammi dei casi d'uso principali e non banali dei progetti.
+\subsubsection{Attori}
+Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso. Ha accesso unicamente alla pagina di \textit{login}; 
+Gli attori che ho individuato si suddividono in 2 categorie:
+\begin{itemize}
+    \item \textbf{Attori principali} \begin{itemize} \item \textbf{Utente generico}: utente che non ha effettuato l'autenticazione nel sistema e del \textit{chatbot}; \item \textbf{Utente amministratore}: utente che ha effettuato l'autenticazione. Ha accesso a tutte le funzionalità del sistema.
+    \end{itemize}
+    \item \textbf{Attori secondari}: \begin{itemize} \item \textbf{\gls{llm}}: è un attore secondario che permette la generazione di \gls{embedding-g} e di generazione di testo tramite modelli di linguaggio. Questo attore a sua volta può essere interpretato da AmazonTitanV2 (modello di generazione di \gls{embedding-g} offerto da \gls{aws} Bedrock) e da Claude3.5Sonnet (\gls{llm} offerto da \gls{aws} Bedrock).
+    \end{itemize}
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{actors.png}
+    \caption{Attori dei casi d'uso}
+    \label{fig:attori}
+\end{figure}
+\subsection*{Lista dei casi d'uso}
 \subsubsection{Sistema di proposte di risoluzione Jira}
 \subsubsection{UC0: Autenticazione nel \textit{workspace} Jira} 
 \textbf{Attori principali}: Utente generico \\
@@ -186,7 +203,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \textbf{Postcondizioni}: L'utente è autenticato nel \textit{workspace} Jira \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.63\textwidth]{uc0.png}
+    \includegraphics[width=0.55\textwidth]{uc0.png}
     \caption{Diagramma del caso d'uso UC0}
     \label{fig:UC0}
 \end{figure}
@@ -197,7 +214,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \textbf{Postcondizioni}: Il \textit{ticket} è stato creato \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.63\textwidth]{uc1.png}
+    \includegraphics[width=0.55\textwidth]{uc1.png}
     \caption{Diagramma del caso d'uso UC0}
     \label{fig:UC1}
 \end{figure}
@@ -233,7 +250,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{uc2.png}
+    \includegraphics[width=0.95\textwidth]{uc2.png}
     \caption{Diagramma del caso d'uso UC2 e dei relativi sottocasi}
     \label{fig:UC2}
 \end{figure}
@@ -246,7 +263,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{uc3.png}
+    \includegraphics[width=0.55\textwidth]{uc3.png}
     \caption{Diagramma del caso d'uso UC3}
     \label{fig:UC3}
 \end{figure}
@@ -279,7 +296,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \textbf{Postcondizioni}: L'utente è autenticato nel \textit{chatbot} \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{uc0Chatbot.png}
+    \includegraphics[width=0.55\textwidth]{uc0Chatbot.png}
     \caption{Diagramma del caso d'uso UC0 - \textit{Chatbot}}
     \label{fig:UC0Chatbot}
 \end{figure}
@@ -291,7 +308,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \textbf{Postcondizioni}: L'utente amministratore è autenticato per il \textit{database} MongoDB \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{uc1Chatbot.png}
+    \includegraphics[width=0.55\textwidth]{uc1Chatbot.png}
     \caption{Diagramma del caso d'uso UC1 - \textit{Chatbot}}
     \label{fig:UC1Chatbot}
 \end{figure}
@@ -304,7 +321,7 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 \textbf{Postcondizioni}: Il modello \gls{llm} è stato scelto \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{uc2Chatbot.png}
+    \includegraphics[width=0.55\textwidth]{uc2Chatbot.png}
     \caption{Diagramma del caso d'uso UC2 - \textit{Chatbot}}
     \label{fig:UC2Chatbot}
 \end{figure}
@@ -336,10 +353,29 @@ Gli \textit{use case} qui di seguito riportati rappresentano i casi d'uso princi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{uc3Chatbot.png}
+    \includegraphics[width=0.95\textwidth]{uc3Chatbot.png}
     \caption{Diagramma del caso d'uso UC3 e dei relativi sottocasi}
     \label{fig:UC3Chatbot}
 \end{figure}
+
+\subsection{Tracciamento dei requisiti}
+Ho tracciato i requisiti individuati dai casi d'uso con la seguente notazione:
+\begin{center}
+    \textbf{R-[Tipologia][Importanza]-[Numero]}
+\end{center}
+dove: 
+\begin{itemize}
+    \item \textbf{Tipologia}: Natura del requisito: \begin{itemize}
+        \item \textbf{F}: Funzionale
+        \item \textbf{V}: Vincolo
+    \end{itemize}
+    \item \textbf{Importanza}: Valore alfabetico che indica l'importanza del requisito: \begin{itemize}
+        \item \textbf{O}: Obbligatorio
+        \item \textbf{D}: Desiderabile
+        \item \textbf{O}: Opzionale
+    \end{itemize}
+    \item \textbf{Numero}: Numero intero positivo progressivo del requisito
+\end{itemize}
 
 \section{Progettazione}
 \subsection{Architettura del sistema \textit{Jira}}
