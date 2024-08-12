@@ -21,6 +21,13 @@
 \newacronym[description={\glslink{llm-g}{Large Language Model}}]
     {llm}{LLM}{Large Language Model}
 
+\newacronym[description={\glslink{knn-g}{K-Nearest Neighbors}}]
+    {knn}{KNN}{K-Nearest Neighbors}
+
+\newacronym{httpg}{HTTP}{Hypertext Transfer Protocol}
+
+\newacronym{dtog}{DTO}{Data Transfer Object}
+
 % Glossary entries
 
 \newglossaryentry{itsg} {
@@ -91,4 +98,18 @@
     text=embedding,
     sort=embedding,
     description={Un \emph{Embedding} è una rappresentazione numerica di oggetti, come parole o immagini in uno spazio vettoriale multidimensionale. Questa rappresentazione permette di catturare le relazioni semantiche tra gli oggetti, permettendo cosi di il confronto e l'analisi di similarità in modo più efficiente}
+}
+
+\newglossaryentry{knn-g}{
+    name=\glslink{knn}{KNN},
+    text=K-Nearest Neighbors,
+    sort=knn,
+    description={La tecnica \emph{K-Nearest Neighbors} è una tecnica utilizzata per la classificazione e la regressione che si basa sul concetto di vicinanza tra i dati. Viene etichettato un nuovo punto all'interno dello spazio vettoriale, in base all'etichetta dei K punti più vicini ad esso. Viene comunemente usata in ambito di \textit{machine learning} e sistemi di raccomandazione}
+}
+
+\newglossaryentry{promptenginnering-g}{
+    name=Prompt Engineering,
+    text=Prompt Engineering,
+    sort=promptenginnering,
+    description={Il \emph{Prompt Engineering} è un processo di progettazione e ottimizzazione dei \textit{prompt}, ovvero delle istruzioni o domande, utilizzate per guidare i modelli di intelligenza artificiale. L'obiettivo di tale processo è ottenere un \textit{prompt} che permetta di ottenere risposte più accurate, pertinenti e coerenti}
 }

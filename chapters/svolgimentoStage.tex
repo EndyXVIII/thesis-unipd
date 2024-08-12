@@ -1,6 +1,21 @@
 \chapter{Svolgimento dello \textit{stage}} 
 \label{cap:descrizione-stage}
 
+
+\lstset{
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
 \section{Flusso di lavoro}
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
@@ -79,6 +94,7 @@ Qui di seguito presento nell'immagine \ref{fig:gantt} che rappresenta la pianifi
     \caption{Diagramma di Gantt delle attività svolte durante lo \textit{stage}}
     \label{fig:gantt}
 \end{figure}
+
 \subsection{Revisioni di progetto} \label{sec:revisioni}
 L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e più utile ai fini formativi dello \textit{stage}.
 Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto avevo svolto durante la settimana e pianificare le attività per la settimana successiva.
@@ -88,7 +104,9 @@ Lo \textit{sprint review} invece è stato quello presente con regolarità assolu
 \subsection{Interazioni con il tutor aziendale}
 Come descritto nella sezione \ref{sec:revisioni}, le interazioni con il \textit{tutor} aziendale sono state numerose e di fondamentale importanza per il corretto svolgimento delle attività.
 Nelle giornate in cui non era possibile riferirmi direttamente al \textit{tutor} aziendale, mi sono rivolto ad una figura di supporto, che in caso di assenza o indisponibilità del \textit{tutor} aziendale, era predista all'aiuto degli stagisti in caso di problematiche.
-\section{Analisi preventiva dei rischi}
+
+
+\section{Analisix dei rischi}
 I primi giorni di stage sono stati dedicati all'individuazione dei potenziali rischi che avrei potuto incontrare durante lo svolgimento dello \textit{stage}.
 Si farà riferimento ai rischi individuati (R) seguendo la seguente notazione: 
 \begin{center}
@@ -377,9 +395,236 @@ dove:
     \item \textbf{Numero}: Numero intero positivo progressivo del requisito
 \end{itemize}
 
+\renewcommand{\arraystretch}{1.7}
+\begin{longtable}{|p{1.5cm}|p{5.5cm}|p{2cm}|p{2.5cm}|} 
+    \hline
+    \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Importanza} & \textbf{Fonte}\\
+    \hline
+    \endfirsthead
+
+    \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Importanza} & \textbf{Fonte} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+    \hline
+    R-FO-1 & Il sistema deve eseguire una richiesta di generazione di proposta di risoluzione quando un \textit{ticket} viene creato & Obbligatorio & UC2 (Jira) \\
+    \hline
+    R-FO-2 & Il sistema deve poter interrogare un \gls{llm} per la creazione dell'\gls{embedding-g} del \textit{ticket} creato & Obbligatorio & UC2.1 (Jira) \\
+    \hline
+    R-FO-3 & Il sistema deve effettuare una ricerca dei ticket completati più simili al \textit{ticket} creato, nel \textit{database} & Obbligatorio & UC2.2 (Jira) \\
+    \hline
+    R-FO-4 & Il sistema deve poter interrogare un \gls{llm} per generare una proposta di risoluzione utilizzando come contesto i \textit{ticket} completati più simili. & Obbligatorio & UC2.3 (Jira) \\
+    \hline
+    R-FO-5 & Il sistema deve poter interrogare un \gls{llm} per generare una risposta standard in caso di mancanza di \textit{ticket} completati simili. & Obbligatorio & UC2.4 (Jira) \\
+    \hline
+    R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC3.1 (Jira) \\
+    \hline
+    R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC4 (Jira) \\
+    \hline
+    R-FO-8 & Il sistema deve permettere l'autenticazione dell'utente nel \textit{chatbot}. & Obbligatorio & UC0 (Chatbot) \\
+    \hline
+    R-FO-9 & Il sistema deve permettere l'autenticazione dell'utente amministratore per accedere al \textit{database}. & Obbligatorio & UC1 (Chatbot) \\
+    \hline
+    R-FO-10 & Il sistema deve permettere la scelta del modello \gls{llm} con cui interrogare il \textit{chatbot}. & Obbligatorio & UC2 (Chatbot) \\
+    \hline
+    R-FO-11 & Il sistema deve permettere l'interrogazione al modello \gls{llm-g} tramite una \textit{chat}. & Obbligatorio & UC3 (Chatbot) \\
+    \hline
+    R-FO-12 & Il sistema deve poter interrogare un \gls{llm} per generare l'\gls{embedding-g} del testo inserito dall'utente. & Obbligatorio & UC3.1 (Chatbot) \\
+    \hline
+    R-FO-13 & Il sistema deve permettere la ricerca dei ticket più simili all'interno del \textit{database}. & Obbligatorio & UC3.2 (Chatbot) \\
+    \hline
+    R-FO-14 & Il sistema deve poter interrogare un \gls{llm} per la generazione di una proposta di risoluzione basata sui \textit{ticket} simili. & Obbligatorio & UC3.3 (Chatbot) \\
+    \hline
+    R-VO-15 & Il sistema Jira deve essere sviluppato utilizzando il Serverless \textit{framework}  & Obbligatorio & Interna \\
+    \hline
+    R-VO-16 & Il \textit{database} utilizzato deve essere MongoDB & Obbligatorio & Interna \\
+    \hline
+    R-VO-17 & Il \textit{chatbot} deve essere sviluppato utilizzando il \textit{framework} Streamlit & Obbligatorio & Interna \\
+    \hline
+    R-VO-18 & L'autenticazione nel \textit{chatbot} deve utilizzare il servizio \gls{aws} Cognito & Obbligatorio & Interna \\
+
+    
+    \hline
+    \caption{Pianificazione del progetto di \textit{stage}}
+    \label{tab:tracciamentoRequisiti}
+\end{longtable}
+
 \section{Progettazione}
+\subsection{RAG e selezione del modello LLM}
+L'integrazione e l'utilizzo di \gls{llm} e \gls{rag-g} rappresenta il fulcro dei progetti che ho sviluppato durante lo \textit{stage}.
+Di seguito descrivo il funzionamento della \gls{rag-g} e mostro che modello ho selezionato per la generazione di testo. Mostrerò anche il \textit{benchmark} creato con il quale ho selezionato il modello migliore per la generazione di testo.
+\subsubsection{Funzionamento della RAG}
+Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di seguito elencate:
+\begin{itemize}
+    \item \textbf{Reperimento di dati di addestramento}: per prima cosa è necessario reperire dei dati da fonti esterne o produrli autonomamente in modo da arrichire la conoscenza del modello. Nel progetto di \textit{stage} i dati sono stati prodotti autonomamente, risultato delle attività svolte durante la 2° settimana come mostrato nella tabella \ref{tab:prevAttività};
+    \item \textbf{Salvataggio dei dati in un \textit{database} vettoriale}: i dati prodotti vengono salvati all'interno di un \textit{database} vettoriale con il loro \gls{embedding-g} associato. Questo processo facilita il recupero delle informazioni rilevanti per la generazione di testo. Nel progetti di \textit{stage} i dati sono stati salvati all'interno di un \textit{database} MongoDB;
+    \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per trovare i vettori più simili al vettore della \textit{query}. Così facendo si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità utilizzata per la ricerca;
+    \begin{figure}[H]
+        \centering  
+        \includegraphics[width=0.8\textwidth]{indexMongoDB.png}
+        \caption{Indice vettoriale creato su MongoDB}
+        \label{fig:indexMongoDB}
+    \end{figure}
+    \item \textbf{Generazione della risposta}: le informazioni più pertinenti vengono combinate con la \textit{query} data inizialmente dall'utente per creare un \textit{prompt} che verrà inviato al \gls{llm} che generà la risposta utilizzando il contesto fornito.
+\end{itemize}
+
+\subsubsection{\textit{Prompt engineering}}
+Come aspetto cruciale per la generazione di proposte di risoluzione di qualità, ho dovuto creare un \textit{prompt} che permettesse al modello di generare proposte di risoluzioni corrette utilizzando il contesto fornito. Inizialmente per testare la qualità del \textit{prompt} creato, ho utilizzato il modello \textit{MistralLarge} di \gls{aws} Bedrock tramite la \textit{console}. La scelta è ricaduta su questo modello in quanto si è dimostrato il più performante tra quelli offerti.
+La creazione del \textit{prompt} è stata effettauta ispirandosi alle pratiche del \gls{promptenginnering-g}, ovvero un processo di progettazione e ottimizzazione di \textit{prompt}. L'approccio che ho utilizzato è stato fondamentale un \textit{trial and error} ed è consistito nel testare gli svariati \textit{prompt} creati con il modello \textit{MistralLarge} per valutare la qualità delle proposte di risoluzione generate.
+Di seguito mostro il prompt finale creato:
+\begin{Verbatim}[frame=single, fontsize=\small]
+    Ti fornisco le seguenti informazioni estratte dai documenti:
+    ${JSON.stringify(results)}.
+    La domanda posta è: "${queryText}".
+    
+    Istruzioni per la risposta:
+    1. Rispondi ESCLUSIVAMENTE in base alle informazioni contenute nei 
+       documenti forniti.
+    2. NON aggiungere interpretazioni, opinioni o ragionamenti personali.
+    3. Se i documenti trattano problemi simili, fornisci TUTTE le possibili 
+       soluzioni basate sulle risoluzioni presenti.
+    4. Descrivi in modo chiaro ed esaustivo OGNI soluzione possibile, 
+       senza limitarti a una sola opzione.
+    5. Se le informazioni necessarie non sono presenti nei documenti e i 
+       problemi non sono simili, dichiara ESPLICITAMENTE l'impossibilità di 
+       rispondere.
+    6. La risposta deve essere in lingua italiana.
+    7. Inizia SEMPRE la risposta con "In base ai precedenti ticket:".
+    8. Includi link nel formato:
+       https://${process.env.JIRA_DOMAIN}/jira/servicedesk/projects/
+       ${process.env.JIRA_PROJECT_KEY}/queues/custom/66/${key}
+    9. Utilizza il seguente formato per ogni soluzione, se disponibile:
+        -[Chiave del ticket][Descrizione dettagliata della risoluzione][Link]
+    
+    10. Se non è possibile fornire una risposta, specificalo 
+        chiaramente SENZA aggiungere ulteriori informazioni o speculazioni.
+    
+    Attieniti RIGOROSAMENTE a queste istruzioni senza deviazioni.
+\end{Verbatim}
+\subsubsection{Selezione del modello LLM}
+La selezione del modello rappresenta una scelta cruciale per una proposta di risoluzione coerente e di qualità. Come ho mostrato nella tabella \ref{tab:prevAttività} ho creato un \textit{benchmark} per selezionare quale tra i modelli più performanti offerti da \gls{aws} Bedrock fosse il migliore per il contesto dei due progetti.
+Per la creazione del \textit{benchmark} ho creato una serie di \textit{ticket} fittizzi a cui ho associato delle proposte di risoluzione in base ai \textit{ticket} completati contenuti nel \textit{database}. In seguito, per ognuno di questi ticket veniva richiesta una proposta di risoluzione ai vari modelli da testare e le risposte venivano valutato da un ulteriore modello, di cui ho avuto modo di poterne testare l'accuratezza tramite la \textit{console} di \gls{aws} Bedrock.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{ticketBenchmarkExample.png}
+    \caption{Esempio \textit{ticket} fittizzi creati per il \textit{benchmark}}
+    \label{fig:Ticketbenchmark}
+\end{figure}
+\noindent
+Come mostro nell'immagine \ref{fig:Ticketbenchmark}, i \textit{ticket} creati possiedono tutti i dati che il sistema riceve quando un \textit{ticket} viene creato su Jira. Alcuni di questi dati sono lasciati con valori \textit{default} in quanto lo scopo era quello di valutare la qualità delle proposte di risoluzione dei vari modelli. 
+Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato il modello \textit{MistralLarge} di \gls{aws} Bedrock. Tramite l'utilizzo di questo modello ho potuto attribuire un punteggio di similarità tra la proposta di risoluzione generata dal modello e la proposta di risoluzione attesa in modo automatico. La scala di valutazione del punteggio di similarità varia tra 0 (risposte totalmente diverse) e 1 (risposte identiche). \\
+Di seguito mostro l'archittetura del \textit{benchmark}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{architetturaBenchmark.png}
+    \caption{Architettura del \textit{benchmark}}
+    \label{fig:benchmarkArchitecture}
+\noindent
+Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark} è composto da tre componenti principali:
+\begin{itemize}
+    \item \textbf{N \textit{ticket} fittizzi}: insieme di \textit{ticket} creati per valutare la qualità delle proposte di risoluzione dei vari modelli, come mostrato nell'immagine \ref{fig:Ticketbenchmark};
+    \item \textbf{N Modelli}: insieme di \gls{llm} offerti da \gls{aws} Bedrock che interrogo per generare proposte di risoluzione per gli N \textit{ticket} fittizzi e li restituisce alla funzione \textit{lambda}; 
+    \item \textbf{\textit{Database}}: componente che tramite la ricerca vettoriale trova i \textit{ticket} completati più simili ai \textit{ticket} fittizzi creati. 
+    \item \textbf{Modello di punteggio}: modello che valuta la qualità delle proposte di risoluzione generate dai vari modelli interrogati. Restituisce un numero intero positivo compreso tra 0 (risposta totalmente diversa) e 1 (risposta identica).
+\end{itemize}
+\end{figure}
+Di seguito mostro il risultato del \textit{benchmark}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{benchmark.png}
+    \caption{Risultato del \textit{benchmark}}
+    \label{fig:benchmarkResult}
+\end{figure}
+\noindent
+Il punteggio relativo ad ogni modello è suddiviso in tre categorie:
+\begin{itemize}
+    \item \textbf{Low}: punteggio di similarita maggiore di 0,57 incluso;
+    \item \textbf{Medium}: punteggio di similarità maggiore di 0,65 incluso;
+    \item \textbf{Strict}: punteggio di similarità maggiore di 0,72 incluso;
+\end{itemize}
+Il punteggio attribuito ai vari modelli però è un indicatore di qualità rispetto alle proposte di risoluzione attese da me create. Questo implica che modelli che hanno ottenuto un punteggio più basso generano comunque proposte di risoluzione corrette, ma non nel formato da me richiesto. Questo è un aspetto che ho dovuto considerare nella scelta del modello.
+Come si può notare dall'immagine \ref{fig:benchmarkResult}, il modello \textit{Claude3.5 Sonnet} e \textit{MistralLarge} hanno ottenuto i migliori risultati. Tuttavia la scelta del modello è ricaduta su Claude3.5Sonnet in quanto ha dimostrato di generare proposte di risoluzione di qualità superiore rispetto a \textit{MistralLarge}.\\
+Come modello per la generazione di \gls{embedding-g} invece la scelta è ricaduta su \textit{Titan Text Embeddings V2} in quanto rispetto alle alternative offerte da \gls{aws} Bedrock, permetteva di generare \gls{embedding-g} con una dimensione minore ma con una qualità superiore rispetto agli altri modelli.
+
 \subsection{Architettura del sistema \textit{Jira}}
-Descrizione dell'architettura ad eventi progettata per il sistema Jira
+La progettazione delle componenti del sistema Jira si è basata su un'architettura \textit{event-driven}, tipica del \textit{framework Serverless} . Questo tipo di architettura permette di creare applicazioni scalabili e flessibili, in quanto le funzioni \textit{lambda} create vengono eseguite solo quando gli eventi vengono scatenati. 
+Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{template} di progetto \textit{Serverless} che ho utilizzato come base per la creazione del sistema Jira. Di seguito elenco le componenti principali del \textit{template} di progetto.
+
+\subsubsection{\textit{Handlers}}
+Gli \textit{handlers} sono le funzioni \textit{lambda} che vengono eseguite quando un evento viene scatenato. Esse rappresentano il fulcro del sistema Jira in quanto gestiscono la richiesta di proposte di risoluzione per i nuovi \textit{ticket} e il salvataggio automatico dei \textit{ticket} chiusi in Jira nel \textit{database}. 
+Gli \textit{handlers} vengono configurati all'interno del file \textit{serverless.ts} e vengono associati ad un evento specifico. Di seguito mostro un il file di configurazione delle due funzioni \textit{lambda} del sistema Jira
+
+\begin{lstlisting}[caption=Configurazione delle funzioni \textit{lambda} del sistema Jira, label=lst:handlersJira]
+    export const tickets: AWS['functions'] = {
+      save: {
+        handler: `${handlerPath(__dirname)}/handlers/save.main`,
+        name: '${self:provider.stage}-${self:service}-save',
+        events: [
+          {
+            http: {
+              method: 'any',
+              path: 'save',
+              cors: true,
+            },
+          },
+        ],
+        timeout: 60,
+        memorySize: 128,
+      },
+      suggest: {
+        handler: `${handlerPath(__dirname)}/handlers/suggest.main`,
+        name: '${self:provider.stage}-${self:service}-suggest',
+        events: [
+          {
+            http: {
+              method: 'any',
+              path: 'suggest',
+              cors: true,
+            },
+          },
+        ],
+        timeout: 300,
+        memorySize: 128,
+      },
+    };
+\end{lstlisting}
+Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti due funzioni \textit{lambda}, una rispettivamente per il salvataggio del \textit{ticket} chiuso (funzione \textit{save}) e una per la richiesta di proposta di risoluzione per il \textit{ticket} appena creato (funzione \textit{suggest}).  Entrambe le funzioni sono configurate per essere eseguite quando un evento \gls{httpg} viene scatenato. Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
+
+\subsubsection{\textit{Services}}
+La componente \textit{services} rappresenta la logica di business. Sono una serie di funzioni di supporto che vengono utilizzate dalle funzioni \textit{lambda} per eseguire operazioni specifiche. Queste funzioni vengono utilizzate per eseguire operazione ad esempio di connessione al \textit{database} o per l'interfacciamento con altri servizi quali ad esempio \gls{aws} Bedrock. Includono funzioni di \textit{parsing} per la gestione delle risposte. 
+Questo approccio è vantaggioso in quanto:
+\begin{itemize}
+    \item \textbf{Modularità}: facilità la manutenzione e la gestione del codice. Ogni funzione ha un compito specifico e ben definito;
+    \item \textbf{Riusabilità}: le funzioni di supporto possono essere riutilizzate in altre funzioni \textit{lambda} che si vuole creare;
+    \item \textbf{Pulizia del codice}: il codice delle funzioni \textit{lambda} risulta più pulito e leggibile in quanto le operazioni complesse vengono gestite da funzioni di supporto.
+\end{itemize}
+
+
+\subsection*{\textit{Design patterns} utilizzati}
+\subsubsection{\textit{\gls{dtog}}}
+Il \gls{dtog} è un \textit{design pattern} che viene utilizzato per trasferire i dati tra il \textit{client} e il \textit{server} e viceversa. Utilizzando questo \textit{design pattern} è possibile selezionare i campi che si vogliono trasferire, alleggerendo così il \textit{payload} della chiamata \gls{api}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{dto.png}
+    \caption{Esempio di utilizzo del \textit{design pattern}}
+    \small Fonte: \url{https://www.baeldung.com/java-dto-pattern}
+    \label{fig:dto}
+\end{figure}
+
+\subsubsection{\textit{Mapper}}
+Il \textit{design pattern mapper} è strettamente legato al \gls{dtog}. Come mostro nell'immagine \ref{fig:dto}, il \textit{mapper} consiste in uno o più metodi per facilitare la trasformazione dei \gls{dtog} in oggetti utilizzati dalla logica di \textit{business}, mappando i diversi campi da un tipo all’altro. 
+All'interno del sistema Jira, il \textit{mapper} è stato utilizzato per trasformare i dati ricevuti dalle \gls{apig} di Jira in oggetti \textit{ticket} che vengono utilizzati dalle funzioni \textit{lambda} per eseguire le operazioni di salvataggio e di richiesta di proposta di risoluzione.
+
+\subsubsection{\textit{Factory Method pattern}}
+Il \textit{Factory Method pattern} è un \textit{design pattern} creazionale che fornisce un'interfaccia per creare un oggetto in una superclasse, ma permette alle proprie sottoclassi di decidere quale classe concreta istanziare. Questo \textit{design pattern} permette di spostare la responsabilità della creazione degli oggetti alla sottoclasse che utilizza il metodo \textit{factory}.
+Nel contesto del progetto, il \textit{Factory Method pattern} l'ho utilizzato per la creazione delle interfaccie di connessione con i \gls{llm-g} offerti da \gls{aws} Bedrock. Questo permette in futuro di poter aggiungere nuovi modelli, semplicemente creando una nuova interfaccia di connessione.
+
+
 \subsection{Architettura del \textit{Chatbot}}
 Descrizione dell'architettura del Chatbot tramite il framework Streamlit.
 \section{Codifica}
