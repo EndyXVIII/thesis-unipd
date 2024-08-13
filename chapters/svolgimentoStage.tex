@@ -99,14 +99,14 @@ Qui di seguito presento nell'immagine \ref{fig:gantt} che rappresenta la pianifi
 L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e più utile ai fini formativi dello \textit{stage}.
 Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto avevo svolto durante la settimana e pianificare le attività per la settimana successiva.
 L'occorrenza del \textit{daily} è stata purtroppo però limitata a causa di numerosi impegni che il \textit{tutor} aziendale aveva durante la giornata. Sono stati comunque utili, soprattutto all'inizio dello \textit{stage}, per chiarire dubbi su come procedere con le attività e per ricevere feedback immediato su quanto svolto.
-Lo \textit{sprint review} invece è stato quello presente con regolarità assoluta, che mi ha permesso di ricevere un feedback più dettagliato su quanto avevo svolto durante la settimana, che mi hanno permesso di correggere eventuali errori e di migliorare la qualità del lavoro svolto.
+Lo \textit{sprint review} invece è stato quello presente con regolarità durante tutto il periodo di \textit{stage}, che mi ha permesso di ricevere un feedback più dettagliato su quanto avevo svolto durante la settimana. Questi incontri periodici mi hanno permesso di correggere eventuali errori e di migliorare la qualità del lavoro svolto.
 
 \subsection{Interazioni con il tutor aziendale}
 Come descritto nella sezione \ref{sec:revisioni}, le interazioni con il \textit{tutor} aziendale sono state numerose e di fondamentale importanza per il corretto svolgimento delle attività.
 Nelle giornate in cui non era possibile riferirmi direttamente al \textit{tutor} aziendale, mi sono rivolto ad una figura di supporto, che in caso di assenza o indisponibilità del \textit{tutor} aziendale, era predista all'aiuto degli stagisti in caso di problematiche.
 
 
-\section{Analisix dei rischi}
+\section{Analisi dei rischi}
 I primi giorni di stage sono stati dedicati all'individuazione dei potenziali rischi che avrei potuto incontrare durante lo svolgimento dello \textit{stage}.
 Si farà riferimento ai rischi individuati (R) seguendo la seguente notazione: 
 \begin{center}
@@ -455,7 +455,7 @@ dove:
 \end{longtable}
 
 \section{Progettazione}
-\subsection{RAG e selezione del modello LLM}
+\subsection{RAG e selezione del modello LLM} \label{sec:rag}
 L'integrazione e l'utilizzo di \gls{llm} e \gls{rag-g} rappresenta il fulcro dei progetti che ho sviluppato durante lo \textit{stage}.
 Di seguito descrivo il funzionamento della \gls{rag-g} e mostro che modello ho selezionato per la generazione di testo. Mostrerò anche il \textit{benchmark} creato con il quale ho selezionato il modello migliore per la generazione di testo.
 \subsubsection{Funzionamento della RAG}
@@ -466,7 +466,7 @@ Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di segui
     \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per trovare i vettori più simili al vettore della \textit{query}. Così facendo si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità utilizzata per la ricerca;
     \begin{figure}[H]
         \centering  
-        \includegraphics[width=0.8\textwidth]{indexMongoDB.png}
+        \includegraphics[width=0.95\textwidth]{indexMongoDB.png}
         \caption{Indice vettoriale creato su MongoDB}
         \label{fig:indexMongoDB}
     \end{figure}
@@ -536,7 +536,7 @@ Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark}
 Di seguito mostro il risultato del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{benchmark.png}
+    \includegraphics[width=0.85\textwidth]{benchmark.png}
     \caption{Risultato del \textit{benchmark}}
     \label{fig:benchmarkResult}
 \end{figure}
@@ -588,12 +588,13 @@ Gli \textit{handlers} vengono configurati all'interno del file \textit{serverles
             },
           },
         ],
-        timeout: 300,
+        timeout: 60,
         memorySize: 128,
       },
     };
 \end{lstlisting}
-Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti due funzioni \textit{lambda}, una rispettivamente per il salvataggio del \textit{ticket} chiuso (funzione \textit{save}) e una per la richiesta di proposta di risoluzione per il \textit{ticket} appena creato (funzione \textit{suggest}).  Entrambe le funzioni sono configurate per essere eseguite quando un evento \gls{httpg} viene scatenato. Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
+Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti le configurazione di due funzioni \textit{lambda}, una rispettivamente per il salvataggio del \textit{ticket} chiuso (funzione \textit{save}) e una per la richiesta di proposta di risoluzione per il \textit{ticket} appena creato (funzione \textit{suggest}).  Entrambe le funzioni sono configurate per essere eseguite quando un evento \gls{httpg} viene scatenato. Questo evento viene scatenato da \gls{aws} API Gateway che riceve la notifica da Jira quando un \textit{ticket} viene creato o chiuso.
+Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
 
 \subsubsection{\textit{Services}}
 La componente \textit{services} rappresenta la logica di business. Sono una serie di funzioni di supporto che vengono utilizzate dalle funzioni \textit{lambda} per eseguire operazioni specifiche. Queste funzioni vengono utilizzate per eseguire operazione ad esempio di connessione al \textit{database} o per l'interfacciamento con altri servizi quali ad esempio \gls{aws} Bedrock. Includono funzioni di \textit{parsing} per la gestione delle risposte. 
@@ -603,30 +604,75 @@ Questo approccio è vantaggioso in quanto:
     \item \textbf{Riusabilità}: le funzioni di supporto possono essere riutilizzate in altre funzioni \textit{lambda} che si vuole creare;
     \item \textbf{Pulizia del codice}: il codice delle funzioni \textit{lambda} risulta più pulito e leggibile in quanto le operazioni complesse vengono gestite da funzioni di supporto.
 \end{itemize}
+\noindent
+Per migliorare ulteriormente la struttura e la manutenibilità del codice, ho adotattato diversi \textit{design patterns}. Uno di questo è il \gls{dtog}, che viene utilizzato per trasferire i dati tra il \textit{client} e il \textit{server} e viceversa. Grazie a questo \textit{design pattern} è possibile selezionare solo i campi necessari che si vogliono trasferire, alleggerendo così il \textit{payload} della chiamata \gls{api}.
 
-
-\subsection*{\textit{Design patterns} utilizzati}
-\subsubsection{\textit{\gls{dtog}}}
-Il \gls{dtog} è un \textit{design pattern} che viene utilizzato per trasferire i dati tra il \textit{client} e il \textit{server} e viceversa. Utilizzando questo \textit{design pattern} è possibile selezionare i campi che si vogliono trasferire, alleggerendo così il \textit{payload} della chiamata \gls{api}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{dto.png}
-    \caption{Esempio di utilizzo del \textit{design pattern}}
-    \small Fonte: \url{https://www.baeldung.com/java-dto-pattern}
+    \includegraphics[width=0.7\textwidth]{dto.png}
+    \caption{Esempio di utilizzo del \textit{design pattern} DTO}
+    \small Fonte: \href{https://www.baeldung.com/java-dto-pattern} {www.baeldung.com}
     \label{fig:dto}
 \end{figure}
+\noindent
+Un altro \textit{desig pattern} che ho utilizzato è il \textit{Mapper pattern}, che è strettamente collegato al \gls{dtog} \textit{pattern}.  Come mostro nell'immagine \ref{fig:dto}, il \textit{mapper} consiste in uno o più metodi per facilitare la trasformazione dei \gls{dtog} in oggetti utilizzati dalla logica di \textit{business}, mappando i diversi campi da un tipo all’altro. All'interno del sistema Jira, il \textit{mapper} è stato utilizzato per trasformare i dati ricevuti dalle \gls{apig} di Jira in oggetti \textit{ticket} che vengono utilizzati dalle funzioni \textit{lambda} per eseguire le operazioni di salvataggio e di richiesta di proposta di risoluzione.
+Questo \textit{design pattern} contribuisce a mantere il codice organizzato, garantendo che i dati siano nel formato corretto. Ho adottato il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. Questo \textit{design pattern} permette di creare astrarre la logica di creazione degli oggetti, permettendo l'aggiunta di nuovi modelli senza necessità di modificare il codice esistente. La flessibilità e le scalabilità
+offerte da questo \textit{design pattern} sono state fondamentali per garantire che il sistema possa evolvere nel tempo, permettendo l'integrazione di nuovi modelli che verranno resi disponibili in futuro. 
+Infine, ho adotatto il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt} e di risposta dei vari \gls{llm-g} offerti da \gls{aws} Bedrock. Definisco una strategia di generazione \textit{prompt} ad ogni modello in quanto ognuno di essi possiede delle \textit{keywords} e una formattazione del testo specifico. Il \textit{prompt} mostrato nella sezione \ref{sec:rag} è la base per ognuno dei modelli. 
 
-\subsubsection{\textit{Mapper}}
-Il \textit{design pattern mapper} è strettamente legato al \gls{dtog}. Come mostro nell'immagine \ref{fig:dto}, il \textit{mapper} consiste in uno o più metodi per facilitare la trasformazione dei \gls{dtog} in oggetti utilizzati dalla logica di \textit{business}, mappando i diversi campi da un tipo all’altro. 
-All'interno del sistema Jira, il \textit{mapper} è stato utilizzato per trasformare i dati ricevuti dalle \gls{apig} di Jira in oggetti \textit{ticket} che vengono utilizzati dalle funzioni \textit{lambda} per eseguire le operazioni di salvataggio e di richiesta di proposta di risoluzione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{strategy.png}
+    \caption{Illustrazione del \textit{design pattern} Strategy}
+    \small Fonte: \href{https://medium.com/litslink/design-patterns-strategy-in-examples-eae7bf10a817} {www.medium.com}
+    \label{fig:strategy}
+\end{figure}
 
-\subsubsection{\textit{Factory Method pattern}}
-Il \textit{Factory Method pattern} è un \textit{design pattern} creazionale che fornisce un'interfaccia per creare un oggetto in una superclasse, ma permette alle proprie sottoclassi di decidere quale classe concreta istanziare. Questo \textit{design pattern} permette di spostare la responsabilità della creazione degli oggetti alla sottoclasse che utilizza il metodo \textit{factory}.
-Nel contesto del progetto, il \textit{Factory Method pattern} l'ho utilizzato per la creazione delle interfaccie di connessione con i \gls{llm-g} offerti da \gls{aws} Bedrock. Questo permette in futuro di poter aggiungere nuovi modelli, semplicemente creando una nuova interfaccia di connessione.
-
+\noindent
+Di seguito mostro lo schema dell'architettura del sistema Jira:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{architettura.png}
+    \caption{Schema dell'architettura del sistema Jira}
+    \label{fig:architetturaJira}
+\end{figure}
 
 \subsection{Architettura del \textit{Chatbot}}
-Descrizione dell'architettura del Chatbot tramite il framework Streamlit.
+La progettazione del \textit{chatbot} si è basata sull'architettura \textit{client-server} del \textit{framework} Streamlit. Il \textit{client} viene rappresentato dal \textit{browser} che l'utente utilizza per interagire con il \textit{chatbot}, mentre il \textit{server} è rappresentato dall'esecuzione del codice Python che in risposta alle azioni dell'utente, invia i risultati al \textit{client} sotto forma di HTML/CSS/JavaScript che vengono visualizzati nel \textit{browser}.
+\subsubsection{\textit{Backend}}
+Essendo l'architettura del \textit{chatbot} basata sul \textit{framework} Streamlit, il \textit{backend} è rappresentato dal codice Python che viene eseguito in risposta alle azioni dell'utente.
+Una componente chiave del \textit{backend} è l'utilizzo del \textit{framework} Langchain. Esso viene impiegato in diverse parti cruiciali del \textit{backend}, ovvero:
+\begin{itemize}
+    \item \textbf{Integrazione con \textit{database} vettoriale}: con l'utilizzo di Langchain, è possibile stabilire una connessione con il \textit{database} vettoriale MongoDB per effettuare la ricerca vettoriale dei \textit{ticket} completati più simili al testo inserito dall'utente;
+    \item \textbf{Gestione degli \gls{embedding-g}}: tramite LangChain viene facilitato l'uso di diversi modelli \gls{embedding-g} messi a disposizione da \gls{aws}. 
+    \item \textbf{Orchestrazione dei modelli}: come da requisito da soddisfare presentato nella tabella \ref{tab:tracciamentoRequisiti}, il \textit{chatbot} deve poter dare la possibilità all'utente di selezionare l' \gls{llm} con cui interrogare il \textit{chatbot}. LangChain permette di integrare ed orchestrare i diversi modelli consentendo una flessibilità nella scelta e nell'utilizzo dei modelli scelti dall'utente.
+\end{itemize} 
+
+\begin{lstlisting}[caption=Configurazione con LangChain di un servizio di \gls{embedding-g} offerto da \gls{aws}, label=lst:backendChatbot, language=Python]
+from langchain_community.embeddings.bedrock import BedrockEmbeddings
+
+embeddings = BedrockEmbeddings(
+    credentials_profile_name=st.secrets["credentials_profile_name"],
+    model_id="amazon.titan-embed-text-v2:0",
+    model_kwargs= {
+        "dimensions": 1024,
+        "normalize" : True
+    },
+    region_name="us-east-1",
+)
+\end{lstlisting}
+
+\subsubsection{\textit{Frontend}}
+Allo stesso modo, il \textit{frontend} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\
+\noindent
+Di seguito mostro lo schema dell'architettura del sistema \textit{Chatbot}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{chatbot_architettura.png}
+    \caption{Schema dell'architettura del \textit{chatbot}}
+    \label{fig:architetturaChatbot}
+\end{figure}
+
 \section{Codifica}
 Descrizione dell'attività di codifica delle componenti \textit{AWS Lambda} e del \textit{chatbot}
 \section{Verifica e validazione}

@@ -157,7 +157,7 @@ Node.js è un ambiente \textit{runtime} che consente di eseguire codice Javascri
 MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non vengono strutturati in tabelle con uno schema preciso, ma vengono raggruppati in documenti dove la struttura dei dati può variare da documento a documento. Permette di salvare oltre ai dati anche i loro relativi \gls{embedding-g}, ovvero una rappresentazione numerica vettoriale dell'oggetto in uno spazio multidimensionale.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{sqlvsnosql.png}
+    \includegraphics[width=0.48\textwidth]{sqlvsnosql.png}
     \caption{Differenza tra la struttura di un \textit{database} relazionale e un \textit{database} non relazionale}
     \small \textbf{Fonte:} \href{https://naveen-metta.medium.com/decoding-the-database-dilemma-sql-vs-nosql-in-system-design-8666e21f4a58c}{medium.com}
     \label{fig:sql-vs-nosql}
@@ -167,7 +167,7 @@ MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non
 Il Serverless \textit{framework} è un \textit{framework} che permette la creazione di \gls{api}, un' interfaccia che definisce come due parti (applicazione \textit{client} e \textit{server}) comunicano tra loro usando richieste e risposte, su infrastuttura \gls{aws}. Permette la definizione di funzioni \textit{lambda} con i relativi \textit{trigger} di invocazione e il \textit{deploy} nel \textit{cloud}, attraverso un semplice comando che carica il codice sorgente e configura l'architettura in modo automatico. Supporta diversi \textit{plugin} che permettono l'utilizzo di altri servizi offerti da \gls{aws}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{serverless.png}
+    \includegraphics[width=0.68\textwidth]{serverless.png}
     \caption{Confronto tra un'architettura tradizionale e un' architettura \textit{\gls{serverlessg}}}
     \small \textbf{Fonte:} \href{https://medium.com/canonichq/server-v-s-serverless-architecture-bf3cdab28174}{medium.com}
     \label{fig:Serverless}
@@ -179,10 +179,20 @@ Streamlit è un \textit{framework open-source} che permette la creazione di appl
 Con il suo utilizzo, si possono trasformare \textit{script} Python in applicazioni \textit{web} interattive.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{streamlit.png}
+    \includegraphics[width=0.7\textwidth]{streamlit.png}
     \caption{Esempio di applicazione \textit{web} creata con il \textit{framework} Streamlit}
     \small \textbf{Fonte:} \href{https://streamlit.io}{streamlit.io}
     \label{fig:Streamlit}
+\end{figure} 
+
+\subsubsection{LangChain}
+Langchain è un \textit{framework open-source} che fornisce strumenti e componenti modulari per la creazione di applicazioni, come \textit{chatbot}, che struttano i \gls{llm}. Questo \textit{framework} permette un interazione più semplice con questi modelli, permettendo di creare applicazioni che sfruttano le potenzialità dei \gls{llm} in modo più semplice. Nel contesto dello \textit{stage}, viene utilizzato assieme al \textit{framework} Streamlit.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.73\textwidth]{langchain.png}
+    \caption{Casi d'uso con Langchain} 
+    \small \textbf{Fonte:} \href{https://medium.com/@ebruboyaci/use-cases-with-langchain-e0fd5b0587f1}{https://medium.com}
+    \label{fig:Lanchain}
 \end{figure} 
 
 \subsubsection {Servizi AWS}
@@ -200,7 +210,7 @@ ESLint è un \textit{plugin} installato su Visual Studio Code che permette il co
 È possibile impostare una configurazione personalizzata (come l'indentazione del codice, la lunghezza delle righe, ecc.), permettendo così di scrivere codice uniforme agli \textit{standard} aziendali.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{eslint.png}
+    \includegraphics[width=0.83\textwidth]{eslint.png}
     \caption{Esempio di configurazione di ESLint}
     \label{fig:ESlint}
 \end{figure} 
@@ -209,7 +219,7 @@ ESLint è un \textit{plugin} installato su Visual Studio Code che permette il co
 Postman è un \textit{software} che permette il salvataggio e il testing di \gls{api} in modo semplice. Tramite l'interfaccia è possibile organizzare le richieste e generare documentazione delle \gls{api} salvate.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{postman.png}
+    \includegraphics[width=0.85\textwidth]{postman.png}
     \caption{Esempio di API di tipo \textit{POST} su Postman con relativo \textit{body}}
     \label{fig:Postman}
 \end{figure} 
@@ -220,7 +230,7 @@ Postman è un \textit{software} che permette il salvataggio e il testing di \gls
 MongoDB Compass è un \textit{software} che permette la visualizzazione dei documenti salvati nel \textit{database} MongoDB tramite un'interfaccia grafica.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{mongodb.png}
+    \includegraphics[width=0.85\textwidth]{mongodb.png}
     \caption{Esempio di visualizzazione di documenti su MongoDB Compass}
     \label{fig:MongoDB}
 \end{figure} 
@@ -236,10 +246,10 @@ MongoDB Compass è un \textit{software} che permette la visualizzazione dei docu
 Di seguito uno schema riassuntivo in cui mostro l'utilizzo delle tecnologie nel progetto di \textit{stage}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{tecnologie.png}
+    \includegraphics[width=1\textwidth]{tecnologie.png}
     \caption{Utilizzo delle tecnologie nel progetto di \textit{stage}}
     \label{fig:tecnologie}
-    \small \textbf{Fonti:} \href{https://iconduck.com/icons/95017/typescript-icon}{Typescript: https://iconduck.com} \href{https://www.flaticon.com/free-icon/nodejs_919825}{Node\.js: https://www.flaticon.com} \href{https://www.iconfinder.com/icons/4518857/python_icon} {Python: https://www.iconfinder.com} \href{https://iconduck.com/icons/94274/eslint} {Eslint: https://iconduck.com} \href{https://www.serverless.com/} {Serverless: https://www.serverless.com} \href{https://iconduck.com/icons/10826/amazon-aws} {AWS: https://iconduck.com}
+    \small \textbf{Fonti:} \href{https://iconduck.com/icons/95017/typescript-icon}{Typescript: https://iconduck.com} \href{https://www.flaticon.com/free-icon/nodejs_919825}{Node\.js: https://www.flaticon.com} \href{https://www.iconfinder.com/icons/4518857/python_icon} {Python: https://www.iconfinder.com} \href{https://iconduck.com/icons/94274/eslint} {Eslint: https://iconduck.com} \href{https://www.serverless.com/} {Serverless: https://www.serverless.com} \href{https://iconduck.com/icons/10826/amazon-aws} {AWS: https://iconduck.com} \href{https://www.nuget.org/packages/LangChain/0.13.1-dev.178} {Langchain: https://www.nuget.org} 
 \end{figure}
 \section{Tipologia di clientela} \label{sec:clientela}
 Durante il mio periodo di \textit{stage} , ho avuto modo di osservare la diversità dei clienti che si rivolgono a Zero12 s.r.l. Tra i committenti dei vari progetti sviluppati dall'azienda, ci sono numerose aziende operanti nel medesimo settore, le quali richiedono consulenze sulle tecnologie di cui l'azienda è \textit{partner}.
