@@ -2,20 +2,28 @@
 \label{cap:descrizione-stage}
 
 
-\lstset{
-   backgroundcolor=\color{lightgray},
-   extendedchars=true,
-   basicstyle=\footnotesize\ttfamily,
-   showstringspaces=false,
-   showspaces=false,
-   numbers=left,
-   numberstyle=\footnotesize,
-   numbersep=9pt,
-   tabsize=2,
-   breaklines=true,
-   showtabs=false,
-   captionpos=b
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{lightgray}, % Colore di sfondo
+    commentstyle=\color{green},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single, % Bordo attorno al codice
+    rulecolor=\color{black}, % Colore del bordo
 }
+
+\lstset{style=mystyle}
 \section{Flusso di lavoro}
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
@@ -674,7 +682,121 @@ Di seguito mostro lo schema dell'architettura del sistema \textit{Chatbot}:
 \end{figure}
 
 \section{Codifica}
-Descrizione dell'attività di codifica delle componenti \textit{AWS Lambda} e del \textit{chatbot}
+\subsection{Sistema Jira}
+Al fine di sviluppare un sistema con le funzionalità definite durante il processo di progettazione, ho sviluppato due \textit{handlers} (ovvero due funzioni \textit{lambda}), che descrivo qui di seguito:
+\begin{itemize}
+    \item \textbf{\textit{suggest}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene creato, attraverso i \textit{webhook} di Jira. La funzione \textit{suggest} si occupa di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili al \textit{ticket} appena creato e alla generazione di una proposte di risoluzione utilizzando l'\gls{llm} impostato. La proposta di risoluzione viene infine inserita all'interno di un campo personalizzato dedicato al \textit{ticket} creato in Jira.
+    All'interno della funzione \textit{suggest} ho sviluppato delle funzioni \textit{services} che si occupano di effettuare la ricerca vettoriale, di interrogare l'\gls{llm} e di generare la proposta di risoluzione. Questo approccio permette di mantenere il codice pulito e organizzato, garantendo che ogni funzione abbia un compito specifico e ben definito.
+    \begin{lstlisting}[caption=Funzione \textit{lambda suggest}, label=lst:suggestLambda]
+async function handler (event : Event<TicketDataEventDto>) : Promise<undefined> {
+    if(!isDefined(event.body)) {
+        throw new HTTP400Error('Il body e' undefined');
+    }
+    const body : TicketDataEventDto = event.body;
+    const ticket : Ticket = await createTicket(body);
+          
+    if (isDefined(ticket) && ticket.status === 'Open') {
+        const embeddingService : EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
+          
+        await suggestSolution(ticket, ticket.key, embeddingService);
+    } else {
+        throw new Error('Errore nella pipeline di elaborazione del ticket');
+    }
+}
+
+export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);\end{lstlisting}
+    
+
+    \item \textbf{\textit{save}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene chiuso, sempre con l'ausilio dei \textit{webhook} di Jira. La funzione \textit{save} si occupa di salvare il \textit{ticket} chiuso e il suo relatativo \gls{embedding-g} all'interno del \textit{database}. Questo viene fatto per dare la possibilità di poter ricercare i \textit{ticket} completati più simili ai \textit{ticket} creati in futuro arrichendo cosi la conoscenza del \textit{database}. Anche in questo caso 
+    ho sviluppato delle funzioni \textit{services} che si occupano di inserire il \textit{ticket} chiuso e il calcolo del relativo \gls{embedding-g} all'interno del \textit{database}.
+    \begin{lstlisting}[caption=Funzione \textit{lambda save}, label=lst:saveLambda]
+async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
+    if (!isDefined(event.body)) {
+        throw new HTTP400Error('Il body e' undefined');
+    }
+    const body: TicketDataEventDto = event.body;
+    const ticket: Ticket = await createTicket(body);
+        
+    const embeddingService: EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
+        
+    if (isDefined(ticket) && ticket.status === 'Done') {
+        await processEmbedding(ticket, embeddingService, false);
+        await saveTicket(ticket);
+    } else {
+        throw new Error('Errore nella pipeline di elaborazione del ticket');
+    }
+}
+        
+export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{\textit{Chatbot}}
+Per lo sviluppo del \textit{chabot} come ho descritto precedentemente ho utilizzato il \textit{framework} Streamlit. Questo \textit{framework} mi ha permesso di sviluppare il \textit{backend} e il \textit{frontend} del \textit{chatbot} in semplici \textit{file} Python.
+Qui di seguito descrivo la suddivisione dei \textit{file} Python che compongono il \textit{chatbot}:
+\begin{itemize}
+    \item \textbf{\textit{Backend}}: per quanto riguarda il \textit{backend} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{backend} del \textit{chatbot}.
+    \begin{lstlisting} [language=Python, caption=Funzione di ricerca vettoriale utilizzata nel \textit{chatbot}, label=lst:cloudVectorSearch]
+
+from langchain_community.vectorstores import MongoDBAtlasVectorSearch
+
+def cloudVectorSearch(database_url, database_name, collection_name, query_embedding):
+    namespace = f"{database_name}.{collection_name}"
+
+    vector_search = MongoDBAtlasVectorSearch.from_connection_string(
+        database_url,
+        namespace,
+        embeddings,
+        embedding_key="embedding",
+        index_name="vector_index",
+        text_key="raw"
+    )
+    search_result = vector_search.similarity_search_with_relevance_scores(
+        query_embedding,
+        k=3,
+    )
+
+    desired_fields = ['key','summary', 'description', 'resolution_description', 'components']
+    filtered_result = filter_fields(search_result, desired_fields)
+
+    return filtered_result
+    \end{lstlisting}
+
+    Nel frammento di codice \ref{lst:cloudVectorSearch} mostro la funzione di ricerca vettoriale utilizzata nel \textit{chatbot}. Questa funzione si occupa di interrogare il \textit{database} vettoriale MongoDB fornendogli il nome dell'indice, il nome del campo contenente l'\gls{embedding-g} e l'\gls{embedding-g} del testo della \textit{query} dell'utente. La funzione restituisce i tre \textit{ticket} più simili alla \textit{query} dell'utente filtrandoli per i campi desiderati.
+    \item \textbf{\textit{Frontend}}: per lo sviluppo del \textit{frontend} del \textit{chatbot} ho creato un unico \textit{file} Python che si occupa di creare l'interfaccia grafica interattiva utilizzando le componenti offerte dal \textit{framework} Streamlit. Questo \textit{file} Python si occupa di gestire l'interfaccia grafica, di inviare le richieste al \textit{backend} e di visualizzare i risultati all'utente.
+    \begin{lstlisting} [language=Python, caption=Frammento del codice Python relativo al \textit{frontend}, label=lst:chatbotFrontend]
+input_text = st.chat_input()
+
+if input_text:
+    with st.chat_message("user"):
+        st.write(input_text)
+
+    st.session_state.chat_history.append(HumanMessage(input_text))
+
+        search_result = cloudVectorSearch(st.session_state['database_url'], st.session_state['database_name'], st.session_state['collection_name'], input_text)
+    else:
+    st.session_state.search_results.append(search_result)
+
+    with st.chat_message("assistant"):
+        chat_response= st.write_stream(conversation(input_text, st.session_state.chat_history,st.session_state.search_results, model_choice))
+    st.session_state.chat_history.append(AIMessage(chat_response))
+\end{lstlisting}
+Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come viene gestita la richiesta dell'utente e come vengono visualizzati i relativi risultati. Viene effettuata una ricerca vettoriale che restituisce i \textit{ticket} più simili alla \textit{query} dell'utente. 
+Successivamanete inserisco i risultati all'interno della \textit{st.session\_state} che rappresenta la sessione dell'utente. Infine viene generata la proposta di risoluzione con l'ausilio del \gls{llm} scelto dall'utente con i risultati della ricerca vettoriale e visualizzata all'utente.
+\end{itemize}
+
+\subsection{\textit{Best practices}}
+Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utilizzati in ambito aziendali e ho potuto apprendere alcune \textit{best practices} che ho applicato durante l'attività di codifica per lavorare allo stato dell'arte. Di seguito elenco alcune delle \textit{best practices} che ho applicato:
+\begin{itemize}
+    \item \textbf{\textit{Editor} di codice}: all'inzio dell'attività di codifica mi è stato richiesto di utilizzare la configurazione aziendale del \textit{plugin} ESLint. Come ho descritto in \ref{sec:tecnologie}, ESLint è uno strumento di analisi statica del codice che permette di identificare e segnalare gli errori di sintassi e di stile presenti nel codice.  Questo strumento mi ha permesso di scrivere codice uniforme e pulito, seguendo lo \textit{standard} aziendale. Inoltre, ha permesso di ridurre il numero di errori di sintassi e di stile presenti nel codice, velocizzando le \textit{code review} necessarie per l'avanzamento del progetto.
+    \item \textbf{\textit{Code reviews}}: l'intera attività di codifica è stata sottoposta a \textit{code reviews} da parte del mio \textit{tutor} aziendale e da un altro membro dell'azienda. Anche in questo caso mi sono attenuto al processo già ben consolidato in azienda. Per ogni funzionalità sviluppata, ho creato una \textit{feature branch} all'interno di un \textit{repository} Git dedicato. Il \textit{feature branch} veniva denominato con la seguente notazione:
+    \begin{center}
+        \textbf{\emph{feature/nome\_funzionalità}}
+    \end{center}
+    in modo da rendere chiaro il contenuto del \textit{branch}. Una volta che completavo lo sviluppo della funzionalità, aprivo una \textit{pull request} per la \textit{code review}. Questo processo mi ha permesso di ricevere \textit{feedback} costante sul codice che stavo sviluppando, permettondomi di correggere eventuali errori e di migliorare la qualità del codice. Infine, mi ha permesso di approfondire in modo più dettagliato l'utilizzo di Github come strumento di versionamento del codice e di osservare come si sviluppa codice seguendo dei processi consolidati e ben definiti.
+    \item \textbf{Documentazione}: durante tutta l'attività di codifica ho documentato il codice sviluppato attraverso l'utilizzo di commenti. Durante l'ultima settimana di \textit{stage} ho redatto una documentazione tecnica dettagliata contenente le scelte progettuali fatte per entrambi i progetti con le funzionalità implementate e un manuale utente per il corretto utilizzo del sistema Jira e del \textit{chatbot}. 
+\end{itemize}
+
 \section{Verifica e validazione}
 Descrizione del processo di Verifica e validazione delle funzione lambda create, attraverso la creazione di eventi di test.
 Per quanto riguarda il chatbot, verrà illustrato il perchè non saranno presenti metriche di test.
