@@ -798,8 +798,27 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
 \end{itemize}
 
 \section{Verifica e validazione}
-Descrizione del processo di Verifica e validazione delle funzione lambda create, attraverso la creazione di eventi di test.
-Per quanto riguarda il chatbot, verrà illustrato il perchè non saranno presenti metriche di test.
+\subsection{Sistema Jira}
+\subsubsection{Test tramite eventi}
+Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{eventTest.png}
+    \caption{Esempio di evento di test}
+    \label{fig:testLambda}
+\end{figure}
+\noindent
+Nell'immagine \ref{fig:testLambda} mostro un esempio di evento di test creato per verificare il corretto funzionamento della funzione \textit{lambda} \textit{suggest}. L'evento contiene i dati di un \textit{ticket} fittizio creato per il \textit{testing}. Tramite questo evento ho potuto verificare che il \textit{ticket} contenuto nell'evento venisse correttamente ricevuto dalla funzione \textit{lambda}.
 
+\subsubsection{\textit{Test} di integrazione}
+I \textit{test} di integrazione si occupano di verificare che le varie componenti del sistema funzionino correttamente, garantendo che le varie parti dell'applicativo interagiscano nel modo corretto. Durante il mio periodo di \textit{stage} ho potuto svolgere i \textit{test} di integrazione per verificare che le due funzioni \textit{lambda} sviluppate per il sistema Jira interagissero correttamente con il \textit{database} vettoriale e con l'\gls{llm} impostato per la generazione delle proposte di risoluzione. 
+Questi \textit{test} li ho svolti manualmente. Il \textit{framework} Serverless offre la possibilità di esporre le funzioni \textit{lambda} in locale, chiamabili tramite \gls{api} con il comando \textit{serverless-offline}. Questo mi ha permesso di simulare l'interazione tra le varie componenti e servizi del sistema Jira, testati attraverso Postman. Come descritto nella sezione \ref{sec:tecnologie}, Postman è uno strumento di \textit{testing} delle \gls{api} che permette di effettuare richieste \gls{httpg} e di verificare le risposte ricevute.
+
+\noindent
+Con i \textit{test} di integrazione si conclude il processo di verifica e validazione del sistem Jira, che mi ha permesso di verificare il corretto funzionamento del prodotto sviluppato e che soddisfi le aspettative dell'azienda.
+
+\subsection{\textit{Chatbot}}
+Per quanto riguarda il \textit{chatbot}, ho svolto solamente i \textit{test} di integrazione. Questi \textit{test} li ho svolti manualmente per verificare che il \textit{chatbot} funzionasse correttamente e che le varie componenti interagissero nel modo corretto.
+Essendo nata l'idea di sviluppare il \textit{chatbot} durante il mio periodo di \textit{stage}, non è stato possibile dedicare molto tempo alla creazione di \textit{test}, in quanto il suo scopo principale era quello di dimostrare la fattibilità e l'utilità di un \textit{chatbot} per l'interrogazione dei \textit{ticket} di Jira.
 \section{Risultato finale}
 Descrizione del risultato finale ottenuto, ad alto livello.
