@@ -823,7 +823,7 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
 Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.67\textwidth]{eventTest.png}
+    \includegraphics[width=0.65\textwidth]{eventTest.png}
     \caption{Esempio di evento di \textit{test}}
     \label{fig:testLambda}
 \end{figure}
@@ -847,7 +847,7 @@ I prodotti che ho realizzato durante il mio periodo di \textit{stage} soddisfano
 Quando l'utente si sarà autenticato nel \textit{workspace} Jira, potrà creare un \textit{ticket} e il sistema da me sviluppato si occuperà di generare una proposta di risoluzione per il \textit{ticket} creato
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.83\textwidth]{create_Issue.png}
+    \includegraphics[width=0.78\textwidth]{create_Issue.png}
     \caption{Creazione di un nuovo \textit{ticket} su Jira} 
     \label{fig:creazioneTicket}
 \end{figure}
@@ -855,7 +855,7 @@ Quando l'utente si sarà autenticato nel \textit{workspace} Jira, potrà creare 
 Come mostro nell'immagine \ref{fig:creazioneTicket}, l'utente premendo il pulsante \textit{Create}, creerà un nuovo \textit{ticket} su Jira con i relativi campi compilati. Una volta creato il \textit{ticket}, il sistema Jira comincerà a generare una proposta di risoluzione per il \textit{ticket} creato.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{generatingResponse.png}
+    \includegraphics[width=0.85\textwidth]{generatingResponse.png}
     \caption{Messaggio che indica che il sistma sta generando la proposta di risoluzione} 
     \label{fig:generatingResponse}
 \end{figure}
@@ -863,7 +863,7 @@ Come mostro nell'immagine \ref{fig:creazioneTicket}, l'utente premendo il pulsan
 Nell'immagine \ref{fig:generatingResponse} mostro il messaggio che indica che il sistema sta generando la proposta di risoluzione per il \textit{ticket} creato. Una volta che la proposta di risoluzione è stata generata, sovrascriverà il messaggio di generazione.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{responseGenerated.png}
+    \includegraphics[width=0.85\textwidth]{responseGenerated.png}
     \caption{Proposta di risoluzione generata dal sistema ed inserita nel \textit{ticket} Jira}
     \label{fig:responseGenerated}
 \end{figure}
@@ -872,7 +872,7 @@ La proposta di risoluzione che mostro nell'immagine \ref{fig:responseGenerated},
 Nel caso in cui l'utente crei un \textit{ticket} e le informazioni contenute non siano inerenti al problema, la proposta di risoluzione generata dal sistema Jira dichiarerà che non è possibile generare una proposta di risoluzione in quanto non sono presenti informazioni sufficienti.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{noResponse.png}
+    \includegraphics[width=0.9\textwidth]{noResponse.png}
     \caption{Messaggio che indica che non è possibile generare una proposta di risoluzione}
     \label{fig:noResponse}
 \end{figure}
@@ -881,7 +881,7 @@ Nell'immagine \ref{fig:noResponse} mostro il messaggio che indica che non è pos
 Mettendo il \textit{ticket} in stato \textit{Done}, il sistema Jira chiederà di inserire una risoluzione per il \textit{ticket} chiuso. Una volta inserita la risoluzione, il sistema Jira si occuperà di salvare il \textit{ticket} chiuso e il suo relativo \gls{embedding-g} all'interno del \textit{database} vettoriale. Questo viene fatto per arricchire la conoscenza del \textit{database} e permettere di poter ricercare i \textit{ticket} completati più simili ai \textit{ticket} creati in futuro.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{closed.png}
+    \includegraphics[width=0.9\textwidth]{closed.png}
     \caption{Schermata raffigurante il \textit{ticket} chiuso in MongoDB}
     \label{fig:closeIssue}
 \end{figure}
@@ -893,7 +893,7 @@ Per poter interagire con il \textit{chatbot} che ho sviluppato durante il mio pe
 Come descritto nei requisiti di vincolo descritti nella tabella \ref{tab:tracciamentoRequisiti}, l'autenticazione avviene tramite \gls{aws} Cognito. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{beforeSignIn.png}
+    \includegraphics[width=0.7\textwidth]{beforeSignIn.png}
     \caption{Schermata di login del \textit{chatbot}}
     \label{fig:loginChatbot}
 \end{figure}
@@ -901,7 +901,7 @@ Come descritto nei requisiti di vincolo descritti nella tabella \ref{tab:traccia
 Una volta che l'utente si sarà autenticato, dovrà inserire le credenziali di accesso al \textit{database} vettoriale MongoDB. Questo passaggio è necessario per poter effettuare la ricerca vettoriale dei \textit{ticket} completati più simili a quello inserito dall'utente.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{afterSignIn.png}
+    \includegraphics[width=0.85\textwidth]{afterSignIn.png}
     \caption{Schermata di \textit{login} del \textit{chatbot}}
     \label{fig:afterSignIn}
 \end{figure}
@@ -921,7 +921,7 @@ Inserite dall'utente le credenziali necessarie, il \textit{chatbot} è pronto pe
     \label{fig:chatbotResponse}
 \end{figure}
 
-\subsection{Copertura dei requisiti}
+ \subsection{Copertura dei requisiti}
 Il sistema di proposte di risoluzione Jira e il \textit{chatbot} coprono l'interezza dei requisiti descritti nella tabella \ref{tab:tracciamentoRequisiti}, garantendo che i prodotti sviluppati rispettassero le specifiche definite durante l' analisi e che soddisfasse le aspettative dell'azienda. Non avendo svolto dei \textit{test} codificati ma solo dei \textit{test} effettuati manualmente, non ho un valore di \textit{code coverage} che mi permetta di quantificare il numero di righe di codice coperte dai \textit{test}. La decisione di non svolgere dei \textit{test} codificati è stata dettata dalla necessità di concentrarmi sullo sviluppo dei progetti e di dimostrare la fattibilità e l'utilità dei prodotti sviluppati al termine delle otto settimane di \textit{stage}.
 
 \subsection{Materiali prodotti}
