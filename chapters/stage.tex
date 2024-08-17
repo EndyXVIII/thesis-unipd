@@ -14,35 +14,54 @@ I progetti assegnati durante gli \textit{stage} vengono concepiti in base a dell
 
 \section{Introduzione ai progetti}
 Durante il mio \textit{stage} ho avuto modo di lavorare non solo al progetto inizialmente proposto, ma anche allo sviluppo di un progetto aggiuntivo, strettamente correlato al primo.
-Lo sviluppo di questi due progetti rappresenterebbe un grande vantaggio per l'azienda. Innanzitutto, grazie allo sviluppo di questi progetti, l'azienda disporrebbe di dati sufficienti per implementare questi sistemi utilizzando i servizi con cui è \textit{partner}. In secondo luogo, permetterebbe di avere una base solida nel 
-caso in cui un cliente desiderasse implementare sistemi simili a quelli sviluppati. Questo consentirebbe di presentare già un prototipo funzionante, che dimostra tutte le potenzialità dei sistemi, e che può essere facilmente adattati alle specifiche del cliente.
-Un altro punto importante dei progetti è l'utilizzo di IA Generativa, che sta diventando sempre più diffusa in ambito aziendale, data la sua capacità di generare risposte in base al contesto in cui viene inserita.
+Lo sviluppo di questi due progetti rappresenterebbe un grande vantaggio per l'azienda. Di seguito elenco tali vantaggi:
+\begin{itemize}
+    \item \textbf{Prototipi funzionanti}: grazie allo sviluppo di entrambi i progetti, l'azienda avrebbe a disposizione due prototipi funzionanti che dimostrano tutte le potenzialità dei sistemi. Entrambi i progetti utilizzato tecnologie e servizi con cui l'azienda è \textit{partner}.
+    \item \textbf{Presentazione ai cliente}: nel caso in cui un cliente si rivolgesse a Zero12 per implementare sistemi simili a quelli che ho sviluppato, l'azienda avrebbe già un prototipo da presentare, che grazie alla sua flessibilità, può essere facilmente adattato alle specifiche del cliente.
+    \item \textbf{Utilizzo di IA Generativa}: l'utilizzo della \gls{iaGenerativag}, un ramo dell'intelligenza artificale in grado di generare testo coerente al contesto,  è un punto importante per entrambi i progetti. Questa tecnologia sta diventando sempre più diffusa in diversi ambiti e grazie al suo utilizzo garantisce che questi sistemi siano all'avanguardia.
+\end{itemize}
+\noindent
 Di seguito descrivo il progetto inizialmente proposto dall'azienda all'evento \gls{stageItg} e il progetto aggiuntivo concepito e sviluppato durante lo \textit{stage}.
 \subsection{Sistema di proposte di risoluzioni a \textit{ticket} Jira} \label{sec:spiegazioneJira}
-L'idea del progetto nasce come strumento che l'azienda può utilizzare per velocizzare il supporto tecnico, che può essere estesa ai clienti dell'azienda stessa. Nel contesto del progetto, viene immaginata un'azienda che vende componenti \textit{hardware}. 
+L'idea del progetto nasce come strumento che l'azienda può utilizzare per velocizzare il supporto tecnico all'interno dell'azienda, che può essere estesa anche ai suoi clienti. Per comprendere l'idea del progetto, immaginiamo un'azienda che produce e commercializza componenti \textit{hardware}. 
 Nel caso di problematiche con la componente acquistata, il cliente chiama il servizio clienti dell'azienda, e l'operatore inserisce un \textit{ticket} all'interno dell'\gls{its} aziendale, che nel contesto del progetto è Jira. Immaginando questa iterazione tra cliente e addetto al servizio clienti per molte volte nel corso degli anni, i \textit{ticket} inseriti all'interno del sistema saranno numerosi e molto simili tra loro. 
 Questo implica che in caso di nuovi \textit{ticket} inseriti, è molto probabile che ci siano \textit{ticket} simili già risolti in passato. 
-Ed è qui che da Zero12 nasce l'idea di creare un sistema di proposte di risoluzioni automatiche per i \textit{ticket} inseriti all'interno di un \gls{its}, che permetta di velocizzare il processo di risoluzione del problema. Le proposte di risoluzione vengono generate grazie all'utilizzo della IA Generativa, in base al contesto dei \textit{ticket} risolti in precedenza.
+Ed è qui che da Zero12 nasce l'idea di creare un sistema di proposte di risoluzioni automatiche per i \textit{ticket} inseriti all'interno di un \gls{its}, che permetta di velocizzare il processo di risoluzione del problema. Le proposte di risoluzione vengono generate grazie all'utilizzo della \gls{iaGenerativag}, in base al contesto dei \textit{ticket} risolti in precedenza.
+Di seguito in figura \ref{fig:ideaJira} mostro uno schema che rappresenta l'idea del progetto principale.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{ideaJira.png}
+    \includegraphics[width=0.95\textwidth]{ideaJira.png}
     \caption{Schema che rappresenta l'idea del progetto principale}
     \small \textbf{Fonte:} \href{https://www.flaticon.com/free-icon/company_4812244}{Icona azienda: https://www.flaticon.com} \href{https://www.flaticon.com/free-icon/box_4601560}{Icona prodotto: https://www.flaticon.com} \href{https://www.flaticon.com/free-icon/assistant_1442194}{Icona assistente: https://www.flaticon.com} \href{https://www.creativefabrica.com/it/product/ai-brain-outline-icon/} {Icona IA Generativa: https://www.creativefabrica.com}
 
     \label{fig:ideaJira}
 \end{figure}
+\subsubsection{Benefici del sistema}
+Il sistema di proposte di risoluzioni a \textit{ticket} Jira, permette di ottenere diversi benefici, qui di seguito elencati:
+\begin{itemize}
+    \item \textbf{Risposte più veloci}: gli addetti al supporto tecnico possono risolvere le nuove problematiche più velocemente, grazie alle proposte di risoluzione che il sistema genera.
+    \item \textbf{Apprendimento continuo}: il sistema permette di apprendere continuamente dai \textit{ticket} risolti in passato, integrando nuove informazioni e conoscenze per generare proposte di risoluzione sempre più precise e dettagliate.
+    \item \textbf{Supporto decisionale}: il sistema permette di supportare gli addetti al supporto tecnico nella presa di decisioni, fornendo proposte di risoluzione che possono essere utilizzate come spunto per risolvere il problema.
+    \item \textbf{Vantaggi del \textit{cloud}}: il sistema è stato sviluppato utilizzando le tecnologie e i servizi di cui l'azienda è \textit{partner}. Come descritto nella sezione \ref{sec:azienda}, l'azienda è specializzata nello sviluppo di applicazioni \textit{cloud}, e il sistema di proposte di risoluzioni sfrutta proprio queste tecnologie. Questo permette di avere un sistema scalabile, flessibile e sicu
+\end{itemize}
 \subsection{\textit{Chatbot} per proposte di risoluzioni}
 Durante lo sviluppo del progetto descritto nel paragrafo precedente, da parte del mio \textit{tutor} aziendale, è nata l'idea di creare un ulteriore strumento che permetta di svolgere la stessa funzionalità del sistema di proposte di risoluzioni, ma in modo differente. Lo strumento aggiuntivo è un \textit{chatbot} che permette di generare proposte di risoluzione, in base al testo di un \textit{ticket} inserito all'interno della chat. 
-Sempre grazie all'utilizzo della IA Generativa, il \textit{chatbot} genera proposte di risoluzione in base al contesto dei \textit{ticket} risolti in precedenza. A differenza del sistema Jira, il \textit{chatbot} propone le risoluzioni in modo più descrittivo e dettagliato, e permette di interagire con l'assistente virtuale, per ottenere informazioni più dettagliate sulle proposte di risoluzione.
+Sempre grazie all'utilizzo della \gls{iaGenerativag}, il \textit{chatbot} genera proposte di risoluzione in base al contesto dei \textit{ticket} risolti in precedenza. A differenza del sistema Jira, il \textit{chatbot} propone le risoluzioni in modo più descrittivo e dettagliato, e permette di interagire con l'assistente virtuale, per ottenere informazioni più dettagliate sulle proposte di risoluzione.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{ideaChatbot.png}
+    \includegraphics[width=0.95\textwidth]{ideaChatbot.png}
     \caption{Schema che rappresenta l'idea del progetto aggiuntivo}
     \label{fig:ideaChatbot}
     \small \textbf{Fonte:} \href{https://uxwing.com/chatbot-icon/}{Icona chatbot: https://uxwing.com} \href{https://www.iconfinder.com/icons/351012/field_input_search_icon}{Icona \textit{input} : https://www.iconfinder.com} \href{https://www.flaticon.com/free-icon/text-file_5116156} {Icona testo: https://www.flaticon.com}
-
 \end{figure}
+\subsubsection{Benefici del \textit{chatbot}}
+Il \textit{chatbot} per proposte di risoluzioni,  pur non disponendo dei vantaggi del \textit{cloud}, permette di ottenere diversi benefici oltre a quelli che il sistema di proposte precedentemente descritto possiede. Tali benefici sono qui di seguito elencati:
+\begin{itemize}
+    \item \textbf{Interazione più naturale e intuitiva}: il \textit{chatbot} permette di interagire con l'assistente virtuale attraverso un'interfaccia intuitiva e semplice. L'utente può porre domande specifiche, richiedere chiarimenti sulle proposte e ottenere risposte immediate.
+    \item \textbf{Flessibilità e adattabilità}: il \textit{chatbot} potrebbe essere integrato in diversi canali di messagistica, rendendolo uno strumento flessibile e adattabile alle esigenze dell'utente. Nel contesto del progetto, il \textit{chatbot} potrebbe assistere il cliente per risolvere le problematiche più semplici senza la necessità di contattare il servizio clienti.
+    \item \textbf{Informazioni più dettagliate}: Il chatbot, grazie alla sua capacità di generare risposte descrittive e dettagliate, può fornire agli operatori informazioni più approfondite rispetto alle semplici proposte di risoluzione generate dal sistema Jira.
+\end{itemize}
 
 \section{Obiettivi dello \textit{stage}} \label{sec:obiettiviStage}
 Durante i primi giorni di \textit{stage} ho definito assieme al mio \textit{tutor} aziendale gli obiettivi del progetto.
@@ -109,8 +128,8 @@ Di seguito elenco gli obiettivi extra da raggiungere:
 \end{longtable}
 \section{Vincoli dello \textit{stage}}
 \subsection{Vincoli tecnologici}
-I vincoli tecnologici imposti dall'azienda includevano l'utilizzo delle tecnologie utilizzate nello \textit{stack} aziendale, descritte nella sezione \ref{sec:tecnologie}. In aggiunta, 
-mi è stato chiesto di utilzzare le \gls{api} che fornisce Jira, per il caricamento di \textit{ticket} di \textit{mock} all'interno di un progetto Jira, e per il recupero dei \textit{ticket} risolti da inserire nel \textit{database}.
+I vincoli tecnologici imposti dall'azienda includevano l'utilizzo delle tecnologie utilizzate nello \textit{stack} aziendale, descritte nella sezione \ref{sec:tecnologie}. 
+In aggiunta, mi è stato chiesto di utilzzare le \gls{api} che fornisce Jira, per il caricamento di \textit{ticket} di \textit{mock} all'interno di un progetto Jira, e per il recupero dei \textit{ticket} risolti da inserire nel \textit{database}.
 Mi è stato inoltre chiesto di utilizzare i \textit{webhook} di Jira, per impostare un \textit{trigger} che invii eventi al sistema che ho sviluppato, in modo che alla chiusura di un \textit{ticket} su Jira, il sistema aggiorna automaticamente il \textit{database} con il nuovo \textit{ticket} completato.
 \subsection{Vincoli di rendicontazione}
 Durante il mio periodo di \textit{stage}, l'azienda mi ha richiesto la stesura di una tabella riassuntiva dei risultati del \textit{benchmark} dei vari modelli testati. I risultati dei vari modelli sono stati assegnati secondo metriche di valutazione da me impostate e motivate.
@@ -130,7 +149,7 @@ L'organizzazione dello \textit{stage} è stata fondamentale per garantire un per
 Durante l'evento \gls{stageItg} ho avuto modo di connoscere numerose azienda, e di ascoltare i loro progetti di \textit{stage}. 
 La scelta del progetto di Zero12 è stata basata su una serie di fattori che descrivo qui di seguito:
 \begin{itemize}
-    \item \textbf{Tema del progetto}: Il progetto sul supporto tecnico facilitato con l'aiuto della IA Generativa, come descritto nel paragrafo \ref{sec:spiegazioneJira}, mi ha subito colpito, in quanto mi avrebbe permesso di approfondire l'utilizzo di questa tecnologia, sempre più diffusa in vari settori. Ho scelto questo progetto anche per la sua utilità in ambito aziendale e la possibilità di poterlo estendere a clienti reali.
+    \item \textbf{Tema del progetto}: Il progetto sul supporto tecnico facilitato con l'aiuto della \gls{iaGenerativag}, come descritto nel paragrafo \ref{sec:spiegazioneJira}, mi ha subito colpito, in quanto mi avrebbe permesso di approfondire l'utilizzo di questa tecnologia, sempre più diffusa in vari settori. Ho scelto questo progetto anche per la sua utilità in ambito aziendale e la possibilità di poterlo estendere a clienti reali.
     \item \textbf{Prima impressione}: Come ho descritto all'inizio del paragrafo, ho avuto modo l'opportunità di parlare con diverse aziende. Il colloquio che ho avuto con Zero12 è stato quello che mi è rimasto più impresso, in quanto si sono dimostrati molto disponibili nel rispondere alle mie domande, molto chiari nelle loro descrizioni e molto accoglienti. Dopo il colloquio, e a seguito dell'ottima impressione che ho ricevuto, mi sono interessato maggiormente al progetto da loro proposto.
     \item \textbf{Tecnologie utilizzate}: I giorni prima l'evento, ho avuto modo di esaminare le tecnologie richieste per lo sviluppo del progetto. Tra queste, vi erano tecnologie a me già familiari, come Typescript, Node.js e MongoDB. Il restante delle tecnologie, erano legate ai servizi \textit{cloud} offerte da \gls{aws}, che ho avuto modo di accennare durante il mio percorso scolastico. Ho scelto questo progetto anche per la possibilità di approfondire queste tecnologie e di poterle utilizzare in ambito aziendale.
 \end{itemize}
