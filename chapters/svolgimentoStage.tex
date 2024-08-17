@@ -1,7 +1,6 @@
 \chapter{Svolgimento dello \textit{stage}} 
 \label{cap:descrizione-stage}
 
-
 \section{Flusso di lavoro}
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
@@ -436,7 +435,7 @@ Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di segui
     \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per ricercare i vettori più simili al vettore della \textit{query}. Tramite questa ricerca si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità combinata con il \gls{knn} utilizzata per la ricerca;
     \begin{figure}[H]
         \centering  
-        \includegraphics[width=0.8\textwidth]{indexMongoDB.png}
+        \includegraphics[width=0.65\textwidth]{indexMongoDB.png}
         \caption{Indice vettoriale creato su MongoDB}
         \label{fig:indexMongoDB}
     \end{figure}
@@ -541,7 +540,7 @@ Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato
 In figura \ref{fig:benchmarkArchitecture} mostro l'architettura del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{architetturaBenchmark.png}
+    \includegraphics[width=0.75\textwidth]{architetturaBenchmark.png}
     \caption{Architettura del \textit{benchmark}}
     \label{fig:benchmarkArchitecture}
 \noindent
@@ -556,7 +555,7 @@ Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark}
 In figura \ref{fig:benchmarkResult} mostro il risultato del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{benchmark.png}
+    \includegraphics[width=0.75\textwidth]{benchmark.png}
     \caption{Risultato del \textit{benchmark}}
     \label{fig:benchmarkResult}
 \end{figure}
@@ -579,7 +578,7 @@ Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{temp
 Gli \textit{handlers} sono le funzioni \textit{lambda} che vengono eseguite quando un evento viene scatenato. Esse rappresentano il fulcro del sistema Jira in quanto gestiscono la richiesta di proposte di risoluzione per i nuovi \textit{ticket} e il salvataggio automatico dei \textit{ticket} chiusi in Jira nel \textit{database}. 
 Gli \textit{handlers} vengono configurati all'interno del file \textit{index.ts} e vengono associati ad un evento specifico. Di seguito mostro un il file di configurazione delle due funzioni \textit{lambda} del sistema Jira
 
-\begin{lstlisting}[caption=Configurazione delle funzioni \textit{lambda} del sistema Jira in \textit{index.ts}, label=lst:handlersJira]
+\begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{typescript}
     export const tickets: AWS['functions'] = {
       save: {
         handler: `${handlerPath(__dirname)}/handlers/save.main`,
@@ -612,7 +611,10 @@ Gli \textit{handlers} vengono configurati all'interno del file \textit{index.ts}
         memorySize: 128,
       },
     };
-\end{lstlisting}
+\end{minted}
+\captionof{listing}{Configurazione delle funzioni \textit{lambda} del sistema Jira}
+\label{lst:handlersJira}
+
 Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti le configurazione di due funzioni \textit{lambda}, una rispettivamente per il salvataggio del \textit{ticket} chiuso (funzione \textit{save}) e una per la richiesta di proposta di risoluzione per il \textit{ticket} appena creato (funzione \textit{suggest}).  Entrambe le funzioni sono configurate per essere eseguite quando un evento \gls{httpg} viene scatenato. Questo evento viene scatenato da \gls{aws} API Gateway che riceve la notifica da Jira quando un \textit{ticket} viene creato o chiuso.
 Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
 
@@ -628,7 +630,7 @@ Per migliorare ulteriormente la struttura e la manutenibilità del codice, ho ad
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{dto.png}
+    \includegraphics[width=0.7\textwidth]{dto.png}
     \caption{Esempio di utilizzo del \textit{design pattern} DTO}
     \small Fonte: \href{https://www.baeldung.com/java-dto-pattern} {www.baeldung.com}
     \label{fig:dto}
@@ -639,7 +641,7 @@ Questo \textit{design pattern} contribuisce a mantere il codice organizzato, gar
 offerte da questo \textit{design pattern} sono state fondamentali per garantire che il sistema possa evolvere nel tempo, permettendo l'integrazione di nuovi modelli che verranno resi disponibili in futuro. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{factoryPattern.png}
+    \includegraphics[width=0.7\textwidth]{factoryPattern.png}
     \caption{Illustrazione del \textit{design pattern} Factory Method}
     \small Fonte: \href{https://medium.com/@contactkumaramit9139/factory-design-pattern-in-java-baee365fc1ce} {www.medium.com}
     \label{fig:factory}
@@ -649,7 +651,7 @@ Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{strategy.png}
+    \includegraphics[width=0.7\textwidth]{strategy.png}
     \caption{Illustrazione del \textit{design pattern} Strategy}
     \small Fonte: \href{https://medium.com/litslink/design-patterns-strategy-in-examples-eae7bf10a817} {www.medium.com}
     \label{fig:strategy}
@@ -689,41 +691,44 @@ In figura \ref{fig:architetturaChatbot} mostro lo schema dell'architettura del s
 
 \section{Codifica}
 \subsection{Sistema Jira}
-Al fine di sviluppare un sistema con le funzionalità definite durante il processo di progettazione, ho sviluppato due \textit{handlers} (ovvero due funzioni \textit{lambda}), che descrivo qui di seguito:
-\begin{itemize}
-    \item \textbf{\textit{suggest}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene creato, attraverso i \textit{webhook} di Jira. La funzione \textit{suggest} si occupa di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili al \textit{ticket} appena creato e alla generazione di una proposte di risoluzione utilizzando l'\gls{llm} impostato. La proposta di risoluzione viene infine inserita all'interno di un campo personalizzato dedicato al \textit{ticket} creato in Jira.
-    All'interno della funzione \textit{suggest} ho sviluppato delle funzioni \textit{services} che si occupano di effettuare la ricerca vettoriale, di interrogare l'\gls{llm} e di generare la proposta di risoluzione. Questo approccio permette di mantenere il codice pulito e organizzato, garantendo che ogni funzione abbia un compito specifico e ben definito.
-    \begin{minted}[linenos,numbersep=5pt,frame=lines,framesep=2mm]{typescript}
-        async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
-          if (!isDefined(event.body)) {
-            throw new HTTP400Error('Il body e\' undefined');
-          }
-          const body: TicketDataEventDto = event.body;
-          const ticket: Ticket = await createTicket(body);
-        
-          if (isDefined(ticket) && ticket.status === 'Open') {
-            const embeddingService: EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
-            await suggestSolution(ticket, ticket.key, embeddingService);
-          } else {
-            throw new Error('Errore nella pipeline di elaborazione del ticket');
-          }
-        }
-        
-        export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
-    \end{minted}
 
-    \item \textbf{\textit{save}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene chiuso, sempre con l'ausilio dei \textit{webhook} di Jira. La funzione \textit{save} si occupa di salvare il \textit{ticket} chiuso e il suo relatativo \gls{embedding-g} all'interno del \textit{database}. Questo viene fatto per dare la possibilità di poter ricercare i \textit{ticket} completati più simili ai \textit{ticket} creati in futuro arrichendo cosi la conoscenza del \textit{database}. Anche in questo caso 
-    ho sviluppato delle funzioni \textit{services} che si occupano di inserire il \textit{ticket} chiuso e il calcolo del relativo \gls{embedding-g} all'interno del \textit{database}.
-    \begin{lstlisting}[caption=Funzione \textit{lambda save}, label=lst:saveLambda]
+Al fine di sviluppare un sistema con le funzionalità definite durante il processo di progettazione, ho sviluppato due \textit{handlers} (ovvero due funzioni \textit{lambda}), che descrivo qui di seguito:
+
+\begin{itemize}
+    \item \textbf{\textit{suggest}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento si verifica quando un \textit{ticket} viene creato, attraverso i \textit{webhook} di Jira. La funzione \textit{suggest} si occupa di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili al \textit{ticket} appena creato e di generare una proposta di risoluzione utilizzando l'\gls{llm} impostato. La proposta di risoluzione viene poi inserita all'interno di un campo personalizzato dedicato al \textit{ticket} creato in Jira.
+    All'interno della funzione \textit{suggest}, ho sviluppato delle funzioni \textit{services} che si occupano di effettuare la ricerca vettoriale, di interrogare l'\gls{llm} e di generare la proposta di risoluzione. Questo approccio permette di mantenere il codice pulito e organizzato, garantendo che ogni funzione abbia un compito specifico e ben definito.
+    \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{typescript}
 async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
     if (!isDefined(event.body)) {
-        throw new HTTP400Error('Il body e' undefined');
+        throw new HTTP400Error('Il body e\' undefined');
     }
     const body: TicketDataEventDto = event.body;
     const ticket: Ticket = await createTicket(body);
-        
+
+    if (isDefined(ticket) && ticket.status === 'Open') {
+        const embeddingService: EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
+        await suggestSolution(ticket, ticket.key, embeddingService);
+    } else {
+        throw new Error('Errore nella pipeline di elaborazione del ticket');
+    }
+}
+
+export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
+    \end{minted}
+    \captionof{figure}{Funzione \textit{lambda suggest}}
+
+    \item \textbf{\textit{save}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento si verifica quando un \textit{ticket} viene chiuso, sempre con l'ausilio dei \textit{webhook} di Jira. La funzione \textit{save} si occupa di salvare il \textit{ticket} chiuso e il suo relativo \gls{embedding-g} all'interno del \textit{database}. Questo permette di poter ricercare in futuro i \textit{ticket} completati più simili ai \textit{ticket} creati, arricchendo così la conoscenza del \textit{database}.
+    Anche in questo caso, ho sviluppato delle funzioni \textit{services} che si occupano di inserire il \textit{ticket} chiuso e di calcolare il relativo \gls{embedding-g} all'interno del \textit{database}.
+    \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{typescript}
+async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
+    if (!isDefined(event.body)) {
+        throw new HTTP400Error('Il body e\' undefined');
+    }
+    const body: TicketDataEventDto = event.body;
+    const ticket: Ticket = await createTicket(body);
+    
     const embeddingService: EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
-        
+    
     if (isDefined(ticket) && ticket.status === 'Done') {
         await processEmbedding(ticket, embeddingService, false);
         await saveTicket(ticket);
@@ -731,17 +736,19 @@ async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
         throw new Error('Errore nella pipeline di elaborazione del ticket');
     }
 }
-        
+
 export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
-    \end{lstlisting}
+    \end{minted}
+    \captionof{figure}{Funzione \textit{lambda save}}
 \end{itemize}
+
 
 \subsection{\textit{Chatbot}}
 Per lo sviluppo del \textit{chabot} come ho descritto precedentemente ho utilizzato il \textit{framework} Streamlit. Questo \textit{framework} mi ha permesso di sviluppare il \textit{backend} e il \textit{frontend} del \textit{chatbot} in semplici \textit{file} Python.
 Qui di seguito descrivo la suddivisione dei \textit{file} Python che compongono il \textit{chatbot}:
 \begin{itemize}
     \item \textbf{\textit{Backend}}: per quanto riguarda il \textit{backend} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{backend} del \textit{chatbot}.
-    \begin{lstlisting} [language=Python, caption=Funzione di ricerca vettoriale utilizzata nel \textit{chatbot}, label=lst:cloudVectorSearch]
+    \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{python}
 
 from langchain_community.vectorstores import MongoDBAtlasVectorSearch
 
@@ -765,11 +772,14 @@ def cloudVectorSearch(database_url, database_name, collection_name, query_embedd
     filtered_result = filter_fields(search_result, desired_fields)
 
     return filtered_result
-    \end{lstlisting}
+    \end{minted}
+    \captionof{figure}{Funzione di ricerca vettoriale utilizzata nel \textit{chatbot}}
+    \label{lst:cloudVectorSearch}
+
 
     Nel frammento di codice \ref{lst:cloudVectorSearch} mostro la funzione di ricerca vettoriale utilizzata nel \textit{chatbot}. Questa funzione si occupa di interrogare il \textit{database} vettoriale MongoDB fornendogli il nome dell'indice, il nome del campo contenente l'\gls{embedding-g} e l'\gls{embedding-g} del testo della \textit{query} dell'utente. La funzione restituisce i tre \textit{ticket} più simili alla \textit{query} dell'utente filtrandoli per i campi desiderati.
     \item \textbf{\textit{Frontend}}: per lo sviluppo del \textit{frontend} del \textit{chatbot} ho creato un unico \textit{file} Python che si occupa di creare l'interfaccia grafica interattiva utilizzando le componenti offerte dal \textit{framework} Streamlit. Questo \textit{file} Python si occupa di gestire l'interfaccia grafica, di inviare le richieste al \textit{backend} e di visualizzare i risultati all'utente.
-    \begin{lstlisting} [language=Python, caption=Frammento del codice Python relativo al \textit{frontend}, label=lst:chatbotFrontend]
+    \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{python}
 input_text = st.chat_input()
 
 if input_text:
@@ -783,11 +793,15 @@ if input_text:
     st.session_state.search_results.append(search_result)
 
     with st.chat_message("assistant"):
-        chat_response= st.write_stream(conversation(input_text, st.session_state.chat_history,st.session_state.search_results, model_choice))
+        chat_response= st.write_stream(conversation(input_text, st.session_state.chat_history,
+        st.session_state.search_results, model_choice))
     st.session_state.chat_history.append(AIMessage(chat_response))
-\end{lstlisting}
-Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come viene gestita la richiesta dell'utente e come vengono visualizzati i relativi risultati. Viene effettuata una ricerca vettoriale che restituisce i \textit{ticket} più simili alla \textit{query} dell'utente. 
-Successivamanete inserisco i risultati all'interno della \textit{st.session\_state} che rappresenta la sessione dell'utente. Infine viene generata la proposta di risoluzione con l'ausilio del \gls{llm} scelto dall'utente con i risultati della ricerca vettoriale e visualizzata all'utente.
+    \end{minted}
+    \captionof{figure}{Frammento del codice Python relativo al frontend}
+    \label{lst:chatbotFrontend} 
+
+    Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come viene gestita la richiesta dell'utente e come vengono visualizzati i relativi risultati. Viene effettuata una ricerca vettoriale che restituisce i \textit{ticket} più simili alla \textit{query} dell'utente. 
+    Successivamanete inserisco i risultati all'interno della \textit{st.session\_state} che rappresenta la sessione dell'utente. Infine viene generata la proposta di risoluzione con l'ausilio del \gls{llm} scelto dall'utente con i risultati della ricerca vettoriale e visualizzata all'utente.
 \end{itemize}
 
 \subsection{\textit{Best practice}}
@@ -809,7 +823,7 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
 Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{eventTest.png}
+    \includegraphics[width=0.67\textwidth]{eventTest.png}
     \caption{Esempio di evento di \textit{test}}
     \label{fig:testLambda}
 \end{figure}
@@ -833,7 +847,7 @@ I prodotti che ho realizzato durante il mio periodo di \textit{stage} soddisfano
 Quando l'utente si sarà autenticato nel \textit{workspace} Jira, potrà creare un \textit{ticket} e il sistema da me sviluppato si occuperà di generare una proposta di risoluzione per il \textit{ticket} creato
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.88\textwidth]{create_Issue.png}
+    \includegraphics[width=0.83\textwidth]{create_Issue.png}
     \caption{Creazione di un nuovo \textit{ticket} su Jira} 
     \label{fig:creazioneTicket}
 \end{figure}
