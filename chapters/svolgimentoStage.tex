@@ -2,28 +2,6 @@
 \label{cap:descrizione-stage}
 
 
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{lightgray}, % Colore di sfondo
-    commentstyle=\color{green},
-    keywordstyle=\color{blue},
-    numberstyle=\tiny\color{gray},
-    stringstyle=\color{purple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    frame=single, % Bordo attorno al codice
-    rulecolor=\color{black}, % Colore del bordo
-}
-
-\lstset{style=mystyle}
 \section{Flusso di lavoro}
 \subsection{Pianificazione delle attività}
 In accordo agli obiettivi descritti in \ref{sec:obiettiviStage}, ho redatto, insieme al \textit{tutor} aziendale, una pianficazione settimanale delle attività da svolgere.
@@ -223,66 +201,49 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 \end{figure}
 \subsection*{Lista dei casi d'uso}
 \subsubsection{Sistema di proposte di risoluzione Jira}
-\subsubsection{UC0: Autenticazione nel \textit{workspace} Jira} 
-\textbf{Attori principali}: Utente generico \\
-\textbf{Precondizioni}: L'utente vuole accedere al \textit{workspace} Jira \\
-\textbf{Descrizione}: All'accesso al \textit{workspace} Jira, viene aperta una schermata di \textit{login} per l'autenticazione dell'utente \\
-\textbf{Postcondizioni}: L'utente è autenticato nel \textit{workspace} Jira \\
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.55\textwidth]{uc0.png}
-    \caption{Diagramma del caso d'uso UC0}
-    \label{fig:UC0}
-\end{figure}
-\subsubsection{UC1: Creazione di un nuovo ticket}
+\subsubsection{UC0: Creazione di un nuovo ticket}
 \textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: L'utente amministratore è autenticato nel \textit{workspace} Jira\\
 \textbf{Descrizione}: L'utente amministratore crea un nuovo \textit{ticket} all'interno del progetto Jira \\
 \textbf{Postcondizioni}: Il \textit{ticket} è stato creato \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{uc1.png}
-    \caption{Diagramma del caso d'uso UC1}
-    \label{fig:UC1}
+    \includegraphics[width=0.55\textwidth]{uc0.png}
+    \caption{Diagramma del caso d'uso UC0}
+    \label{fig:UC0}
 \end{figure}
-\subsubsection{UC2: Richiesta proposta di risoluzione}
+\subsubsection{UC1: Richiesta proposta di risoluzione}
 \textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: L'utente amministratore ha creato un nuovo \textit{ticket} \\
 \textbf{Descrizione}: Viene richiesto al sistema di generare una proposta di risoluzione per il \textit{ticket} appena creato \\
 \textbf{Postcondizioni}: Il sistema inizia il processo di generazione della proposta di risoluzione \\
 
-\subsubsection{UC2.1: Generazione \gls{embedding-g} del ticket}
+\subsubsection{UC1.1: Generazione \gls{embedding-g} del ticket}
 \textbf{Attori principali}: \gls{llm} \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato creato ed è stata richiesta una proposta di risoluzione \\
 \textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} per effettuare la ricerca dei \textit{ticket} completati più simili \\
 \textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
 
-\subsubsection{UC2.2: Ricerca \textit{ticket} più simili}
+\subsubsection{UC1.2: Ricerca \textit{ticket} più simili}
 \textbf{Attori principali}: Sistema \\ 
 \textbf{Precondizioni}: È stato generato l'\gls{embedding-g} del \textit{ticket} creato\\
 \textbf{Descrizione}: Il sistema effettua una ricerca vettoriale all'interno del \textit{database} con l'utilizzo dell'\gls{embedding-g}, per trovare i \textit{ticket} completati più simili al \textit{ticket} creato \\
 \textbf{Postcondizioni}: I \textit{ticket} completati più simili vengono restuiti dal sistema \\
 
-\subsubsection{UC2.3: Generazione proposta di risoluzione}
+\subsubsection{UC1.3: Generazione proposta di risoluzione}
 \textbf{Attori principali}: \gls{llm} \\
 \textbf{Precondizioni}: Sono stati restituiti i \textit{ticket} completati più simili al \textit{ticket} creato \\
 \textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare una proposta di risoluzione per il \textit{ticket} creato usando come contesto i \textit{ticket} completati più simili \\
 \textbf{Postcondizioni}: La proposta di risoluzione è stata generata ed inserita all'interno del campo adibito, del \textit{ticket} creato \\
-
-\subsubsection{UC2.4: Mancanza di informazioni sufficienti}
-\textbf{Attori principali}: \gls{llm} \\
-\textbf{Precondizioni}: Non sono stati trovati \textit{ticket} completati simili al \textit{ticket} creato \\
-\textbf{Descrizione}: Viene generata una risposta standard per informare l'utente amministratore che non sono stati trovati \textit{ticket} completati simili \\
-\textbf{Postcondizioni}: Viene inserito un messaggio standard all'interno del campo adibito, del \textit{ticket} creato \\
-
+\textbf{Estensioni}: \textbf{UC1.3.1}: I \textit{ticket} completati non sono inerenti al \textit{ticket} creato e non è possibile generare una proposta di risoluzione \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{uc2.png}
-    \caption{Diagramma del caso d'uso UC2 e dei relativi sottocasi}
-    \label{fig:UC2}
+    \includegraphics[width=0.8\textwidth]{uc1.png}
+    \caption{Diagramma del caso d'uso UC1 e dei relativi sottocasi}
+    \label{fig:UC1}
 \end{figure}
 
-\subsubsection{UC3: Chiusura di un \textit{ticket}}
+\subsubsection{UC2: Chiusura di un \textit{ticket}}
 \textbf{Attori principali}: Utente amministratore \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato completato \\
 \textbf{Descrizione}: L'utente amministratore chiude il \textit{ticket} mettondolo in \textit{Done}\\ 
@@ -290,27 +251,27 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{uc3.png}
-    \caption{Diagramma del caso d'uso UC3}
-    \label{fig:UC3}
+    \includegraphics[width=0.55\textwidth]{uc2.png}
+    \caption{Diagramma del caso d'uso UC2}
+    \label{fig:UC2}
 \end{figure}
 
 
-\subsubsection{UC3.1: Generazione \gls{embedding-g} del \textit{ticket} completato}
+\subsubsection{UC2.1: Generazione \gls{embedding-g} del \textit{ticket} completato}
 \textbf{Attori principali}: \gls{llm} \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato chiuso \\
 \textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} completato per poterlo poi salvare nel \textit{database} MongoDB \\
 \textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
 
-\subsubsection{UC4: Salvataggio \textit{ticket} su \textit{database} MongoDB}
+\subsubsection{UC3: Salvataggio \textit{ticket} su \textit{database} MongoDB}
 \textbf{Attori principali}: Sistema \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato compleato e in stato \textit{Done} \\
 \textbf{Descrizione}: Il \textit{ticket} viene salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
 \textbf{Postcondizioni}: Il \textit{ticket} è stato salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{uc4.png}
-    \caption{Diagramma del caso d'uso UC4}
+    \includegraphics[width=0.78\textwidth]{uc3.png}
+    \caption{Diagramma del caso d'uso UC3}
     \label{fig:UC5}
 \end{figure}
 
@@ -323,7 +284,7 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 \textbf{Postcondizioni}: L'utente è autenticato nel \textit{chatbot} \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{uc0Chatbot.png}
+    \includegraphics[width=0.53\textwidth]{uc0Chatbot.png}
     \caption{Diagramma del caso d'uso UC0 - \textit{Chatbot}}
     \label{fig:UC0Chatbot}
 \end{figure}
@@ -335,7 +296,7 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 \textbf{Postcondizioni}: L'utente amministratore è autenticato per il \textit{database} MongoDB \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{uc1Chatbot.png}
+    \includegraphics[width=0.53\textwidth]{uc1Chatbot.png}
     \caption{Diagramma del caso d'uso UC1 - \textit{Chatbot}}
     \label{fig:UC1Chatbot}
 \end{figure}
@@ -380,7 +341,7 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{uc3Chatbot.png}
+    \includegraphics[width=0.86\textwidth]{uc3Chatbot.png}
     \caption{Diagramma del caso d'uso UC3 e dei relativi sottocasi - \textit{Chatbot}}
     \label{fig:UC3Chatbot}
 \end{figure}
@@ -404,7 +365,7 @@ dove:
     \item \textbf{Numero}: Numero intero positivo progressivo del requisito
 \end{itemize}
 
-\renewcommand{\arraystretch}{1.7}
+\renewcommand{\arraystretch}{1.4}
 \begin{longtable}{|p{1.5cm}|p{5.5cm}|p{2cm}|p{2.5cm}|} 
     \hline
     \rowcolor{tableheader}\textbf{Codice} & \textbf{Descrizione} & \textbf{Importanza} & \textbf{Fonte}\\
@@ -421,19 +382,19 @@ dove:
     \hline
     \endlastfoot
     \hline
-    R-FO-1 & Il sistema deve eseguire una richiesta di generazione di proposta di risoluzione quando un \textit{ticket} viene creato & Obbligatorio & UC2 (Jira) \\
+    R-FO-1 & Il sistema deve eseguire una richiesta di generazione di proposta di risoluzione quando un \textit{ticket} viene creato & Obbligatorio & UC1 (Jira) \\
     \hline
-    R-FO-2 & Il sistema deve poter interrogare un \gls{llm} per la creazione dell'\gls{embedding-g} del \textit{ticket} creato & Obbligatorio & UC2.1 (Jira) \\
+    R-FO-2 & Il sistema deve poter interrogare un \gls{llm} per la creazione dell'\gls{embedding-g} del \textit{ticket} creato & Obbligatorio & UC1.1 (Jira) \\
     \hline
-    R-FO-3 & Il sistema deve effettuare una ricerca dei ticket completati più simili al \textit{ticket} creato, nel \textit{database} & Obbligatorio & UC2.2 (Jira) \\
+    R-FO-3 & Il sistema deve effettuare una ricerca dei ticket completati più simili al \textit{ticket} creato, nel \textit{database} & Obbligatorio & UC1.2 (Jira) \\
     \hline
-    R-FO-4 & Il sistema deve poter interrogare un \gls{llm} per generare una proposta di risoluzione utilizzando come contesto i \textit{ticket} completati più simili. & Obbligatorio & UC2.3 (Jira) \\
+    R-FO-4 & Il sistema deve poter interrogare un \gls{llm} per generare una proposta di risoluzione utilizzando come contesto i \textit{ticket} completati più simili. & Obbligatorio & UC1.3 (Jira) \\
     \hline
-    R-FO-5 & Il sistema deve poter interrogare un \gls{llm} per generare una risposta standard in caso di mancanza di \textit{ticket} completati simili. & Obbligatorio & UC2.4 (Jira) \\
+    R-FO-5 & Il sistema deve poter interrogare un \gls{llm} per generare una risposta standard in caso di mancanza di \textit{ticket} completati simili. & Obbligatorio & UC1.4 (Jira) \\
     \hline
-    R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC3.1 (Jira) \\
+    R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC2.1 (Jira) \\
     \hline
-    R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC4 (Jira) \\
+    R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC3 (Jira) \\
     \hline
     R-FO-8 & Il sistema deve permettere l'autenticazione dell'utente nel \textit{chatbot}. & Obbligatorio & UC0 (Chatbot) \\
     \hline
@@ -475,7 +436,7 @@ Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di segui
     \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per ricercare i vettori più simili al vettore della \textit{query}. Tramite questa ricerca si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità combinata con il \gls{knn} utilizzata per la ricerca;
     \begin{figure}[H]
         \centering  
-        \includegraphics[width=0.95\textwidth]{indexMongoDB.png}
+        \includegraphics[width=0.8\textwidth]{indexMongoDB.png}
         \caption{Indice vettoriale creato su MongoDB}
         \label{fig:indexMongoDB}
     \end{figure}
@@ -570,17 +531,17 @@ La selezione del modello rappresenta una scelta cruciale per una proposta di ris
 Per la creazione del \textit{benchmark} ho creato una serie di \textit{ticket} fittizzi a cui ho associato delle proposte di risoluzione in base ai \textit{ticket} completati contenuti nel \textit{database}. In seguito, per ognuno di questi ticket veniva richiesta una proposta di risoluzione ai vari modelli da testare e le risposte venivano valutato da un ulteriore modello, di cui ho avuto modo di poterne testare l'accuratezza tramite la \textit{console} di \gls{aws} Bedrock.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{ticketBenchmarkExample.png}
+    \includegraphics[width=0.85\textwidth]{ticketBenchmarkExample.png}
     \caption{Esempio \textit{ticket} fittizzi creati per il \textit{benchmark}}
     \label{fig:Ticketbenchmark}
 \end{figure}
 \noindent
 Come mostro nell'immagine \ref{fig:Ticketbenchmark}, i \textit{ticket} creati possiedono tutti i dati che il sistema riceve quando un \textit{ticket} viene creato su Jira. Alcuni di questi dati sono lasciati con valori \textit{default} in quanto lo scopo era quello di valutare la qualità delle proposte di risoluzione dei vari modelli. 
 Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato il modello \textit{MistralLarge} di \gls{aws} Bedrock. Tramite l'utilizzo di questo modello ho potuto attribuire un punteggio di similarità tra la proposta di risoluzione generata dal modello e la proposta di risoluzione attesa in modo automatico. La scala di valutazione del punteggio di similarità varia tra 0 (risposte totalmente diverse) e 1 (risposte identiche). \\
-Di seguito mostro l'archittetura del \textit{benchmark}:
+In figura \ref{fig:benchmarkArchitecture} mostro l'architettura del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{architetturaBenchmark.png}
+    \includegraphics[width=0.9\textwidth]{architetturaBenchmark.png}
     \caption{Architettura del \textit{benchmark}}
     \label{fig:benchmarkArchitecture}
 \noindent
@@ -592,10 +553,10 @@ Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark}
     \item \textbf{Modello di punteggio}: modello che valuta la qualità delle proposte di risoluzione generate dai vari modelli interrogati. Restituisce un numero intero positivo compreso tra 0 (risposta totalmente diversa) e 1 (risposta identica).
 \end{itemize}
 \end{figure}
-Di seguito mostro il risultato del \textit{benchmark}:
+In figura \ref{fig:benchmarkResult} mostro il risultato del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{benchmark.png}
+    \includegraphics[width=0.9\textwidth]{benchmark.png}
     \caption{Risultato del \textit{benchmark}}
     \label{fig:benchmarkResult}
 \end{figure}
@@ -695,7 +656,7 @@ Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle s
 \end{figure}
 
 \noindent
-Di seguito mostro lo schema dell'architettura del sistema Jira:
+In figura \ref{fig:architetturaJira} mostro lo schema dell'architettura del sistema Jira:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{architettura.png}
@@ -716,9 +677,9 @@ Una componente chiave del \textit{backend} è l'utilizzo del \textit{framework} 
 \noindent
 Anche in questo caso ho adotatto il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. 
 \subsubsection{\textit{Frontend}}
-Allo stesso modo, il \textit{frontend} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\
+Allo stesso modo, il \textit{frontend} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\ \\
 \noindent
-Di seguito mostro lo schema dell'architettura del sistema \textit{Chatbot}:
+In figura \ref{fig:architetturaChatbot} mostro lo schema dell'architettura del sistema \textit{Chatbot}:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{chatbot_architettura.png}
@@ -732,25 +693,24 @@ Al fine di sviluppare un sistema con le funzionalità definite durante il proces
 \begin{itemize}
     \item \textbf{\textit{suggest}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene creato, attraverso i \textit{webhook} di Jira. La funzione \textit{suggest} si occupa di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili al \textit{ticket} appena creato e alla generazione di una proposte di risoluzione utilizzando l'\gls{llm} impostato. La proposta di risoluzione viene infine inserita all'interno di un campo personalizzato dedicato al \textit{ticket} creato in Jira.
     All'interno della funzione \textit{suggest} ho sviluppato delle funzioni \textit{services} che si occupano di effettuare la ricerca vettoriale, di interrogare l'\gls{llm} e di generare la proposta di risoluzione. Questo approccio permette di mantenere il codice pulito e organizzato, garantendo che ogni funzione abbia un compito specifico e ben definito.
-    \begin{lstlisting}[caption=Funzione \textit{lambda suggest}, label=lst:suggestLambda]
-async function handler (event : Event<TicketDataEventDto>) : Promise<undefined> {
-    if(!isDefined(event.body)) {
-        throw new HTTP400Error('Il body e' undefined');
-    }
-    const body : TicketDataEventDto = event.body;
-    const ticket : Ticket = await createTicket(body);
-          
-    if (isDefined(ticket) && ticket.status === 'Open') {
-        const embeddingService : EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
-          
-        await suggestSolution(ticket, ticket.key, embeddingService);
-    } else {
-        throw new Error('Errore nella pipeline di elaborazione del ticket');
-    }
-}
-
-export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);\end{lstlisting}
-    
+    \begin{minted}[linenos,numbersep=5pt,frame=lines,framesep=2mm]{typescript}
+        async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
+          if (!isDefined(event.body)) {
+            throw new HTTP400Error('Il body e\' undefined');
+          }
+          const body: TicketDataEventDto = event.body;
+          const ticket: Ticket = await createTicket(body);
+        
+          if (isDefined(ticket) && ticket.status === 'Open') {
+            const embeddingService: EmbeddingModel = createEmbeddingModels('AmazonTitanV2');
+            await suggestSolution(ticket, ticket.key, embeddingService);
+          } else {
+            throw new Error('Errore nella pipeline di elaborazione del ticket');
+          }
+        }
+        
+        export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
+    \end{minted}
 
     \item \textbf{\textit{save}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento viene scatenato quando un \textit{ticket} viene chiuso, sempre con l'ausilio dei \textit{webhook} di Jira. La funzione \textit{save} si occupa di salvare il \textit{ticket} chiuso e il suo relatativo \gls{embedding-g} all'interno del \textit{database}. Questo viene fatto per dare la possibilità di poter ricercare i \textit{ticket} completati più simili ai \textit{ticket} creati in futuro arrichendo cosi la conoscenza del \textit{database}. Anche in questo caso 
     ho sviluppato delle funzioni \textit{services} che si occupano di inserire il \textit{ticket} chiuso e il calcolo del relativo \gls{embedding-g} all'interno del \textit{database}.
@@ -830,8 +790,8 @@ Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come vien
 Successivamanete inserisco i risultati all'interno della \textit{st.session\_state} che rappresenta la sessione dell'utente. Infine viene generata la proposta di risoluzione con l'ausilio del \gls{llm} scelto dall'utente con i risultati della ricerca vettoriale e visualizzata all'utente.
 \end{itemize}
 
-\subsection{\textit{Best practices}}
-Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utilizzati in ambito aziendali e ho potuto apprendere alcune \textit{best practices} che ho applicato durante l'attività di codifica per lavorare allo stato dell'arte. Di seguito elenco alcune delle \textit{best practices} che ho applicato:
+\subsection{\textit{Best practice}}
+Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utilizzati in ambito aziendali e ho potuto apprendere alcune \textit{best practice} che ho applicato durante l'attività di codifica per lavorare allo stato dell'arte. Di seguito elenco alcune delle \textit{best practices} che ho applicato:
 \begin{itemize}
     \item \textbf{\textit{Editor} di codice}: all'inzio dell'attività di codifica mi è stato richiesto di utilizzare la configurazione aziendale del \textit{plugin} ESLint. Come ho descritto in \ref{sec:tecnologie}, ESLint è uno strumento di analisi statica del codice che permette di identificare e segnalare gli errori di sintassi e di stile presenti nel codice.  Questo strumento mi ha permesso di scrivere codice uniforme e pulito, seguendo lo \textit{standard} aziendale. Inoltre, ha permesso di ridurre il numero di errori di sintassi e di stile presenti nel codice, velocizzando le \textit{code review} necessarie per l'avanzamento del progetto.
     \item \textbf{\textit{Code reviews}}: l'intera attività di codifica è stata sottoposta a \textit{code reviews} da parte del mio \textit{tutor} aziendale e da un altro membro dell'azienda. Anche in questo caso mi sono attenuto al processo già ben consolidato in azienda. Per ogni funzionalità sviluppata, ho creato una \textit{feature branch} all'interno di un \textit{repository} Git dedicato. Il \textit{feature branch} veniva denominato con la seguente notazione:
@@ -845,12 +805,12 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
 
 \section{Verifica e validazione}
 \subsection{Sistema Jira}
-\subsubsection{Test tramite eventi}
+\subsubsection{\textit{Test} tramite eventi}
 Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{eventTest.png}
-    \caption{Esempio di evento di test}
+    \caption{Esempio di evento di \textit{test}}
     \label{fig:testLambda}
 \end{figure}
 \noindent
@@ -928,7 +888,7 @@ Una volta che l'utente si sarà autenticato, dovrà inserire le credenziali di a
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{afterSignIn.png}
-    \caption{Schermata di login del \textit{chatbot}}
+    \caption{Schermata di \textit{login} del \textit{chatbot}}
     \label{fig:afterSignIn}
 \end{figure}
 \noindent
