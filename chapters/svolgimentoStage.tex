@@ -104,8 +104,8 @@ Qui di seguito presento nell'immagine \ref{fig:gantt} che rappresenta la pianifi
 \end{figure}
 
 \subsection{Revisioni di progetto} \label{sec:revisioni}
-L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e più utile ai fini formativi dello \textit{stage}.
-Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto avevo svolto durante la settimana e pianificare le attività per la settimana successiva.
+L'attività di revisione del progetto ritengo essere stata di fondamentale importanza e utile ai fini formativi dello \textit{stage}.
+Nel corso del tirocinio ho avuto modo di sperimentare due tipologie di revisione: il \textit{daily}, un incontro giornaliero con il \textit{tutor} aziendale, e lo \textit{sprint review}, un incontro settimanale con il \textit{tutor} aziendale per valutare quanto e cosa avevo svolto durante la settimana e per pianificare le attività per la settimana successiva.
 L'occorrenza del \textit{daily} è stata purtroppo però limitata a causa di numerosi impegni che il \textit{tutor} aziendale aveva durante la giornata. Sono stati comunque utili, soprattutto all'inizio dello \textit{stage}, per chiarire dubbi su come procedere con le attività e per ricevere feedback immediato su quanto svolto.
 Lo \textit{sprint review} invece è stato quello presente con regolarità durante tutto il periodo di \textit{stage}, che mi ha permesso di ricevere un feedback più dettagliato su quanto avevo svolto durante la settimana. Questi incontri periodici mi hanno permesso di correggere eventuali errori e di migliorare la qualità del lavoro svolto.
 
@@ -116,12 +116,13 @@ Nelle giornate in cui non era possibile riferirmi direttamente al \textit{tutor}
 
 \section{Analisi dei rischi}
 I primi giorni di stage sono stati dedicati all'individuazione dei potenziali rischi che avrei potuto incontrare durante lo svolgimento dello \textit{stage}.
-Si farà riferimento ai rischi individuati (R) seguendo la seguente notazione: 
+Si farà riferimento ai rischi individuati seguendo la seguente notazione: 
 \begin{center}
     \textbf{R-[Tipologia]-[Probabilità][Impatto]-[Indice]}
 \end{center}
 dove:
 \begin{itemize}
+    \item \textbf{R}: abbreviazione di Rischio
     \item \textbf{Tipologia}: \\ Natura del rischio: \begin{itemize}
         \item \textbf{T}: Tecnologico
         \item \textbf{O}: Organizzativo
@@ -204,7 +205,7 @@ La convezione che ho utilizzato per la stesura dei casi d'uso è stata la seguen
     \item \textbf{Numero}: numero progressivo del caso d'uso. I sottocasi vengono rappresentati nella forma [Numero].[SottoNumero];
 \end{itemize}
 a cui ho associato una descrizione, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
-Per riassumere i casi d'uso, sono presenti dei diagrammi UML per una rappresentazione grafica degli scenari. Verrano presentati i diagrammi dei casi d'uso principali e non banali dei progetti.
+Per riassumere i casi d'uso, sono presenti dei diagrammi \gls{umlg} per una rappresentazione grafica degli scenari. Verrano presentati i diagrammi dei casi d'uso principali e non banali dei progetti.
 \subsubsection{Attori}
 Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso. Ha accesso unicamente alla pagina di \textit{login}; 
 Gli attori che ho individuato si suddividono in 2 categorie:
@@ -458,7 +459,7 @@ dove:
 
     
     \hline
-    \caption{Pianificazione del progetto di \textit{stage}}
+    \caption{Tracciamento dei requisiti}
     \label{tab:tracciamentoRequisiti}
 \end{longtable}
 
@@ -471,7 +472,7 @@ Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di segui
 \begin{itemize}
     \item \textbf{Reperimento di dati di addestramento}: per prima cosa è necessario reperire dei dati da fonti esterne o produrli autonomamente in modo da arrichire la conoscenza del modello. Nel progetto di \textit{stage} i dati sono stati prodotti autonomamente, risultato delle attività svolte durante la 2° settimana come mostrato nella tabella \ref{tab:prevAttività};
     \item \textbf{Salvataggio dei dati in un \textit{database} vettoriale}: i dati prodotti vengono salvati all'interno di un \textit{database} vettoriale con il loro \gls{embedding-g} associato. Questo processo facilita il recupero delle informazioni rilevanti per la generazione di testo. Nel progetti di \textit{stage} i dati sono stati salvati all'interno di un \textit{database} MongoDB;
-    \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per trovare i vettori più simili al vettore della \textit{query}. Così facendo si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità utilizzata per la ricerca;
+    \item \textbf{Recupero delle informazioni pertinenti}: quando l'utente crea una \textit{query}, il sistema utilizza il \textit{database} vettoriale per recuperare le informazioni e i dati più pertinenti alla richiesta dell'utente. La ricerca coinvolge l'uso di tecniche di \gls{knn} per ricercare i vettori più simili al vettore della \textit{query}. Tramite questa ricerca si ottengono i dati più pertinenti alla richiesta dell'utente. Nel progetto di \textit{stage} il \textit{database} MongoDB permetteva la creazione di un indice vettoriale adibito alla ricerca vettoriale. Nella creazione dell'indice si poteva specificare il numero di dimensione del vettore, e la funzione di similarità combinata con il \gls{knn} utilizzata per la ricerca;
     \begin{figure}[H]
         \centering  
         \includegraphics[width=0.95\textwidth]{indexMongoDB.png}
@@ -483,8 +484,8 @@ Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di segui
 
 \subsubsection{\textit{Prompt engineering}}
 Come aspetto cruciale per la generazione di proposte di risoluzione di qualità, ho dovuto creare un \textit{prompt} che permettesse al modello di generare proposte di risoluzioni corrette utilizzando il contesto fornito. Inizialmente per testare la qualità del \textit{prompt} creato, ho utilizzato il modello \textit{MistralLarge} di \gls{aws} Bedrock tramite la \textit{console}. La scelta è ricaduta su questo modello in quanto si è dimostrato il più performante tra quelli offerti.
-La creazione del \textit{prompt} è stata effettauta ispirandosi alle pratiche del \gls{promptenginnering-g}, ovvero un processo di progettazione e ottimizzazione di \textit{prompt}. L'approccio che ho utilizzato è stato fondamentale un \textit{trial and error} ed è consistito nel testare gli svariati \textit{prompt} creati con il modello \textit{MistralLarge} per valutare la qualità delle proposte di risoluzione generate.
-Di seguito mostro il prompt finale creato:
+La creazione del \textit{prompt} è stata effettuata ispirandosi alle pratiche del \gls{promptenginnering-g}, ovvero un processo di progettazione e ottimizzazione di \textit{prompt}. L'approccio che ho utilizzato è stato fondamentale un \textit{trial and error} ed è consistito nel testare gli svariati \textit{prompt} creati con il modello \textit{MistralLarge} per valutare la qualità delle proposte di risoluzione generate.
+Di seguito mostro il prompt finale creato per il sistema di proposte di risoluzione Jira:
 \begin{Verbatim}[frame=single, fontsize=\small]
     Ti fornisco le seguenti informazioni estratte dai documenti:
     ${JSON.stringify(results)}.
@@ -513,6 +514,56 @@ Di seguito mostro il prompt finale creato:
         chiaramente SENZA aggiungere ulteriori informazioni o speculazioni.
     
     Attieniti RIGOROSAMENTE a queste istruzioni senza deviazioni.
+\end{Verbatim}
+\noindent
+Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho seguito lo stesso approccio, ma con delle modifiche per adattarlo al contesto del \textit{chatbot}. Di seguito mostro il prompt finale creato per il \textit{chatbot}:
+\begin{Verbatim}[frame=single, fontsize=\small]
+    Sei un assistente specializzato che fornisce informazioni e soluzioni 
+    basandosi esclusivamente sul database e sui documenti di supporto 
+    disponibili.  Il tuo compito è analizzare le domande degli 
+    utenti e rispondere in modo appropriato seguendo 
+    queste linee guida:
+
+    1. Formato della domanda:
+    - Verifica che la domanda dell'utente sia nel formato corretto: 
+    [Domanda, codice della componente]
+    - Se manca il codice alfanumerico della componente, rispondi solo che
+     non puoi procedere senza queste informazioni e richiedi i dettagli 
+     nel formato corretto
+    - Non fornire soluzioni o informazioni dai documenti se il formato 
+    non è corretto
+
+    2. Analisi dei documenti:
+    - Se il formato è corretto, cerca nei documenti componenti uguali o 
+    simili,
+     anche se non trattano esattamente lo stesso problema
+    - Verifica attentamente la pertinenza delle informazioni trovate
+
+    3. Formulazione della risposta:
+    - Basa la tua risposta rigorosamente sulle informazioni presenti nei 
+    documenti, senza aggiungere interpretazioni o ragionamenti personali
+    - La risposta deve essere in italiano, esaustiva e descrittiva
+    - Inizia sempre con "In base ai precedenti ticket:"
+    - Se pertinente, includi:
+        • Riassunto della descrizione del ticket
+        • Codice della componente
+        • Soluzione proposta
+        • Chiave del ticket
+    - Non utilizzare formattazione, bullet points o elenchi
+    - Termina la risposta dopo aver suggerito una soluzione o dichiarato 
+    l'impossibilità di rispondere
+    - Non aggiungere spiegazioni o ragionamenti ulteriori
+    - Evita spazi o caratteri speciali alla fine della risposta
+
+    4. In caso di mancanza di informazioni:
+    - Se non trovi informazioni pertinenti o componenti simili, dichiara 
+    chiaramente che non puoi fornire una risposta alla domanda
+
+    Context: {context}
+    User question: {input_text}
+    Ricorda: analizza attentamente il formato della domanda prima di 
+    procedere con la ricerca nei documenti e la formulazione della 
+    risposta.
 \end{Verbatim}
 \subsubsection{Selezione del modello LLM}
 La selezione del modello rappresenta una scelta cruciale per una proposta di risoluzione coerente e di qualità. Come ho mostrato nella tabella \ref{tab:prevAttività} ho creato un \textit{benchmark} per selezionare quale tra i modelli più performanti offerti da \gls{aws} Bedrock fosse il migliore per il contesto dei due progetti.
@@ -560,14 +611,14 @@ Come si può notare dall'immagine \ref{fig:benchmarkResult}, il modello \textit{
 Come modello per la generazione di \gls{embedding-g} invece la scelta è ricaduta su \textit{Titan Text Embeddings V2} in quanto rispetto alle alternative offerte da \gls{aws} Bedrock, permetteva di generare \gls{embedding-g} con una dimensione minore ma con una qualità superiore rispetto agli altri modelli.
 
 \subsection{Architettura del sistema \textit{Jira}}
-La progettazione delle componenti del sistema Jira si è basata su un'architettura \textit{event-driven}, tipica del \textit{framework Serverless} . Questo tipo di architettura permette di creare applicazioni scalabili e flessibili, in quanto le funzioni \textit{lambda} create vengono eseguite solo quando gli eventi vengono scatenati. 
+La progettazione delle componenti del sistema Jira si è basata su un'architettura \textit{event-driven}, tipica del \textit{framework Serverless}. Questo tipo di architettura permette di creare applicazioni scalabili e flessibili, in quanto le funzioni \textit{lambda} create vengono eseguite solo quando gli eventi vengono scatenati. 
 Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{template} di progetto \textit{Serverless} che ho utilizzato come base per la creazione del sistema Jira. Di seguito elenco le componenti principali del \textit{template} di progetto.
 
 \subsubsection{\textit{Handlers}}
 Gli \textit{handlers} sono le funzioni \textit{lambda} che vengono eseguite quando un evento viene scatenato. Esse rappresentano il fulcro del sistema Jira in quanto gestiscono la richiesta di proposte di risoluzione per i nuovi \textit{ticket} e il salvataggio automatico dei \textit{ticket} chiusi in Jira nel \textit{database}. 
-Gli \textit{handlers} vengono configurati all'interno del file \textit{serverless.ts} e vengono associati ad un evento specifico. Di seguito mostro un il file di configurazione delle due funzioni \textit{lambda} del sistema Jira
+Gli \textit{handlers} vengono configurati all'interno del file \textit{index.ts} e vengono associati ad un evento specifico. Di seguito mostro un il file di configurazione delle due funzioni \textit{lambda} del sistema Jira
 
-\begin{lstlisting}[caption=Configurazione delle funzioni \textit{lambda} del sistema Jira, label=lst:handlersJira]
+\begin{lstlisting}[caption=Configurazione delle funzioni \textit{lambda} del sistema Jira in \textit{index.ts}, label=lst:handlersJira]
     export const tickets: AWS['functions'] = {
       save: {
         handler: `${handlerPath(__dirname)}/handlers/save.main`,
@@ -605,8 +656,7 @@ Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti le con
 Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
 
 \subsubsection{\textit{Services}}
-La componente \textit{services} rappresenta la logica di business. Sono una serie di funzioni di supporto che vengono utilizzate dalle funzioni \textit{lambda} per eseguire operazioni specifiche. Queste funzioni vengono utilizzate per eseguire operazione ad esempio di connessione al \textit{database} o per l'interfacciamento con altri servizi quali ad esempio \gls{aws} Bedrock. Includono funzioni di \textit{parsing} per la gestione delle risposte. 
-Questo approccio è vantaggioso in quanto:
+La componente \textit{services} rappresenta la logica di business. Sono una serie di funzioni di supporto che vengono utilizzate dalle funzioni \textit{lambda} per eseguire operazioni specifiche. Queste funzioni vengono utilizzate per eseguire operazione ad esempio di connessione al \textit{database} o per l'interfacciamento con altri servizi quali ad esempio \gls{aws} Bedrock. Includono funzioni di \textit{parsing} per la gestione delle risposte. Questo approccio è vantaggioso in quanto:
 \begin{itemize}
     \item \textbf{Modularità}: facilità la manutenzione e la gestione del codice. Ogni funzione ha un compito specifico e ben definito;
     \item \textbf{Riusabilità}: le funzioni di supporto possono essere riutilizzate in altre funzioni \textit{lambda} che si vuole creare;
@@ -617,7 +667,7 @@ Per migliorare ulteriormente la struttura e la manutenibilità del codice, ho ad
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{dto.png}
+    \includegraphics[width=0.75\textwidth]{dto.png}
     \caption{Esempio di utilizzo del \textit{design pattern} DTO}
     \small Fonte: \href{https://www.baeldung.com/java-dto-pattern} {www.baeldung.com}
     \label{fig:dto}
@@ -626,11 +676,19 @@ Per migliorare ulteriormente la struttura e la manutenibilità del codice, ho ad
 Un altro \textit{desig pattern} che ho utilizzato è il \textit{Mapper pattern}, che è strettamente collegato al \gls{dtog} \textit{pattern}.  Come mostro nell'immagine \ref{fig:dto}, il \textit{mapper} consiste in uno o più metodi per facilitare la trasformazione dei \gls{dtog} in oggetti utilizzati dalla logica di \textit{business}, mappando i diversi campi da un tipo all’altro. All'interno del sistema Jira, il \textit{mapper} è stato utilizzato per trasformare i dati ricevuti dalle \gls{apig} di Jira in oggetti \textit{ticket} che vengono utilizzati dalle funzioni \textit{lambda} per eseguire le operazioni di salvataggio e di richiesta di proposta di risoluzione.
 Questo \textit{design pattern} contribuisce a mantere il codice organizzato, garantendo che i dati siano nel formato corretto. Ho adottato il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. Questo \textit{design pattern} permette di creare astrarre la logica di creazione degli oggetti, permettendo l'aggiunta di nuovi modelli senza necessità di modificare il codice esistente. La flessibilità e le scalabilità
 offerte da questo \textit{design pattern} sono state fondamentali per garantire che il sistema possa evolvere nel tempo, permettendo l'integrazione di nuovi modelli che verranno resi disponibili in futuro. 
-Infine, ho adotatto il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt} e di risposta dei vari \gls{llm-g} offerti da \gls{aws} Bedrock. Definisco una strategia di generazione \textit{prompt} ad ogni modello in quanto ognuno di essi possiede delle \textit{keywords} e una formattazione del testo specifico. Il \textit{prompt} mostrato nella sezione \ref{sec:rag} è la base per ognuno dei modelli. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{factoryPattern.png}
+    \caption{Illustrazione del \textit{design pattern} Factory Method}
+    \small Fonte: \href{https://medium.com/@contactkumaramit9139/factory-design-pattern-in-java-baee365fc1ce} {www.medium.com}
+    \label{fig:factory}
+\end{figure}
+\noindent
+Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt} e di risposta dei vari \gls{llm-g} offerti da \gls{aws} Bedrock. Definisco una strategia di generazione \textit{prompt} ad ogni modello in quanto ognuno di essi possiede delle \textit{keywords} e una formattazione del testo specifico. Il \textit{prompt} mostrato nella sezione \ref{sec:rag} è la base per ognuno dei modelli. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{strategy.png}
+    \includegraphics[width=0.75\textwidth]{strategy.png}
     \caption{Illustrazione del \textit{design pattern} Strategy}
     \small Fonte: \href{https://medium.com/litslink/design-patterns-strategy-in-examples-eae7bf10a817} {www.medium.com}
     \label{fig:strategy}
@@ -655,21 +713,8 @@ Una componente chiave del \textit{backend} è l'utilizzo del \textit{framework} 
     \item \textbf{Gestione degli \gls{embedding-g}}: tramite LangChain viene facilitato l'uso di diversi modelli \gls{embedding-g} messi a disposizione da \gls{aws}. 
     \item \textbf{Orchestrazione dei modelli}: come da requisito da soddisfare presentato nella tabella \ref{tab:tracciamentoRequisiti}, il \textit{chatbot} deve poter dare la possibilità all'utente di selezionare l' \gls{llm} con cui interrogare il \textit{chatbot}. LangChain permette di integrare ed orchestrare i diversi modelli consentendo una flessibilità nella scelta e nell'utilizzo dei modelli scelti dall'utente.
 \end{itemize} 
-
-\begin{lstlisting}[caption=Configurazione con LangChain di un servizio di \gls{embedding-g} offerto da \gls{aws}, label=lst:backendChatbot, language=Python]
-from langchain_community.embeddings.bedrock import BedrockEmbeddings
-
-embeddings = BedrockEmbeddings(
-    credentials_profile_name=st.secrets["credentials_profile_name"],
-    model_id="amazon.titan-embed-text-v2:0",
-    model_kwargs= {
-        "dimensions": 1024,
-        "normalize" : True
-    },
-    region_name="us-east-1",
-)
-\end{lstlisting}
-
+\noindent
+Anche in questo caso ho adotatto il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. 
 \subsubsection{\textit{Frontend}}
 Allo stesso modo, il \textit{frontend} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\
 \noindent
@@ -794,6 +839,7 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
         \textbf{\emph{feature/nome\_funzionalità}}
     \end{center}
     in modo da rendere chiaro il contenuto del \textit{branch}. Una volta che completavo lo sviluppo della funzionalità, aprivo una \textit{pull request} per la \textit{code review}. Questo processo mi ha permesso di ricevere \textit{feedback} costante sul codice che stavo sviluppando, permettondomi di correggere eventuali errori e di migliorare la qualità del codice. Infine, mi ha permesso di approfondire in modo più dettagliato l'utilizzo di Github come strumento di versionamento del codice e di osservare come si sviluppa codice seguendo dei processi consolidati e ben definiti.
+    \item \textbf{\textit{Interfaces}}: Typescrit richiede la dichiarazione esplicita dei tipi delle variabili e degli oggetti utilizzati all'interno del codice. Per questo motivo, ho definito delle \textit{interfaces} per definire i tipi di tutti gli oggetti utilizzati a cui non potevano essere assegnati i tipi primitivi. A differenza delle classi, le \textit{interfaces} non vengono instanziate, ma presentano solo i tipi degli attributi e la firma dei metodi che un oggetto avrà una volta implementato. Questo mi ha permesso di definire in modo chiaro e preciso i tipi degli oggetti utilizzati all'interno del codice, in modo da non incorrere in errori di tipo durante l'esecuzione del codice.
     \item \textbf{Documentazione}: durante tutta l'attività di codifica ho documentato il codice sviluppato attraverso l'utilizzo di commenti. Durante l'ultima settimana di \textit{stage} ho redatto una documentazione tecnica dettagliata contenente le scelte progettuali fatte per entrambi i progetti con le funzionalità implementate e un manuale utente per il corretto utilizzo del sistema Jira e del \textit{chatbot}. 
 \end{itemize}
 
@@ -821,4 +867,114 @@ Con i \textit{test} di integrazione si conclude il processo di verifica e valida
 Per quanto riguarda il \textit{chatbot}, ho svolto solamente i \textit{test} di integrazione. Questi \textit{test} li ho svolti manualmente per verificare che il \textit{chatbot} funzionasse correttamente e che le varie componenti interagissero nel modo corretto.
 Essendo nata l'idea di sviluppare il \textit{chatbot} durante il mio periodo di \textit{stage}, non è stato possibile dedicare molto tempo alla creazione di \textit{test}, in quanto il suo scopo principale era quello di dimostrare la fattibilità e l'utilità di un \textit{chatbot} per l'interrogazione dei \textit{ticket} di Jira.
 \section{Risultato finale}
-Descrizione del risultato finale ottenuto, ad alto livello.
+\subsection{Il prodotto realizzato}
+I prodotti che ho realizzato durante il mio periodo di \textit{stage} soddisfano quanto atteso dall'azienda, risultando funzionanti e rispettando i requisiti richiesti. 
+\subsection*{Sistema Jira}
+Quando l'utente si sarà autenticato nel \textit{workspace} Jira, potrà creare un \textit{ticket} e il sistema da me sviluppato si occuperà di generare una proposta di risoluzione per il \textit{ticket} creato
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{create_Issue.png}
+    \caption{Creazione di un nuovo \textit{ticket} su Jira} 
+    \label{fig:creazioneTicket}
+\end{figure}
+\noindent
+Come mostro nell'immagine \ref{fig:creazioneTicket}, l'utente premendo il pulsante \textit{Create}, creerà un nuovo \textit{ticket} su Jira con i relativi campi compilati. Una volta creato il \textit{ticket}, il sistema Jira comincerà a generare una proposta di risoluzione per il \textit{ticket} creato.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{generatingResponse.png}
+    \caption{Messaggio che indica che il sistma sta generando la proposta di risoluzione} 
+    \label{fig:generatingResponse}
+\end{figure}
+\noindent
+Nell'immagine \ref{fig:generatingResponse} mostro il messaggio che indica che il sistema sta generando la proposta di risoluzione per il \textit{ticket} creato. Una volta che la proposta di risoluzione è stata generata, sovrascriverà il messaggio di generazione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{responseGenerated.png}
+    \caption{Proposta di risoluzione generata dal sistema ed inserita nel \textit{ticket} Jira}
+    \label{fig:responseGenerated}
+\end{figure}
+\noindent
+La proposta di risoluzione che mostro nell'immagine \ref{fig:responseGenerated}, che viene generata è inerente al \textit{ticket} creato e ai \textit{ticket} completati più simili. Nella proposta di risoluzione vengono inseriti anche i \textit{link} ai \textit{ticket} completati più simili, in modo da poterli consultare per avere ulteriori informazioni sulla risoluzione del problema.
+Nel caso in cui l'utente crei un \textit{ticket} e le informazioni contenute non siano inerenti al problema, la proposta di risoluzione generata dal sistema Jira dichiarerà che non è possibile generare una proposta di risoluzione in quanto non sono presenti informazioni sufficienti.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{noResponse.png}
+    \caption{Messaggio che indica che non è possibile generare una proposta di risoluzione}
+    \label{fig:noResponse}
+\end{figure}
+\noindent
+Nell'immagine \ref{fig:noResponse} mostro il messaggio che indica che non è possibile generare una proposta di risoluzione per il \textit{ticket} aperto. Questo viene mostrato in quanto il \textit{database} non contiene \textit{ticket} completati simili a quello aperto e pertanto non è possibile generare una proposta di risoluzione.\\
+Mettendo il \textit{ticket} in stato \textit{Done}, il sistema Jira chiederà di inserire una risoluzione per il \textit{ticket} chiuso. Una volta inserita la risoluzione, il sistema Jira si occuperà di salvare il \textit{ticket} chiuso e il suo relativo \gls{embedding-g} all'interno del \textit{database} vettoriale. Questo viene fatto per arricchire la conoscenza del \textit{database} e permettere di poter ricercare i \textit{ticket} completati più simili ai \textit{ticket} creati in futuro.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{closed.png}
+    \caption{Schermata raffigurante il \textit{ticket} chiuso in MongoDB}
+    \label{fig:closeIssue}
+\end{figure}
+
+
+
+\subsection*{\textit{Chatbot}}
+Per poter interagire con il \textit{chatbot} che ho sviluppato durante il mio periodo di \textit{stage}, l'utente dovrà accedere tramite credenziali al \textit{chatbot} stesso. 
+Come descritto nei requisiti di vincolo descritti nella tabella \ref{tab:tracciamentoRequisiti}, l'autenticazione avviene tramite \gls{aws} Cognito. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{beforeSignIn.png}
+    \caption{Schermata di login del \textit{chatbot}}
+    \label{fig:loginChatbot}
+\end{figure}
+\noindent
+Una volta che l'utente si sarà autenticato, dovrà inserire le credenziali di accesso al \textit{database} vettoriale MongoDB. Questo passaggio è necessario per poter effettuare la ricerca vettoriale dei \textit{ticket} completati più simili a quello inserito dall'utente.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{afterSignIn.png}
+    \caption{Schermata di login del \textit{chatbot}}
+    \label{fig:afterSignIn}
+\end{figure}
+\noindent
+Inserite dall'utente le credenziali necessarie, il \textit{chatbot} è pronto per essere utilizzato. L'utente potrà inserire il testo del \textit{ticket} di cui vuole avere una proposta di risoluzione e selezionare l'\gls{llm} con cui interrogare il \textit{chatbot}. L'utente dovrà inserire oltre alla problematica del \textit{ticket}, anche la sua relativa componente. Questo è necessario per poter effettuare una ricerca vettoriale più precisa e ottenere una proposta di risoluzione di qualità.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{afterMongoCredentials.png}
+    \caption{Intefaccia del \textit{chatbot} }
+    \label{fig:chatbot}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{chatExample.png}
+    \caption{Proposta di risoluzione generata dal \textit{chatbot}}
+    \label{fig:chatbotResponse}
+\end{figure}
+
+\subsection{Copertura dei requisiti}
+Il sistema di proposte di risoluzione Jira e il \textit{chatbot} coprono l'interezza dei requisiti descritti nella tabella \ref{tab:tracciamentoRequisiti}, garantendo che i prodotti sviluppati rispettassero le specifiche definite durante l' analisi e che soddisfasse le aspettative dell'azienda. Non avendo svolto dei \textit{test} codificati ma solo dei \textit{test} effettuati manualmente, non ho un valore di \textit{code coverage} che mi permetta di quantificare il numero di righe di codice coperte dai \textit{test}. La decisione di non svolgere dei \textit{test} codificati è stata dettata dalla necessità di concentrarmi sullo sviluppo dei progetti e di dimostrare la fattibilità e l'utilità dei prodotti sviluppati al termine delle otto settimane di \textit{stage}.
+
+\subsection{Materiali prodotti}
+Il mio periodo di \textit{stage} ha visto la produzione di diversi materiali al fine di documentare il lavoro svolto e le scelte progettuali fatte.
+Di seguito la tabella riporta una valutazione quantitativa dell'esperienza di \textit{stage}, in base ai diversi aspetti considerati:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Documentale}} \\
+        \hline
+        Documenti & 2 \\
+        \hline
+        \textit{Sprint review} svolte & 8 \\
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Tecnico}} \\
+        \hline
+        \textit{Handlers} implementati & 2 \\
+        \hline
+        \textit{Services} implementati & 9 \\
+        \hline
+        Interfacce & 14 \\
+        \hline
+        Classi implementate & 3 \\
+        \hline
+    \end{tabular}
+    \caption{Materiali prodotti durante il periodo di \textit{stage}}
+    \label{tab:quantitaMateriali}
+\end{table}
+
