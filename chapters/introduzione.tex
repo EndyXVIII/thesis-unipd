@@ -6,15 +6,15 @@
 %----------------------------------------------------------------------------------------
 \chapter{Contesto lavorativo}
 \label{cap:introduzione}
-\section{Profilo aziendale}
+\section{Profilo aziendale} \label{sec:azienda}
 Zero12 s.r.l. è una \textit{startup} italiana fondata nel 2012, con attualmente due sedi operative: una a Padova (dove ho svolto lo \textit{stage}) e una ad Empoli. 
 L'azienda è \textit{partner} \gls{awsg}, una piattaforma di servizi \textit{cloud} offerta da Amazon, ed è specializzata nello sviluppo di soluzioni \textit{cloud native}, offrendo ai propri clienti, proveniente da ambiti diversificati, soluzioni flessibili e scalibili. 
-Un' esempio concreto dell'operato di Zero12 è lo sviluppo di applicazioni \textit{web} e \textit{mobile} per la gestione di dati e servizi a clienti operanti nel settore della moda. Ha inoltre sviluppato applicazioni interamente basate sui servizi offerti da \gls{aws}, a clienti operanti nello stesso settore dell'azienda.
 Ogni progetto viene svolto in tutte le sue parti dal \textit{team} di Zero12, dalla progettazione fino al suo sviluppo.
 L’azienda è parte di Var Group S.p.A., l'operatore \textit{leader} nel settore dei servizi e delle soluzioni digitali. Supporta le imprese nel loro percorso di trasformazione digitale, offrendo ai propri \textit{partner} servizi e competenze per lo sviluppo di soluzioni innovative.
 \section{Organizzazione aziendale}
 Durante il mio periodo di \textit{stage} ho avuto modo osservare in prima persona l'organizzazione in \textit{team} di lavoro che l'azienda adotta.\\
 Ho rappresentato di seguito nella tabella \ref{tab:ruoli} i ruoli ho potuto osservare.
+\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{3.5cm}|p{8.7cm}|}
     \hline
     \rowcolor{tableheader}\textbf{Ruolo} & \textbf{Descrizione} \\
@@ -49,6 +49,18 @@ Ho rappresentato di seguito nella tabella \ref{tab:ruoli} i ruoli ho potuto osse
 
 \noindent
 Ad ogni nuovo progetto viene assegnato un \textit{team} di lavoro composto da un \textit{project manager}, un numero variabile di \textit{software developers} o \textit{mobile developers}, a seconda delle esigenze del progetto, e un \textit{AWS specialist} se il progetto prevede l'utilizzo di servizi \gls{aws}. 
+
+\section{Servizi e prodotti}
+Zero12 offre vari servizi e prodotti che vengono richiesti dai propri clienti, provenienti da diversi ambiti.
+Di seguito mostro una panoramica di tali servizi e prodotti offerti:
+\begin{itemize}
+    \item \textbf{\textit{\gls{aws} professional services}}: sin dalla sua nascita nel 2012, l'azienda propone e sviluppa soluzioni che sfruttano il \textit{cloud} e i servizi \gls{aws}. Per questo motivo, l'azienda mette a disposizione le competenze dei suoi specialisti
+    per supportare i clienti nella migrazione verso il \textit{cloud} e nell'adozione dei servizi \gls{aws}.
+    \item \textbf{Sviluppo di \textit{software custom}}: questo è un altro servizio offerto da Zero12. L'azienda si occupa della progettazione e dello sviluppo di \textit{software custom} (applicazioni \textit{web} e \textit{mobile}), adattandosi alle richieste ed alle esigenze del cliente. Il mio \textit{stage} ha seguito questa tipologia di progetto in cui l'azienda stessa era il cliente.
+    \item \textbf{Machine learning}: le soluzioni di \textit{machine learning} che Zero12 offre consistono nella creazione di modelli per l'analisi di linguaggio naturale, analisi di immagini e video, creati su misura secondo le esigenze del cliente.
+    \item \textbf{\textit{Innovation advisory}}: servizio offerto progettato per trasformare le idee dei propri clienti in servizi digitali innovativi, sfruttando al massimo le potenzialità delle tecnologie \textit{cloud}. Questo servizio consente di sviluppare 
+    soluzioni innovative e scalabili, adattabili alle esigenze del cliente.
+\end{itemize}
 \section{Processi aziendali}
 \subsection{Metodologia di sviluppo}
 Durante il mio periodo di \textit{stage} ho avuto modo di sperimentare in prima persona i processi istanziati dall'azienda per la realizzazione di un progetto.
@@ -58,7 +70,7 @@ Nel contesto del mio \textit{stage}, la durata degli \textit{sprint} era di una 
 Il ruolo che ho ricoperto all'interno del \textit{team} era quello di \textit{software developer}, mentre il mio \textit{tutor} ricopriva il ruolo di \textit{project manager}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.62\textwidth]{scrum.png}
+    \includegraphics[width=0.8\textwidth]{scrum.png}
     \caption{Schema di flusso di un progetto con metodologia \textit{Scrum}}
     \small \textbf{Fonte:} \url{scrum.org}
     \label{fig:scrum}
@@ -83,7 +95,7 @@ I membri del \textit{team} di lavoro possono notificare lo stato del \textit{tic
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.66\textwidth]{Jira.png}
+    \includegraphics[width=0.7\textwidth]{Jira.png}
     \caption{\textit{Board} del quinto \textit{sprint} del progetto di \textit{stage}}
     \label{fig:Jira}
 \end{figure}
@@ -91,7 +103,7 @@ I membri del \textit{team} di lavoro possono notificare lo stato del \textit{tic
 Visual Studio Code è un \textit{editor} di codice sorgente che permette la scrittura di codice in diversi linguaggi di programmazione.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{VsCode.png}
+    \includegraphics[width=0.7\textwidth]{VsCode.png}
     \caption{Schermata dell'\textit{editor} Visual Studio Code con codice Typescript}
     \label{fig:VsCode}
 \end{figure}
@@ -102,7 +114,7 @@ Grazie a questa piattaforma , è possibile creare \textit{repositories} in cui s
 Terminata la codifica di una \textit{feature}, tramite una \textit{pull request}, si unisce il codice sviluppato nel \textit{branch} al codice sorgente presente nel \textit{branch} principale. Tramite \textit{pull request} il codice viene revisionato per garantire la sua qualità e la corretta integrazione con il codice sorgente principale.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.64\textwidth]{github.png}
+    \includegraphics[width=0.7\textwidth]{github.png}
     \caption{Schermata del \textit{repository} Github del progetto di \textit{stage}}
     \label{fig:Github}
 \end{figure}
@@ -112,7 +124,7 @@ Permette la creazione di canali di comunicazione dedicati a specifici argomenti.
 Nel caso del mio progetto di \textit{stage} è stato creato un canale dedicato al progetto assieme al mio \textit{tutor} aziendale ed un altra figura all'interno dell'azienda, con lo scopo aiutarmi in caso di problematiche durante la configurazione di alcuni servizi o durante lo sviluppo.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{slack.png}
+    \includegraphics[width=0.66\textwidth]{slack.png}
     \caption{Schermata del canale dedicato al progetto di \textit{stage}}
     \label{fig:Slack}
 \end{figure}
@@ -120,7 +132,7 @@ Nel caso del mio progetto di \textit{stage} è stato creato un canale dedicato a
 Di seguito uno schema riassuntivo in cui mostro l'interazione degli strumenti utilizzati durante il flusso di progetto.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.84\textwidth]{sviluppoIntegrazione.png}
+    \includegraphics[width=0.88\textwidth]{sviluppoIntegrazione.png}
     \caption{Interazione degli strumenti nel processo di sviluppo}
     \small \textbf{Fonte:} \href{https://commons.wikimedia.org/wiki/File:Visual_Studio_Code_1.35_icon.svg}{Visual Studio: https://commons.wikimedia.org}
 
@@ -131,16 +143,21 @@ Di seguito uno schema riassuntivo in cui mostro l'interazione degli strumenti ut
 \subsection{Tecnologie di sviluppo}
 \subsubsection{Typescript}
 TypeScript è un linguaggio di programmazione, noto per essere un \textit{superset} di JavaScript che introduce l'annotazione dei tipi. Essendo un \textit{superset} di JavaScript, ogni programma scritto in Javascript può essere eseguito anche in Typescript.
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{typescriptjs.png}
+    \caption{Funzionalità aggiuntive di Typescript rispetto a Javascript}
+    \label{fig:Typescript}
+\end{figure}
 \subsubsection{Python}
 Python è linguaggio di programmazione interpretato, ad alto livello. È orientato agli oggetti ed è adatto a molteplici utilizzi. Offre numerose librerie che permettono lo sviluppo di varie tipologie di applicazioni. 
 \subsubsection{Node.js}
 Node.js è un ambiente \textit{runtime} che consente di eseguire codice Javascript e Typescript al di fuori di un \textit{browser}. È basato sul motore JavaScript V8 e offre una libreria \textit{standard} che comprende vari moduli per le operazioni di base. 
 \subsubsection{MongoDB}
-MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non vengono strutturati in tabelle con uno schema preciso, ma vengono raggruppati in documenti dove la struttura dei dati può variare da documento a documento.  
+MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non vengono strutturati in tabelle con uno schema preciso, ma vengono raggruppati in documenti dove la struttura dei dati può variare da documento a documento. Permette di salvare oltre ai dati anche i loro relativi \gls{embedding-g}, ovvero una rappresentazione numerica vettoriale dell'oggetto in uno spazio multidimensionale.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{sqlvsnosql.png}
+    \includegraphics[width=0.48\textwidth]{sqlvsnosql.png}
     \caption{Differenza tra la struttura di un \textit{database} relazionale e un \textit{database} non relazionale}
     \small \textbf{Fonte:} \href{https://naveen-metta.medium.com/decoding-the-database-dilemma-sql-vs-nosql-in-system-design-8666e21f4a58c}{medium.com}
     \label{fig:sql-vs-nosql}
@@ -150,8 +167,8 @@ MongoDB è un \textit{database} non relazionale (\textit{NoSQL}) dove i dati non
 Il Serverless \textit{framework} è un \textit{framework} che permette la creazione di \gls{api}, un' interfaccia che definisce come due parti (applicazione \textit{client} e \textit{server}) comunicano tra loro usando richieste e risposte, su infrastuttura \gls{aws}. Permette la definizione di funzioni \textit{lambda} con i relativi \textit{trigger} di invocazione e il \textit{deploy} nel \textit{cloud}, attraverso un semplice comando che carica il codice sorgente e configura l'architettura in modo automatico. Supporta diversi \textit{plugin} che permettono l'utilizzo di altri servizi offerti da \gls{aws}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{serverless.png}
-    \caption{Confronto tra un'architettura tradizionale e una architettura \textit{\gls{serverlessg}}}
+    \includegraphics[width=0.68\textwidth]{serverless.png}
+    \caption{Confronto tra un'architettura tradizionale e un' architettura \textit{\gls{serverlessg}}}
     \small \textbf{Fonte:} \href{https://medium.com/canonichq/server-v-s-serverless-architecture-bf3cdab28174}{medium.com}
     \label{fig:Serverless}
 \end{figure} 
@@ -162,10 +179,20 @@ Streamlit è un \textit{framework open-source} che permette la creazione di appl
 Con il suo utilizzo, si possono trasformare \textit{script} Python in applicazioni \textit{web} interattive.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.73\textwidth]{streamlit.png}
+    \includegraphics[width=0.7\textwidth]{streamlit.png}
     \caption{Esempio di applicazione \textit{web} creata con il \textit{framework} Streamlit}
     \small \textbf{Fonte:} \href{https://streamlit.io}{streamlit.io}
     \label{fig:Streamlit}
+\end{figure} 
+
+\subsubsection{LangChain}
+Langchain è un \textit{framework open-source} che fornisce strumenti e componenti modulari per la creazione di applicazioni, come \textit{chatbot}, che struttano i \gls{llm}. Questo \textit{framework} permette un interazione più semplice con questi modelli, permettendo di creare applicazioni che sfruttano le potenzialità dei \gls{llm} in modo più semplice. Nel contesto dello \textit{stage}, viene utilizzato assieme al \textit{framework} Streamlit.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.73\textwidth]{langchain.png}
+    \caption{Casi d'uso con Langchain} 
+    \small \textbf{Fonte:} \href{https://medium.com/@ebruboyaci/use-cases-with-langchain-e0fd5b0587f1}{https://medium.com}
+    \label{fig:Lanchain}
 \end{figure} 
 
 \subsubsection {Servizi AWS}
@@ -183,7 +210,7 @@ ESLint è un \textit{plugin} installato su Visual Studio Code che permette il co
 È possibile impostare una configurazione personalizzata (come l'indentazione del codice, la lunghezza delle righe, ecc.), permettendo così di scrivere codice uniforme agli \textit{standard} aziendali.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.73\textwidth]{eslint.png}
+    \includegraphics[width=0.83\textwidth]{eslint.png}
     \caption{Esempio di configurazione di ESLint}
     \label{fig:ESlint}
 \end{figure} 
@@ -192,7 +219,7 @@ ESLint è un \textit{plugin} installato su Visual Studio Code che permette il co
 Postman è un \textit{software} che permette il salvataggio e il testing di \gls{api} in modo semplice. Tramite l'interfaccia è possibile organizzare le richieste e generare documentazione delle \gls{api} salvate.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.73\textwidth]{postman.png}
+    \includegraphics[width=0.85\textwidth]{postman.png}
     \caption{Esempio di API di tipo \textit{POST} su Postman con relativo \textit{body}}
     \label{fig:Postman}
 \end{figure} 
@@ -203,7 +230,7 @@ Postman è un \textit{software} che permette il salvataggio e il testing di \gls
 MongoDB Compass è un \textit{software} che permette la visualizzazione dei documenti salvati nel \textit{database} MongoDB tramite un'interfaccia grafica.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{mongodb.png}
+    \includegraphics[width=0.85\textwidth]{mongodb.png}
     \caption{Esempio di visualizzazione di documenti su MongoDB Compass}
     \label{fig:MongoDB}
 \end{figure} 
@@ -219,14 +246,14 @@ MongoDB Compass è un \textit{software} che permette la visualizzazione dei docu
 Di seguito uno schema riassuntivo in cui mostro l'utilizzo delle tecnologie nel progetto di \textit{stage}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{tecnologie.png}
+    \includegraphics[width=1\textwidth]{tecnologie.png}
     \caption{Utilizzo delle tecnologie nel progetto di \textit{stage}}
     \label{fig:tecnologie}
-    \small \textbf{Fonti:} \href{https://iconduck.com/icons/95017/typescript-icon}{Typescript: https://iconduck.com} \href{https://www.flaticon.com/free-icon/nodejs_919825}{Node\.js: https://www.flaticon.com} \href{https://www.iconfinder.com/icons/4518857/python_icon} {Python: https://www.iconfinder.com} \href{https://iconduck.com/icons/94274/eslint} {Eslint: https://iconduck.com} \href{https://www.serverless.com/} {Serverless: https://www.serverless.com} \href{https://iconduck.com/icons/10826/amazon-aws} {AWS: https://iconduck.com}
+    \small \textbf{Fonti:} \href{https://iconduck.com/icons/95017/typescript-icon}{Typescript: https://iconduck.com} \href{https://www.flaticon.com/free-icon/nodejs_919825}{Node\.js: https://www.flaticon.com} \href{https://www.iconfinder.com/icons/4518857/python_icon} {Python: https://www.iconfinder.com} \href{https://iconduck.com/icons/94274/eslint} {Eslint: https://iconduck.com} \href{https://www.serverless.com/} {Serverless: https://www.serverless.com} \href{https://iconduck.com/icons/10826/amazon-aws} {AWS: https://iconduck.com} \href{https://www.nuget.org/packages/LangChain/0.13.1-dev.178} {Langchain: https://www.nuget.org} 
 \end{figure}
-\section{Tipologia di clientela}
+\section{Tipologia di clientela} \label{sec:clientela}
 Durante il mio periodo di \textit{stage} , ho avuto modo di osservare la diversità dei clienti che si rivolgono a Zero12 s.r.l. Tra i committenti dei vari progetti sviluppati dall'azienda, ci sono numerose aziende operanti nel medesimo settore, le quali richiedono consulenze sulle tecnologie di cui l'azienda è \textit{partner}.
-L'azienda collabora anche con clienti provenienti da settori diversi, come ad esempio il settore della moda, con \textit{brand} di lusso che richiedono lo sviluppo di applicazioni \textit{web} o \textit{mobile} per la gestione dei propri prodotti o servizi.
+L'azienda collabora anche con clienti provenienti da settori diversi, come ad esempio il settore della moda, con \textit{brand} di lusso che richiedono lo sviluppo di software \textit{custom} per la gestione dei propri prodotti o servizi.
 
 \section{Propensione all'innovazione}
 L'azienda è fortemente orientata all'innovazione e alla sperimentazione di nuove tecnologie.
