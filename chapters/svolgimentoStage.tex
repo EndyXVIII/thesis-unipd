@@ -383,39 +383,39 @@ dove:
     \hline
     R-FO-1 & Il sistema deve eseguire una richiesta di generazione di proposta di risoluzione quando un \textit{ticket} viene creato & Obbligatorio & UC1 (Jira) \\
     \hline
-    R-FO-2 & Il sistema deve poter interrogare un \gls{llm} per la creazione dell'\gls{embedding-g} del \textit{ticket} creato & Obbligatorio & UC1.1 (Jira) \\
+    \rowcolor{tableevenrow} R-FO-2 & Il sistema deve poter interrogare un \gls{llm} per la creazione dell'\gls{embedding-g} del \textit{ticket} creato & Obbligatorio & UC1.1 (Jira) \\
     \hline
     R-FO-3 & Il sistema deve effettuare una ricerca dei ticket completati più simili al \textit{ticket} creato, nel \textit{database} & Obbligatorio & UC1.2 (Jira) \\
     \hline
-    R-FO-4 & Il sistema deve poter interrogare un \gls{llm} per generare una proposta di risoluzione utilizzando come contesto i \textit{ticket} completati più simili. & Obbligatorio & UC1.3 (Jira) \\
+    \rowcolor{tableevenrow} R-FO-4 & Il sistema deve poter interrogare un \gls{llm} per generare una proposta di risoluzione utilizzando come contesto i \textit{ticket} completati più simili. & Obbligatorio & UC1.3 (Jira) \\
     \hline
     R-FO-5 & Il sistema deve poter interrogare un \gls{llm} per generare una risposta standard in caso di mancanza di \textit{ticket} completati simili. & Obbligatorio & UC1.4 (Jira) \\
     \hline
-    R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC2.1 (Jira) \\
+    \rowcolor{tableevenrow} R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC2.1 (Jira) \\
     \hline
     R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC3 (Jira) \\
     \hline
-    R-FO-8 & Il sistema deve permettere l'autenticazione dell'utente nel \textit{chatbot}. & Obbligatorio & UC0 (Chatbot) \\
+    \rowcolor{tableevenrow} R-FO-8 & Il sistema deve permettere l'autenticazione dell'utente nel \textit{chatbot}. & Obbligatorio & UC0 (Chatbot) \\
     \hline
     R-FO-9 & Il sistema deve permettere l'autenticazione dell'utente amministratore per accedere al \textit{database}. & Obbligatorio & UC1 (Chatbot) \\
     \hline
-    R-FO-10 & Il sistema deve permettere la scelta del modello \gls{llm} con cui interrogare il \textit{chatbot}. & Obbligatorio & UC2 (Chatbot) \\
+    \rowcolor{tableevenrow} R-FO-10 & Il sistema deve permettere la scelta del modello \gls{llm} con cui interrogare il \textit{chatbot}. & Obbligatorio & UC2 (Chatbot) \\
     \hline
     R-FO-11 & Il sistema deve permettere l'interrogazione al modello \gls{llm-g} tramite una \textit{chat}. & Obbligatorio & UC3 (Chatbot) \\
     \hline
-    R-FO-12 & Il sistema deve poter interrogare un \gls{llm} per generare l'\gls{embedding-g} del testo inserito dall'utente. & Obbligatorio & UC3.1 (Chatbot) \\
+    \rowcolor{tableevenrow} R-FO-12 & Il sistema deve poter interrogare un \gls{llm} per generare l'\gls{embedding-g} del testo inserito dall'utente. & Obbligatorio & UC3.1 (Chatbot) \\
     \hline
     R-FO-13 & Il sistema deve permettere la ricerca dei ticket più simili all'interno del \textit{database}. & Obbligatorio & UC3.2 (Chatbot) \\
     \hline
-    R-FO-14 & Il sistema deve poter interrogare un \gls{llm} per la generazione di una proposta di risoluzione basata sui \textit{ticket} simili. & Obbligatorio & UC3.3 (Chatbot) \\
+    \rowcolor{tableevenrow} R-FO-14 & Il sistema deve poter interrogare un \gls{llm} per la generazione di una proposta di risoluzione basata sui \textit{ticket} simili. & Obbligatorio & UC3.3 (Chatbot) \\
     \hline
     R-VO-15 & Il sistema Jira deve essere sviluppato utilizzando il Serverless \textit{framework}  & Obbligatorio & Interna \\
     \hline
-    R-VO-16 & Il \textit{database} utilizzato deve essere MongoDB & Obbligatorio & Interna \\
+    \rowcolor{tableevenrow} R-VO-16 & Il \textit{database} utilizzato deve essere MongoDB & Obbligatorio & Interna \\
     \hline
     R-VO-17 & Il \textit{chatbot} deve essere sviluppato utilizzando il \textit{framework} Streamlit & Obbligatorio & Interna \\
     \hline
-    R-VO-18 & L'autenticazione nel \textit{chatbot} deve utilizzare il servizio \gls{aws} Cognito & Obbligatorio & Interna \\
+    \rowcolor{tableevenrow} R-VO-18 & L'autenticazione nel \textit{chatbot} deve utilizzare il servizio \gls{aws} Cognito & Obbligatorio & Interna \\
 
     
     \hline
@@ -525,12 +525,12 @@ Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho
     procedere con la ricerca nei documenti e la formulazione della 
     risposta.
 \end{Verbatim}
-\subsubsection{Selezione del modello LLM}
+\subsubsection{Selezione del modello \gls{llm}}
 La selezione del modello rappresenta una scelta cruciale per una proposta di risoluzione coerente e di qualità. Come ho mostrato nella tabella \ref{tab:prevAttività} ho creato un \textit{benchmark} per selezionare quale tra i modelli più performanti offerti da \gls{aws} Bedrock fosse il migliore per il contesto dei due progetti.
 Per la creazione del \textit{benchmark} ho creato una serie di \textit{ticket} fittizzi a cui ho associato delle proposte di risoluzione in base ai \textit{ticket} completati contenuti nel \textit{database}. In seguito, per ognuno di questi ticket veniva richiesta una proposta di risoluzione ai vari modelli da testare e le risposte venivano valutato da un ulteriore modello, di cui ho avuto modo di poterne testare l'accuratezza tramite la \textit{console} di \gls{aws} Bedrock.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{ticketBenchmarkExample.png}
+    \includegraphics[width=0.9\textwidth]{ticketBenchmarkExample.png}
     \caption{Esempio \textit{ticket} fittizzi creati per il \textit{benchmark}}
     \label{fig:Ticketbenchmark}
 \end{figure}
@@ -540,7 +540,7 @@ Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato
 In figura \ref{fig:benchmarkArchitecture} mostro l'architettura del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{architetturaBenchmark.png}
+    \includegraphics[width=0.9\textwidth]{architetturaBenchmark.png}
     \caption{Architettura del \textit{benchmark}}
     \label{fig:benchmarkArchitecture}
 \noindent
@@ -555,7 +555,7 @@ Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark}
 In figura \ref{fig:benchmarkResult} mostro il risultato del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{benchmark.png}
+    \includegraphics[width=0.8\textwidth]{benchmark.png}
     \caption{Risultato del \textit{benchmark}}
     \label{fig:benchmarkResult}
 \end{figure}
@@ -570,7 +570,7 @@ Il punteggio attribuito ai vari modelli però è un indicatore di qualità rispe
 Come si può notare dall'immagine \ref{fig:benchmarkResult}, il modello \textit{Claude3.5 Sonnet} e \textit{MistralLarge} hanno ottenuto i migliori risultati. Tuttavia la scelta del modello è ricaduta su Claude3.5Sonnet in quanto ha dimostrato di generare proposte di risoluzione di qualità superiore rispetto a \textit{MistralLarge}.\\
 Come modello per la generazione di \gls{embedding-g} invece la scelta è ricaduta su \textit{Titan Text Embeddings V2} in quanto rispetto alle alternative offerte da \gls{aws} Bedrock, permetteva di generare \gls{embedding-g} con una dimensione minore ma con una qualità superiore rispetto agli altri modelli.
 
-\subsection{Architettura del sistema \textit{Jira}}
+\subsection{Architettura del sistema Jira}
 La progettazione delle componenti del sistema Jira si è basata su un'architettura \textit{event-driven}, tipica del \textit{framework Serverless}. Questo tipo di architettura permette di creare applicazioni scalabili e flessibili, in quanto le funzioni \textit{lambda} create vengono eseguite solo quando gli eventi vengono scatenati. 
 Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{template} di progetto \textit{Serverless} che ho utilizzato come base per la creazione del sistema Jira. Di seguito elenco le componenti principali del \textit{template} di progetto.
 
@@ -667,10 +667,10 @@ In figura \ref{fig:architetturaJira} mostro lo schema dell'architettura del sist
 \end{figure}
 
 \subsection{Architettura del \textit{Chatbot}}
-La progettazione del \textit{chatbot} si è basata sull'architettura \textit{client-server} del \textit{framework} Streamlit. Il \textit{client} viene rappresentato dal \textit{browser} che l'utente utilizza per interagire con il \textit{chatbot}, mentre il \textit{server} è rappresentato dall'esecuzione del codice Python che in risposta alle azioni dell'utente, invia i risultati al \textit{client} sotto forma di HTML/CSS/JavaScript che vengono visualizzati nel \textit{browser}.
-\subsubsection{\textit{Backend}}
-Essendo l'architettura del \textit{chatbot} basata sul \textit{framework} Streamlit, il \textit{backend} è rappresentato dal codice Python che viene eseguito in risposta alle azioni dell'utente.
-Una componente chiave del \textit{backend} è l'utilizzo del \textit{framework} Langchain. Esso viene impiegato in diverse parti cruiciali del \textit{backend}, ovvero:
+La progettazione del \textit{chatbot} si è basata sull'architettura \textit{client-server} del \textit{framework} Streamlit. Il \textit{client} viene rappresentato dal \textit{browser} che l'utente utilizza per interagire con il \textit{chatbot}, mentre il \textit{server} è rappresentato dall'esecuzione del codice Python che in risposta alle azioni dell'utente, invia i risultati al \textit{client} sotto forma di \gls{htmlg}/\gls{cssg}/JavaScript che vengono visualizzati nel \textit{browser}.
+\subsubsection{\textit{Back-end}}
+Essendo l'architettura del \textit{chatbot} basata sul \textit{framework} Streamlit, il \textit{back-end} è rappresentato dal codice Python che viene eseguito in risposta alle azioni dell'utente.
+Una componente chiave del \textit{back-end} è l'utilizzo del \textit{framework} Langchain. Esso viene impiegato in diverse parti cruiciali del \textit{back-end}, ovvero:
 \begin{itemize}
     \item \textbf{Integrazione con \textit{database} vettoriale}: con l'utilizzo di Langchain, è possibile stabilire una connessione con il \textit{database} vettoriale MongoDB per effettuare la ricerca vettoriale dei \textit{ticket} completati più simili al testo inserito dall'utente;
     \item \textbf{Gestione degli \gls{embedding-g}}: tramite LangChain viene facilitato l'uso di diversi modelli \gls{embedding-g} messi a disposizione da \gls{aws}. 
@@ -678,10 +678,10 @@ Una componente chiave del \textit{backend} è l'utilizzo del \textit{framework} 
 \end{itemize} 
 \noindent
 Anche in questo caso ho adotatto il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. 
-\subsubsection{\textit{Frontend}}
-Allo stesso modo, il \textit{frontend} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\ \\
+\subsubsection{\textit{Front-end}}
+Allo stesso modo, il \textit{front-end} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\ \\
 \noindent
-In figura \ref{fig:architetturaChatbot} mostro lo schema dell'architettura del sistema \textit{Chatbot}:
+In figura \ref{fig:architetturaChatbot} mostro lo schema dell'architettura del \textit{chatbot}:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{chatbot_architettura.png}
@@ -744,10 +744,10 @@ export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(
 
 
 \subsection{\textit{Chatbot}}
-Per lo sviluppo del \textit{chabot} come ho descritto precedentemente ho utilizzato il \textit{framework} Streamlit. Questo \textit{framework} mi ha permesso di sviluppare il \textit{backend} e il \textit{frontend} del \textit{chatbot} in semplici \textit{file} Python.
+Per lo sviluppo del \textit{chabot} come ho descritto precedentemente ho utilizzato il \textit{framework} Streamlit. Questo \textit{framework} mi ha permesso di sviluppare il \textit{back-end} e il \textit{front-end} del \textit{chatbot} in semplici \textit{file} Python.
 Qui di seguito descrivo la suddivisione dei \textit{file} Python che compongono il \textit{chatbot}:
 \begin{itemize}
-    \item \textbf{\textit{Backend}}: per quanto riguarda il \textit{backend} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{backend} del \textit{chatbot}.
+    \item \textbf{\textit{Back-end}}: per quanto riguarda il \textit{back-end} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{back-end} del \textit{chatbot}.
     \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{python}
 
 from langchain_community.vectorstores import MongoDBAtlasVectorSearch
@@ -778,7 +778,7 @@ def cloudVectorSearch(database_url, database_name, collection_name, query_embedd
 
 
     Nel frammento di codice \ref{lst:cloudVectorSearch} mostro la funzione di ricerca vettoriale utilizzata nel \textit{chatbot}. Questa funzione si occupa di interrogare il \textit{database} vettoriale MongoDB fornendogli il nome dell'indice, il nome del campo contenente l'\gls{embedding-g} e l'\gls{embedding-g} del testo della \textit{query} dell'utente. La funzione restituisce i tre \textit{ticket} più simili alla \textit{query} dell'utente filtrandoli per i campi desiderati.
-    \item \textbf{\textit{Frontend}}: per lo sviluppo del \textit{frontend} del \textit{chatbot} ho creato un unico \textit{file} Python che si occupa di creare l'interfaccia grafica interattiva utilizzando le componenti offerte dal \textit{framework} Streamlit. Questo \textit{file} Python si occupa di gestire l'interfaccia grafica, di inviare le richieste al \textit{backend} e di visualizzare i risultati all'utente.
+    \item \textbf{\textit{Front-end}}: per lo sviluppo del \textit{front-end} del \textit{chatbot} ho creato un unico \textit{file} Python che si occupa di creare l'interfaccia grafica interattiva utilizzando le componenti offerte dal \textit{framework} Streamlit. Questo \textit{file} Python si occupa di gestire l'interfaccia grafica, di inviare le richieste al \textit{back-end} e di visualizzare i risultati all'utente.
     \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{python}
 input_text = st.chat_input()
 
@@ -797,7 +797,7 @@ if input_text:
         st.session_state.search_results, model_choice))
     st.session_state.chat_history.append(AIMessage(chat_response))
     \end{minted}
-    \captionof{figure}{Frammento del codice Python relativo al frontend}
+    \captionof{figure}{Frammento del codice Python relativo al \textit{front-end}}
     \label{lst:chatbotFrontend} 
 
     Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come viene gestita la richiesta dell'utente e come vengono visualizzati i relativi risultati. Viene effettuata una ricerca vettoriale che restituisce i \textit{ticket} più simili alla \textit{query} dell'utente. 
