@@ -41,7 +41,7 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \hline
     \rowcolor{tableoddrow} Quarta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
         - Studio \gls{embedding-g} per \gls{rag-g}\\
-        - Tokenizzazione dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
+        - \gls{tokenizzazioneg}, ovvero la divisione del testo in unità che l'\gls{llm-g} elabora, dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
         - Connessione tra AWS Bedrock e MongoDB per \gls{rag-g}\\
     \end{tabular} \\
     \hline
@@ -152,7 +152,7 @@ dove:
     \end{tabular} \\
     \hline
     \rowcolor{tableoddrow} R-P-3C-1 & Assenze per motivi di salute o personali & 
-    Avvisare per tempo il \textit{tutor} aziendale in caso di ritardi in modo da aggiornare la pianificazione delle attività \\
+    Avvisare per tempo il \textit{tutor} aziendale in caso di ritardi, in modo da aggiornare la pianificazione delle attività \\
     \hline
     \rowcolor{tableevenrow} R-O-2A-1 & Lo sviluppo del progetto potrebbe non essere portato a termine nel periodo pianificato a causa di ritardi & 
     Avvisare per tempo il \textit{tutor} aziendale in modo da pianificare le attività per recuperare i giorni di assenza \\
@@ -184,10 +184,10 @@ La convezione che ho utilizzato per la stesura dei casi d'uso è stata la seguen
 a cui ho associato una descrizione, la lista degli attori coinvolti, le precondizioni e le postcondizioni affinche il caso d'uso possa avvenire.
 Per riassumere i casi d'uso, sono presenti dei diagrammi \gls{umlg} per una rappresentazione grafica degli scenari. Verrano presentati i diagrammi dei casi d'uso principali e non banali dei progetti.
 \subsubsection{Attori}
-Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso. Ha accesso unicamente alla pagina di \textit{login}; 
+Nel contesto dei casi d'uso, con un attore si definisce chi o cosa interagisce con la specifica funzionalità descritta dal caso d'uso.
 Gli attori che ho individuato si suddividono in 2 categorie:
 \begin{itemize}
-    \item \textbf{Attori principali} \begin{itemize} \item \textbf{Utente generico}: utente che non ha effettuato l'autenticazione nel sistema e del \textit{chatbot}; \item \textbf{Utente amministratore}: utente che ha effettuato l'autenticazione. Ha accesso a tutte le funzionalità del sistema.
+    \item \textbf{Attori principali} \begin{itemize} \item \textbf{Utente generico}: utente che non ha effettuato l'autenticazione nel sistema e nel \textit{chatbot}. Ha accesso unicamente alla pagina di \textit{login}; \item \textbf{Utente amministratore}: utente che ha effettuato l'autenticazione. Ha accesso a tutte le funzionalità del sistema.
     \end{itemize}
     \item \textbf{Attori secondari}: \begin{itemize} \item \textbf{\gls{llm}}: è un attore secondario che permette la generazione di \gls{embedding-g} e di generazione di testo tramite modelli di linguaggio. Questo attore a sua volta può essere interpretato da AmazonTitanV2 (modello di generazione di \gls{embedding-g} offerto da \gls{aws} Bedrock) e da Claude3.5Sonnet (\gls{llm} offerto da \gls{aws} Bedrock).
     \end{itemize}
@@ -352,6 +352,7 @@ Ho tracciato i requisiti individuati dai casi d'uso con la seguente notazione:
 \end{center}
 dove: 
 \begin{itemize}
+    \item \textbf{R}: abbreviazione di Requisito
     \item \textbf{Tipologia}: Natura del requisito: \begin{itemize}
         \item \textbf{F}: Funzionale
         \item \textbf{V}: Vincolo
@@ -530,7 +531,7 @@ La selezione del modello rappresenta una scelta cruciale per una proposta di ris
 Per la creazione del \textit{benchmark} ho creato una serie di \textit{ticket} fittizzi a cui ho associato delle proposte di risoluzione in base ai \textit{ticket} completati contenuti nel \textit{database}. In seguito, per ognuno di questi ticket veniva richiesta una proposta di risoluzione ai vari modelli da testare e le risposte venivano valutato da un ulteriore modello, di cui ho avuto modo di poterne testare l'accuratezza tramite la \textit{console} di \gls{aws} Bedrock.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{ticketBenchmarkExample.png}
+    \includegraphics[width=0.85\textwidth]{ticketBenchmarkExample.png}
     \caption{Esempio \textit{ticket} fittizzi creati per il \textit{benchmark}}
     \label{fig:Ticketbenchmark}
 \end{figure}
@@ -568,11 +569,11 @@ Il punteggio relativo ad ogni modello è suddiviso in tre categorie:
 \end{itemize}
 Il punteggio attribuito ai vari modelli però è un indicatore di qualità rispetto alle proposte di risoluzione attese da me create. Questo implica che modelli che hanno ottenuto un punteggio più basso generano comunque proposte di risoluzione corrette, ma non nel formato da me richiesto. Questo è un aspetto che ho dovuto considerare nella scelta del modello.
 Come si può notare dall'immagine \ref{fig:benchmarkResult}, il modello \textit{Claude3.5 Sonnet} e \textit{MistralLarge} hanno ottenuto i migliori risultati. Tuttavia la scelta del modello è ricaduta su Claude3.5Sonnet in quanto ha dimostrato di generare proposte di risoluzione di qualità superiore rispetto a \textit{MistralLarge}.\\
-Come modello per la generazione di \gls{embedding-g} invece la scelta è ricaduta su \textit{Titan Text Embeddings V2} in quanto rispetto alle alternative offerte da \gls{aws} Bedrock, permetteva di generare \gls{embedding-g} con una dimensione minore ma con una qualità superiore rispetto agli altri modelli.
+Come modello per la generazione di \gls{embedding-g} invece la scelta è ricaduta su \textit{Titan Text Embeddings V2} in quanto rispetto alle alternative offerte da \gls{aws} Bedrock, permetteva di generare \gls{embedding-g} con una dimensione minore ma con qualità superiore rispetto agli altri modelli.
 
 \subsection{Architettura del sistema Jira}
 La progettazione delle componenti del sistema Jira si è basata su un'architettura \textit{event-driven}, tipica del \textit{framework Serverless}. Questo tipo di architettura permette di creare applicazioni scalabili e flessibili, in quanto le funzioni \textit{lambda} create vengono eseguite solo quando gli eventi vengono scatenati. 
-Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{template} di progetto \textit{Serverless} che ho utilizzato come base per la creazione del sistema Jira. Di seguito elenco le componenti principali del \textit{template} di progetto.
+Durante le prime settimane di \textit{stage} mi è stato fornito un \textit{template} di progetto \gls{serverlessg} che ho utilizzato come base per la creazione del sistema Jira. Di seguito elenco le componenti principali del \textit{template} di progetto.
 
 \subsubsection{\textit{Handlers}}
 Gli \textit{handlers} sono le funzioni \textit{lambda} che vengono eseguite quando un evento viene scatenato. Esse rappresentano il fulcro del sistema Jira in quanto gestiscono la richiesta di proposte di risoluzione per i nuovi \textit{ticket} e il salvataggio automatico dei \textit{ticket} chiusi in Jira nel \textit{database}. 
@@ -637,8 +638,8 @@ Per migliorare ulteriormente la struttura e la manutenibilità del codice, ho ad
 \end{figure}
 \noindent
 Un altro \textit{desig pattern} che ho utilizzato è il \textit{Mapper pattern}, che è strettamente collegato al \gls{dtog} \textit{pattern}.  Come mostro nell'immagine \ref{fig:dto}, il \textit{mapper} consiste in uno o più metodi per facilitare la trasformazione dei \gls{dtog} in oggetti utilizzati dalla logica di \textit{business}, mappando i diversi campi da un tipo all’altro. All'interno del sistema Jira, il \textit{mapper} è stato utilizzato per trasformare i dati ricevuti dalle \gls{apig} di Jira in oggetti \textit{ticket} che vengono utilizzati dalle funzioni \textit{lambda} per eseguire le operazioni di salvataggio e di richiesta di proposta di risoluzione.
-Questo \textit{design pattern} contribuisce a mantere il codice organizzato, garantendo che i dati siano nel formato corretto. Ho adottato il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. Questo \textit{design pattern} permette di creare astrarre la logica di creazione degli oggetti, permettendo l'aggiunta di nuovi modelli senza necessità di modificare il codice esistente. La flessibilità e le scalabilità
-offerte da questo \textit{design pattern} sono state fondamentali per garantire che il sistema possa evolvere nel tempo, permettendo l'integrazione di nuovi modelli che verranno resi disponibili in futuro. 
+Questo \textit{design pattern} contribuisce a mantere il codice organizzato, garantendo che i dati siano nel formato corretto. Ho adottato il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. Questo \textit{design pattern} permette di astrarre la logica di creazione degli oggetti, permettendo l'aggiunta di nuovi modelli senza la necessità di modificare il codice esistente. La flessibilità e la scalabilità
+offerta da questo \textit{design pattern} sono state fondamentali per garantire che il sistema possa evolvere nel tempo, permettendo l'integrazione di nuovi modelli che verranno resi disponibili in futuro. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{factoryPattern.png}
@@ -661,7 +662,7 @@ Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle s
 In figura \ref{fig:architetturaJira} mostro lo schema dell'architettura del sistema Jira:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{architettura.png}
+    \includegraphics[width=0.95\textwidth]{architettura.png}
     \caption{Schema dell'architettura del sistema Jira}
     \label{fig:architetturaJira}
 \end{figure}
@@ -670,21 +671,21 @@ In figura \ref{fig:architetturaJira} mostro lo schema dell'architettura del sist
 La progettazione del \textit{chatbot} si è basata sull'architettura \textit{client-server} del \textit{framework} Streamlit. Il \textit{client} viene rappresentato dal \textit{browser} che l'utente utilizza per interagire con il \textit{chatbot}, mentre il \textit{server} è rappresentato dall'esecuzione del codice Python che in risposta alle azioni dell'utente, invia i risultati al \textit{client} sotto forma di \gls{htmlg}/\gls{cssg}/JavaScript che vengono visualizzati nel \textit{browser}.
 \subsubsection{\textit{Back-end}}
 Essendo l'architettura del \textit{chatbot} basata sul \textit{framework} Streamlit, il \textit{back-end} è rappresentato dal codice Python che viene eseguito in risposta alle azioni dell'utente.
-Una componente chiave del \textit{back-end} è l'utilizzo del \textit{framework} Langchain. Esso viene impiegato in diverse parti cruiciali del \textit{back-end}, ovvero:
+Una componente chiave del \textit{back-end} è l'utilizzo del \textit{framework} Langchain. Esso viene impiegato in diverse parti cruciali del \textit{back-end}, ovvero:
 \begin{itemize}
-    \item \textbf{Integrazione con \textit{database} vettoriale}: con l'utilizzo di Langchain, è possibile stabilire una connessione con il \textit{database} vettoriale MongoDB per effettuare la ricerca vettoriale dei \textit{ticket} completati più simili al testo inserito dall'utente;
-    \item \textbf{Gestione degli \gls{embedding-g}}: tramite LangChain viene facilitato l'uso di diversi modelli \gls{embedding-g} messi a disposizione da \gls{aws}. 
+    \item \textbf{Integrazione con il \textit{database} vettoriale}: con l'utilizzo di Langchain, è possibile stabilire una connessione con il \textit{database} vettoriale MongoDB per effettuare la ricerca vettoriale dei \textit{ticket} completati più simili al testo inserito dall'utente;
+    \item \textbf{Gestione degli \gls{embedding-g}}: tramite LangChain viene facilitato l'uso di diversi modelli di \gls{embedding-g} messi a disposizione da \gls{aws}. 
     \item \textbf{Orchestrazione dei modelli}: come da requisito da soddisfare presentato nella tabella \ref{tab:tracciamentoRequisiti}, il \textit{chatbot} deve poter dare la possibilità all'utente di selezionare l' \gls{llm} con cui interrogare il \textit{chatbot}. LangChain permette di integrare ed orchestrare i diversi modelli consentendo una flessibilità nella scelta e nell'utilizzo dei modelli scelti dall'utente.
 \end{itemize} 
 \noindent
-Anche in questo caso ho adotatto il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock. 
+Anche in questo caso ho adotatto il \textit{Factory Method pattern} per la creazione delle interfacce di connessione con i vari modelli offerti da \gls{aws} Bedrock e il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt}.
 \subsubsection{\textit{Front-end}}
 Allo stesso modo, il \textit{front-end} del \textit{chatbot} è anch'esso rappresentato da codice Python. Tramite la libreria Streamlit, è possibile creare un'interfaccia grafica interattive per l'utente. Possiede una serie di componenti per la creazione di \textit{widget}. Grazie all' utilizzo \textit{framework}, l'interfaccia viene aggiornata automaticamente in risposta alle azioni dell'utente. \\ \\
 \noindent
 In figura \ref{fig:architetturaChatbot} mostro lo schema dell'architettura del \textit{chatbot}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{chatbot_architettura.png}
+    \includegraphics[width=0.95\textwidth]{chatbot_architettura.png}
     \caption{Schema dell'architettura del \textit{chatbot}}
     \label{fig:architetturaChatbot}
 \end{figure}
@@ -805,16 +806,16 @@ if input_text:
 \end{itemize}
 
 \subsection{\textit{Best practice}}
-Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utilizzati in ambito aziendali e ho potuto apprendere alcune \textit{best practice} che ho applicato durante l'attività di codifica per lavorare allo stato dell'arte. Di seguito elenco alcune delle \textit{best practices} che ho applicato:
+Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utilizzati in ambito aziendali e ho potuto apprendere alcune \textit{best practice} che ho applicato durante l'attività di codifica per lavorare allo stato dell'arte. Di seguito elenco alcune delle \textit{best practice} che ho applicato:
 \begin{itemize}
     \item \textbf{\textit{Editor} di codice}: all'inzio dell'attività di codifica mi è stato richiesto di utilizzare la configurazione aziendale del \textit{plugin} ESLint. Come ho descritto in \ref{sec:tecnologie}, ESLint è uno strumento di analisi statica del codice che permette di identificare e segnalare gli errori di sintassi e di stile presenti nel codice.  Questo strumento mi ha permesso di scrivere codice uniforme e pulito, seguendo lo \textit{standard} aziendale. Inoltre, ha permesso di ridurre il numero di errori di sintassi e di stile presenti nel codice, velocizzando le \textit{code review} necessarie per l'avanzamento del progetto.
-    \item \textbf{\textit{Code reviews}}: l'intera attività di codifica è stata sottoposta a \textit{code reviews} da parte del mio \textit{tutor} aziendale e da un altro membro dell'azienda. Anche in questo caso mi sono attenuto al processo già ben consolidato in azienda. Per ogni funzionalità sviluppata, ho creato una \textit{feature branch} all'interno di un \textit{repository} Git dedicato. Il \textit{feature branch} veniva denominato con la seguente notazione:
+    \item \textbf{\textit{Code reviews}}: l'intera attività di codifica è stata sottoposta a \textit{code reviews} da parte del mio \textit{tutor} aziendale e da un altro membro dell'azienda. Anche in questo caso mi sono attenuto al processo già ben consolidato in azienda. Per ogni funzionalità sviluppata, ho creato una \textit{feature \gls{branch-g}} all'interno di un \textit{repository} Git dedicato. Il \textit{feature \gls{branch-g}} veniva denominato con la seguente notazione:
     \begin{center}
         \textbf{\emph{feature/nome\_funzionalità}}
     \end{center}
-    in modo da rendere chiaro il contenuto del \textit{branch}. Una volta che completavo lo sviluppo della funzionalità, aprivo una \textit{pull request} per la \textit{code review}. Questo processo mi ha permesso di ricevere \textit{feedback} costante sul codice che stavo sviluppando, permettondomi di correggere eventuali errori e di migliorare la qualità del codice. Infine, mi ha permesso di approfondire in modo più dettagliato l'utilizzo di Github come strumento di versionamento del codice e di osservare come si sviluppa codice seguendo dei processi consolidati e ben definiti.
+    in modo da rendere chiaro il contenuto del \textit{\gls{branch-g}}. Una volta che completavo lo sviluppo della funzionalità, aprivo una \textit{\gls{pull-request-g}} per la \textit{code review}. Questo processo mi ha permesso di ricevere \textit{feedback} costante sul codice che stavo sviluppando, permettondomi di correggere eventuali errori e di migliorare la qualità del codice. Infine, mi ha permesso di approfondire in modo più dettagliato l'utilizzo di Github come strumento di versionamento del codice e di osservare come si sviluppa codice seguendo dei processi consolidati e ben definiti.
     \item \textbf{\textit{Interfaces}}: Typescrit richiede la dichiarazione esplicita dei tipi delle variabili e degli oggetti utilizzati all'interno del codice. Per questo motivo, ho definito delle \textit{interfaces} per definire i tipi di tutti gli oggetti utilizzati a cui non potevano essere assegnati i tipi primitivi. A differenza delle classi, le \textit{interfaces} non vengono instanziate, ma presentano solo i tipi degli attributi e la firma dei metodi che un oggetto avrà una volta implementato. Questo mi ha permesso di definire in modo chiaro e preciso i tipi degli oggetti utilizzati all'interno del codice, in modo da non incorrere in errori di tipo durante l'esecuzione del codice.
-    \item \textbf{Documentazione}: durante tutta l'attività di codifica ho documentato il codice sviluppato attraverso l'utilizzo di commenti. Durante l'ultima settimana di \textit{stage} ho redatto una documentazione tecnica dettagliata contenente le scelte progettuali fatte per entrambi i progetti con le funzionalità implementate e un manuale utente per il corretto utilizzo del sistema Jira e del \textit{chatbot}. 
+    \item \textbf{Documentazione}: durante tutta l'attività di codifica ho documentato il codice sviluppato attraverso l'utilizzo di commenti. Durante l'ultima settimana di \textit{stage} ho redatto una documentazione tecnica dettagliata contenente le scelte progettuali fatte per entrambi i progetti, con le funzionalità implementate, e un manuale utente per il corretto utilizzo del sistema Jira e del \textit{chatbot}. 
 \end{itemize}
 
 \section{Verifica e validazione}
