@@ -40,8 +40,8 @@ Nella tabella \ref{tab:prevAttività} presento la pianificazione di tali attivit
     \end{tabular} \\
     \hline
     \rowcolor{tableoddrow} Quarta settimana & \begin{tabular}[t]{@{}p{9cm}@{}}
-        - Studio \gls{embedding-g} per \gls{rag-g}\\
-        - \gls{tokenizzazioneg}, ovvero la divisione del testo in unità che l'\gls{llm-g} elabora, dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
+        - Studio \gls{embedding-g} per \gls{rag}\\
+        - \gls{tokenizzazioneg}, ovvero la divisione del testo in unità che l'\gls{llm} elabora, dei \textit{ticket} contenuti nel \textit{database} MongoDB \\
         - Connessione tra AWS Bedrock e MongoDB per \gls{rag-g}\\
     \end{tabular} \\
     \hline
@@ -402,7 +402,7 @@ dove:
     \hline
     \rowcolor{tableevenrow} R-FO-10 & Il sistema deve permettere la scelta del modello \gls{llm} con cui interrogare il \textit{chatbot}. & Obbligatorio & UC2 (Chatbot) \\
     \hline
-    R-FO-11 & Il sistema deve permettere l'interrogazione al modello \gls{llm-g} tramite una \textit{chat}. & Obbligatorio & UC3 (Chatbot) \\
+    R-FO-11 & Il sistema deve permettere l'interrogazione al modello \gls{llm} tramite una \textit{chat}. & Obbligatorio & UC3 (Chatbot) \\
     \hline
     \rowcolor{tableevenrow} R-FO-12 & Il sistema deve poter interrogare un \gls{llm} per generare l'\gls{embedding-g} del testo inserito dall'utente. & Obbligatorio & UC3.1 (Chatbot) \\
     \hline
@@ -426,10 +426,10 @@ dove:
 
 \section{Progettazione}
 \subsection{RAG e selezione del modello LLM} \label{sec:rag}
-L'integrazione e l'utilizzo di \gls{llm} e \gls{rag-g} rappresenta il fulcro dei progetti che ho sviluppato durante lo \textit{stage}.
-Di seguito descrivo il funzionamento della \gls{rag-g} e mostro che modello ho selezionato per la generazione di testo. Mostrerò anche il \textit{benchmark} creato con il quale ho selezionato il modello migliore per la generazione di testo.
+L'integrazione e l'utilizzo di \gls{llm} e \gls{rag} rappresenta il fulcro dei progetti che ho sviluppato durante lo \textit{stage}.
+Di seguito descrivo il funzionamento della \gls{rag} e mostro che modello ho selezionato per la generazione di testo. Mostrerò anche il \textit{benchmark} creato con il quale ho selezionato il modello migliore per la generazione di testo.
 \subsubsection{Funzionamento della RAG}
-Il funzionamento della \gls{rag-g} può essere diviso in più fasi, qui di seguito elencate:
+Il funzionamento della \gls{rag} può essere diviso in più fasi, qui di seguito elencate:
 \begin{itemize}
     \item \textbf{Reperimento di dati di addestramento}: per prima cosa è necessario reperire dei dati da fonti esterne o produrli autonomamente in modo da arrichire la conoscenza del modello. Nel progetto di \textit{stage} i dati sono stati prodotti autonomamente, risultato delle attività svolte durante la 2° settimana come mostrato nella tabella \ref{tab:prevAttività};
     \item \textbf{Salvataggio dei dati in un \textit{database} vettoriale}: i dati prodotti vengono salvati all'interno di un \textit{database} vettoriale con il loro \gls{embedding-g} associato. Questo processo facilita il recupero delle informazioni rilevanti per la generazione di testo. Nel progetti di \textit{stage} i dati sono stati salvati all'interno di un \textit{database} MongoDB;
@@ -648,7 +648,7 @@ offerta da questo \textit{design pattern} sono state fondamentali per garantire 
     \label{fig:factory}
 \end{figure}
 \noindent
-Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt} e di risposta dei vari \gls{llm-g} offerti da \gls{aws} Bedrock. Definisco una strategia di generazione \textit{prompt} ad ogni modello in quanto ognuno di essi possiede delle \textit{keywords} e una formattazione del testo specifico. Il \textit{prompt} mostrato nella sezione \ref{sec:rag} è la base per ognuno dei modelli. 
+Infine, ho adottato il \textit{design pattern Strategy} per la creazione delle strategie di generazione del \textit{prompt} e di risposta dei vari \gls{llm} offerti da \gls{aws} Bedrock. Definisco una strategia di generazione \textit{prompt} ad ogni modello in quanto ognuno di essi possiede delle \textit{keywords} e una formattazione del testo specifico. Il \textit{prompt} mostrato nella sezione \ref{sec:rag} è la base per ognuno dei modelli. 
 
 \begin{figure}[H]
     \centering
@@ -748,7 +748,7 @@ export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(
 Per lo sviluppo del \textit{chabot} come ho descritto precedentemente ho utilizzato il \textit{framework} Streamlit. Questo \textit{framework} mi ha permesso di sviluppare il \textit{back-end} e il \textit{front-end} del \textit{chatbot} in semplici \textit{file} Python.
 Qui di seguito descrivo la suddivisione dei \textit{file} Python che compongono il \textit{chatbot}:
 \begin{itemize}
-    \item \textbf{\textit{Back-end}}: per quanto riguarda il \textit{back-end} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{back-end} del \textit{chatbot}.
+    \item \textbf{\textit{Back-end}}: per quanto riguarda il \textit{back-end} del \textit{chatbot}, ho creato diversi \textit{file} Python che si occupano di gestire l'\textit{input} dell'utente, di interrogare il \textit{database} vettoriale per la ricerca dei \textit{ticket} più simili e l'interfacciamento con i vari modelli \gls{llm} offerti da \gls{aws} Bedrock. Ho gestito queste diverse operazioni con l'ausilio del \textit{framework} LangChain. Qui di seguito mostro un esempio di uno dei \textit{file} Python che compongono il \textit{back-end} del \textit{chatbot}.
     \begin{minted}[fontsize=\small,breaklines, linenos, numbersep=5pt, frame=lines, framesep=2mm]{python}
 
 from langchain_community.vectorstores import MongoDBAtlasVectorSearch
@@ -821,7 +821,7 @@ Durante il mio periodo di \textit{stage} ho fatto uso di diversi strumenti utili
 \section{Verifica e validazione}
 \subsection{Sistema Jira}
 \subsubsection{\textit{Test} tramite eventi}
-Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm-g} offerti da \gls{aws} Bedrock. 
+Per verificare il corretto funzionamento delle due funzioni \textit{lambda} che ho sviluppato per il sistema Jira, ho utilizzato il servizio di \textit{testing} tramite eventi offerto da \gls{aws} Lambda. Tramite questo servizio ho potuto creare un evento di test che simulava l'evento scatenato da \gls{aws} API Gateway quando un \textit{ticket} viene creato o chiuso. Tramite questo approccio ho potuto verificare che le funzioni \textit{lambda} ricevessero correttamente il \textit{ticket} dall'evento. Le operazioni di proposta di risoluzione e di salvataggio del \textit{ticket} sono state testate a parte, in quanto richiedevano l'interrogazione del \textit{database} vettoriale e l'interfacciamento con i vari modelli \gls{llm} offerti da \gls{aws} Bedrock. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{eventTest.png}
