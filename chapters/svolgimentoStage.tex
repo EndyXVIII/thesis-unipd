@@ -446,7 +446,7 @@ Il funzionamento della \gls{rag} può essere diviso in più fasi, qui di seguito
 \subsubsection{\textit{Prompt engineering}}
 Come aspetto cruciale per la generazione di proposte di risoluzione di qualità, ho dovuto creare un \textit{prompt} che permettesse al modello di generare proposte di risoluzioni corrette utilizzando il contesto fornito. Inizialmente per testare la qualità del \textit{prompt} creato, ho utilizzato il modello \textit{MistralLarge} di \gls{aws} Bedrock tramite la \textit{console}. La scelta è ricaduta su questo modello in quanto si è dimostrato il più performante tra quelli offerti.
 La creazione del \textit{prompt} è stata effettuata ispirandosi alle pratiche del \gls{promptenginnering-g}, ovvero un processo di progettazione e ottimizzazione di \textit{prompt}. L'approccio che ho utilizzato è stato fondamentale un \textit{trial and error} ed è consistito nel testare gli svariati \textit{prompt} creati con il modello \textit{MistralLarge} per valutare la qualità delle proposte di risoluzione generate.
-Di seguito mostro il prompt finale creato per il sistema di proposte di risoluzione Jira:
+In figura \ref{fig:promptJira} mostro il prompt finale creato per il sistema di proposte di risoluzione Jira:
 \begin{Verbatim}[frame=single, fontsize=\small]
     Ti fornisco le seguenti informazioni estratte dai documenti:
     ${JSON.stringify(results)}.
@@ -476,8 +476,13 @@ Di seguito mostro il prompt finale creato per il sistema di proposte di risoluzi
     
     Attieniti RIGOROSAMENTE a queste istruzioni senza deviazioni.
 \end{Verbatim}
+\vspace{-0.5cm}
+\captionof{figure}{\textit{Prompt} per il sistema di proposte di risoluzione Jira}
+\label{fig:promptJira}
+\vspace{0.3cm}
+
 \noindent
-Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho seguito lo stesso approccio, ma con delle modifiche per adattarlo al contesto del \textit{chatbot}. Di seguito mostro il prompt finale creato per il \textit{chatbot}:
+Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho seguito lo stesso approccio, ma con delle modifiche per adattarlo al contesto del \textit{chatbot}. In figura \ref{fig:promptChatbot} mostro il prompt finale creato per il \textit{chatbot}:
 \begin{Verbatim}[frame=single, fontsize=\small]
     Sei un assistente specializzato che fornisce informazioni e soluzioni 
     basandosi esclusivamente sul database e sui documenti di supporto 
@@ -510,11 +515,8 @@ Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho
         • Codice della componente
         • Soluzione proposta
         • Chiave del ticket
-    - Non utilizzare formattazione, bullet points o elenchi
     - Termina la risposta dopo aver suggerito una soluzione o dichiarato 
     l'impossibilità di rispondere
-    - Non aggiungere spiegazioni o ragionamenti ulteriori
-    - Evita spazi o caratteri speciali alla fine della risposta
 
     4. In caso di mancanza di informazioni:
     - Se non trovi informazioni pertinenti o componenti simili, dichiara 
@@ -526,6 +528,11 @@ Per quanto riguarda la creazione del \textit{prompt} per il \textit{chatbot}, ho
     procedere con la ricerca nei documenti e la formulazione della 
     risposta.
 \end{Verbatim}
+\vspace{-0.45cm}
+\captionof{figure}{\textit{Prompt} per il \textit{chatbot}}
+\label{fig:promptChatbot}
+\vspace{0.2cm}
+
 \subsubsection{Selezione del modello \gls{llm}}
 La selezione del modello rappresenta una scelta cruciale per una proposta di risoluzione coerente e di qualità. Come ho mostrato nella tabella \ref{tab:prevAttività} ho creato un \textit{benchmark} per selezionare quale tra i modelli più performanti offerti da \gls{aws} Bedrock fosse il migliore per il contesto dei due progetti.
 Per la creazione del \textit{benchmark} ho creato una serie di \textit{ticket} fittizzi a cui ho associato delle proposte di risoluzione in base ai \textit{ticket} completati contenuti nel \textit{database}. In seguito, per ognuno di questi ticket veniva richiesta una proposta di risoluzione ai vari modelli da testare e le risposte venivano valutato da un ulteriore modello, di cui ho avuto modo di poterne testare l'accuratezza tramite la \textit{console} di \gls{aws} Bedrock.
@@ -541,9 +548,10 @@ Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato
 In figura \ref{fig:benchmarkArchitecture} mostro l'architettura del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{architetturaBenchmark.png}
+    \includegraphics[width=0.95\textwidth]{architetturaBenchmark.png}
     \caption{Architettura del \textit{benchmark}}
     \label{fig:benchmarkArchitecture}
+\end{figure}
 \noindent
 Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark} è composto da tre componenti principali:
 \begin{itemize}
@@ -552,7 +560,7 @@ Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark}
     \item \textbf{\textit{Database}}: componente che tramite la ricerca vettoriale trova i \textit{ticket} completati più simili ai \textit{ticket} fittizzi creati. 
     \item \textbf{Modello di punteggio}: modello che valuta la qualità delle proposte di risoluzione generate dai vari modelli interrogati. Restituisce un numero intero positivo compreso tra 0 (risposta totalmente diversa) e 1 (risposta identica).
 \end{itemize}
-\end{figure}
+
 In figura \ref{fig:benchmarkResult} mostro il risultato del \textit{benchmark}:
 \begin{figure}[H]
     \centering
@@ -613,9 +621,10 @@ Gli \textit{handlers} vengono configurati all'interno del file \textit{index.ts}
       },
     };
 \end{minted}
-\captionof{listing}{Configurazione delle funzioni \textit{lambda} del sistema Jira}
+\vspace{-0.5cm}
+\captionof{figure}{Configurazione delle funzioni \textit{lambda} del sistema Jira}
 \label{lst:handlersJira}
-
+\vspace{0.3cm}
 Come mostro nel frammento di codice \ref{lst:handlersJira}, sono presenti le configurazione di due funzioni \textit{lambda}, una rispettivamente per il salvataggio del \textit{ticket} chiuso (funzione \textit{save}) e una per la richiesta di proposta di risoluzione per il \textit{ticket} appena creato (funzione \textit{suggest}).  Entrambe le funzioni sono configurate per essere eseguite quando un evento \gls{httpg} viene scatenato. Questo evento viene scatenato da \gls{aws} API Gateway che riceve la notifica da Jira quando un \textit{ticket} viene creato o chiuso.
 Definiscono inoltre il tempo massimo di esecuzione e la quantità di memoria allocata per l'esecuzione.
 
@@ -716,7 +725,9 @@ async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
 
 export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
     \end{minted}
+    \vspace{-0.3cm}
     \captionof{figure}{Funzione \textit{lambda suggest}}
+    \vspace{0.2cm}
 
     \item \textbf{\textit{save}}: funzione \textit{lambda} che viene eseguita quando un evento \gls{httpg} viene scatenato da \gls{aws} API Gateway. Questo evento si verifica quando un \textit{ticket} viene chiuso, sempre con l'ausilio dei \textit{webhook} di Jira. La funzione \textit{save} si occupa di salvare il \textit{ticket} chiuso e il suo relativo \gls{embedding-g} all'interno del \textit{database}. Questo permette di poter ricercare in futuro i \textit{ticket} completati più simili ai \textit{ticket} creati, arricchendo così la conoscenza del \textit{database}.
     Anche in questo caso, ho sviluppato delle funzioni \textit{services} che si occupano di inserire il \textit{ticket} chiuso e di calcolare il relativo \gls{embedding-g} all'interno del \textit{database}.
@@ -740,6 +751,7 @@ async function handler(event: Event<TicketDataEventDto>): Promise<undefined> {
 
 export const main: HandlerResponse = baseHandler<TicketDataEventDto, undefined>(handler, 200);
     \end{minted}
+    \vspace{-0.3cm}
     \captionof{figure}{Funzione \textit{lambda save}}
 \end{itemize}
 
@@ -774,9 +786,10 @@ def cloudVectorSearch(database_url, database_name, collection_name, query_embedd
 
     return filtered_result
     \end{minted}
+    \vspace{-0.3cm}
     \captionof{figure}{Funzione di ricerca vettoriale utilizzata nel \textit{chatbot}}
     \label{lst:cloudVectorSearch}
-
+    \vspace{0.3cm}
 
     Nel frammento di codice \ref{lst:cloudVectorSearch} mostro la funzione di ricerca vettoriale utilizzata nel \textit{chatbot}. Questa funzione si occupa di interrogare il \textit{database} vettoriale MongoDB fornendogli il nome dell'indice, il nome del campo contenente l'\gls{embedding-g} e l'\gls{embedding-g} del testo della \textit{query} dell'utente. La funzione restituisce i tre \textit{ticket} più simili alla \textit{query} dell'utente filtrandoli per i campi desiderati.
     \item \textbf{\textit{Front-end}}: per lo sviluppo del \textit{front-end} del \textit{chatbot} ho creato un unico \textit{file} Python che si occupa di creare l'interfaccia grafica interattiva utilizzando le componenti offerte dal \textit{framework} Streamlit. Questo \textit{file} Python si occupa di gestire l'interfaccia grafica, di inviare le richieste al \textit{back-end} e di visualizzare i risultati all'utente.
@@ -798,8 +811,10 @@ if input_text:
         st.session_state.search_results, model_choice))
     st.session_state.chat_history.append(AIMessage(chat_response))
     \end{minted}
+    \vspace{-0.3cm}
     \captionof{figure}{Frammento del codice Python relativo al \textit{front-end}}
     \label{lst:chatbotFrontend} 
+    \vspace{0.3cm}
 
     Nel frammento di codice \ref{lst:chatbotFrontend} mostro un esempio di come viene gestita la richiesta dell'utente e come vengono visualizzati i relativi risultati. Viene effettuata una ricerca vettoriale che restituisce i \textit{ticket} più simili alla \textit{query} dell'utente. 
     Successivamanete inserisco i risultati all'interno della \textit{st.session\_state} che rappresenta la sessione dell'utente. Infine viene generata la proposta di risoluzione con l'ausilio del \gls{llm} scelto dall'utente con i risultati della ricerca vettoriale e visualizzata all'utente.
