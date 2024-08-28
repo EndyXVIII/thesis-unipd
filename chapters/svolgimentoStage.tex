@@ -256,13 +256,13 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 \end{figure}
 
 
-\subsubsection{UC2.1: Generazione \gls{embedding-g} del \textit{ticket} completato}
+\subsubsection{UC3: Generazione \gls{embedding-g} del \textit{ticket} completato}
 \textbf{Attori principali}: \gls{llm} \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato chiuso \\
 \textbf{Descrizione}: Viene richiesto all'\gls{llm} di generare l'\gls{embedding-g} del \textit{ticket} completato per poterlo poi salvare nel \textit{database} MongoDB \\
 \textbf{Postcondizioni}: L'\gls{embedding-g} del \textit{ticket} è stato generato \\
 
-\subsubsection{UC3: Salvataggio \textit{ticket} su \textit{database} MongoDB}
+\subsubsection{UC3.1: Salvataggio \textit{ticket} su \textit{database} MongoDB}
 \textbf{Attori principali}: Sistema \\
 \textbf{Precondizioni}: Il \textit{ticket} è stato compleato e in stato \textit{Done} \\
 \textbf{Descrizione}: Il \textit{ticket} viene salvato su \textit{database} MongoDB con il suo relativo \textit{embedding} \\
@@ -270,8 +270,8 @@ Gli attori che ho individuato si suddividono in 2 categorie:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.78\textwidth]{uc3.png}
-    \caption{Diagramma del caso d'uso UC3}
-    \label{fig:UC5}
+    \caption{Diagramma del caso d'uso UC3 e del relativo sottocaso}
+    \label{fig:UC3}
 \end{figure}
 
 \subsubsection{\textit{Chatbot}}
@@ -392,9 +392,9 @@ dove:
     \hline
     R-FO-5 & Il sistema deve poter interrogare un \gls{llm} per generare una risposta standard in caso di mancanza di \textit{ticket} completati simili. & Obbligatorio & UC1.4 (Jira) \\
     \hline
-    \rowcolor{tableevenrow} R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC2.1 (Jira) \\
+    \rowcolor{tableevenrow} R-FO-6 & Il sistema deve poter interrogare un \gls{llm} per la generazione dell'\gls{embedding-g} del \textit{ticket} completato per salvarlo nel \textit{database} & Obbligatorio & UC3 (Jira) \\
     \hline
-    R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC3 (Jira) \\
+    R-FO-7 & Il sistema deve permettere il salvataggio del \textit{ticket} completato e del relativo \gls{embedding-g} nel \textit{database}. & Obbligatorio & UC3.1 (Jira) \\
     \hline
     \rowcolor{tableevenrow} R-FO-8 & Il sistema deve permettere l'autenticazione dell'utente nel \textit{chatbot}. & Obbligatorio & UC0 (Chatbot) \\
     \hline
@@ -548,12 +548,12 @@ Come sistema di \textit{scoring}, come ho accennato in precedenza, ho utilizzato
 In figura \ref{fig:benchmarkArchitecture} mostro l'architettura del \textit{benchmark}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{architetturaBenchmark.png}
+    \includegraphics[width=0.93\textwidth]{architetturaBenchmark.png}
     \caption{Architettura del \textit{benchmark}}
     \label{fig:benchmarkArchitecture}
 \end{figure}
 \noindent
-Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark} è composto da tre componenti principali:
+Come mostro nell'immagine \ref{fig:benchmarkArchitecture}, il \textit{benchmark} è composto da quattro componenti principali:
 \begin{itemize}
     \item \textbf{N \textit{ticket} fittizzi}: insieme di \textit{ticket} creati per valutare la qualità delle proposte di risoluzione dei vari modelli, come mostrato nell'immagine \ref{fig:Ticketbenchmark};
     \item \textbf{N Modelli}: insieme di \gls{llm} offerti da \gls{aws} Bedrock che interrogo per generare proposte di risoluzione per gli N \textit{ticket} fittizzi e li restituisce alla funzione \textit{lambda}; 
